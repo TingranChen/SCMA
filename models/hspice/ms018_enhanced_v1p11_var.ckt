@@ -1,0 +1,92 @@
+* 
+*  No part of this file can be released without the consent of SMIC.
+*
+******************************************************************************************
+*         SMIC 0.18um Mixed Signal Enhanced 1.8V/3.3V SPICE Model (for HSPICE only)          *
+******************************************************************************************
+*
+*  Release version    : 1.11
+*
+*  Release date       : 10/14/2016
+*
+*  Simulation tool    : Synopsys Star-HSPICE version C-2010.03
+* 
+*  the valid temperature range is from -40c to 125c
+*
+*   mosfet varactor  :
+*
+*        *----------------------------------------------*---------------------*
+*        |   mos varactor subckt   |         3.3v(IO)   ||         1.8v(Core) |
+*        |=========================|====================||====================|
+*        |     n+poly/nwell        |     pvar33_ckt     ||     pvar18_ckt     | 
+*        *----------------------------------------------*---------------------*
+**************************************                 
+* 1.8v thin oxide n+/nw mos varactor
+**************************************
+* $$model information
+* $$model name: pvar18_ckt
+* $$voltage range:v,-2,2
+* $$dimension: wr,0.18u,0.5u,1u,1.5u,2u,lr,10u
+* $$model instance:nf,140,95,65,50,40mr,3
+* $$model capability:mismatch,0,mc,1,noise,1,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+* 1=port1(gate), 2=port2(s/d)
+* area=wr*lr*nf, and this model is extracted from finger structure,5umx1umx4x1,5umx2.5umx4x1,5umx5umx4x1,10umx10umx4x1 and 15umx15umx4x1,and the model is effective at the area from 10um^2 to 2.7e3um^2
+.subckt pvar18_ckt g dsb lr=1u wr=10u nf=4 mr=1 mismod_var=1
+.param
+*** low frequency capacitor
++lrr        =  'lr+2.6e-14/lr'
++cgg_c0     =  'nf*(6.0142e10*wr*lrr+1.800255e-2)'
++cgg_a1     =  '140.8506*(-2.4237e-8/lrr+1)'
++cgg_a2     =  '32.1269*(2.198e-7/lrr+1)'
++cgg_x0     = -0.0859850331082124        
++cgg_dx     = -0.198158121656507
++vc1        = 0.136538225403218         
++vc2        = -0.139373429214497       
++vc3        = -0.058620902728895
++vc4        = 0.0313250716580796
++dcgg_pvar18mis = 'mismod_var*sigma_mis_var*geo_var'
++geo_var = 'ac0_pvar18/(wr*lrr*nf*mr)+bc0_pvar18/sqrt(wr*lrr*nf*mr)+cc0_pvar18'  
+*** gate current
++tox    = '1.2518e-08+dtox_pvar18' 
++gcie   = 2.449260179            gcarc = 4.97112503779554                gcevgc = 1.28405488039671
++gcetc  = 2425.31845182089            gcete = 0.305811750223937                igg_tc = 0.00896             
+gg  g dsb current='((v(g,dsb)*pwr(abs(v(g,dsb)),gcie)*(gcarc*wr*lrr*nf*exp(gcevgc*v(g,dsb)-gcetc*pwr(tox,gcete))))*1)*(1+igg_tc*(temper-25))'   m=mr
+
+cgg g dsb c='max(cgg_c0*(cgg_a2+(cgg_a1-cgg_a2)/(1+exp((v(g,dsb)-cgg_x0)/(cgg_dx*(1+0.000986*(temper-25)))*(1+vc1*v(g,dsb)+vc2*v(g,dsb)*v(g,dsb)+vc3*v(g,dsb)*v(g,dsb)*v(g,dsb)+vc4*v(g,dsb)*v(g,dsb)*v(g,dsb)*v(g,dsb)))))*(1+dcvar_pvar18+dcgg_pvar18mis)*1e-15,1e-15)'  m=mr  
+.ends pvar18_ckt
+
+********************************************
+* $$model information
+* $$model name: pvar33_ckt
+* $$voltage range: v,-3.6, 3.6
+* $$dimension: wr, 1.2u, 6u, lr, 0.5u,1.7u
+* $$model instance:nf,1,10,30, mr,4,16,784
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method: no
+* $$temperature:t,-40,25,125
+
+.subckt pvar33_ckt g dsb lr=0.5u wr=6u nf=10 mr=16 mismod_var=1 
+.param
++lrr='lr*1e6' wrr='wr*1e6'     
++area = 'lrr*wrr*nf'        
+
+*** low frequency capacitor
++cgga=2.99833E-01	  cggb=2.03210E-01	cggc=1.57642E+00	cggd=5.57995E-01	cgge=1.67422E-01	
++cggf=1.16731E-01 	cggh=5.06678E-03	cggi=-1.84868E-03	cggj=1.52035E-01	
++cggk=-1.72579E-01  cggl=7.65438E-04	
++tc1=1.4552E-04  	  tc2=-9.9703E-04
+	
+*** gate current	
+*** mismatch paramters	
++geo_var = 'ac0_pvar33/sqrt(area*mr)+bc0_pvar33'	
++dcgg_pvar33mis = 'mismod_var*sigma_mis_var*geo_var'
+                   
+*** equivalent circuit
+cgg g dsb  c='max(((cgga*TANH((v(g,dsb)+cggb+tc1*(temper-25))*cggc*(1+tc2*(temper-25)))+cggd)*(cggh*lrr*(Wrr+cgge)*(nf+cggf)+cggi)+(Wrr+cggj)*(nf+cggk)*cggl)*(1+dcgg_pvar33mis)*(1+dcvar_pvar33)*mr*1e-12,1e-15)'		
+
+
+.ends pvar33_ckt

@@ -1,0 +1,181 @@
+Magic 271485
+Revision Verdi_N-2017.12
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 0 28 1366 539 190 65
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / -i 0 "" "/home/chentingran/CIMU/digital_interface/results_simutop_CIMU/vcs_simutop_CIMU.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+; waveform viewport range
+zoom 4000.000000 458500.000000
+cursor 4000.000000
+marker 4000.000000
+
+; visible top row signal index
+top 13
+; marker line index
+markerPos 32
+
+; Run Time Signal and Member
+; userBusMem member ...
+; saveRunSig name
+activeDirFile "" "/home/chentingran/CIMU/digital_interface/results_simutop_CIMU/vcs_simutop_CIMU.fsdb"
+userBusMem /simu_top/a_in[14]
+userBusMem /simu_top/a_in[13]
+userBusMem /simu_top/a_in[12]
+userBusMem /simu_top/a_in[11]
+saveRunSig "chip_en[14:11]"
+
+; Run Time Signal and Member
+; userBusMem member ...
+; saveRunSig name
+userBusMem /simu_top/a_in[7]
+userBusMem /simu_top/a_in[6]
+userBusMem /simu_top/a_in[5]
+userBusMem /simu_top/a_in[4]
+saveRunSig "read_addr[7:4]"
+
+; Run Time Signal and Member
+; userBusMem member ...
+; saveRunSig name
+userBusMem /simu_top/a_in[3]
+userBusMem /simu_top/a_in[2]
+userBusMem /simu_top/a_in[1]
+userBusMem /simu_top/a_in[0]
+saveRunSig "write_addr[3:0]"
+
+; Run Time Signal and Member
+; userBusMem member ...
+; saveRunSig name
+userBusMem /simu_top/a_in[10]
+userBusMem /simu_top/a_in[9]
+saveRunSig "NewBus[10:9]"
+
+; rename signal list
+; addRenameSig new_name org_name
+
+addRenameSig "/func_en[10:9]" "/NewBus[10:9]"
+
+; Run Time Signal and Member
+; userBusMem member ...
+; saveRunSig name
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[35]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[34]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[33]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[32]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[31]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[30]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[29]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[28]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[27]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[26]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[25]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[24]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[23]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[22]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[21]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[20]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[19]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[18]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[17]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[16]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[15]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[14]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[13]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[12]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[11]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[10]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[9]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[8]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[7]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[6]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[5]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[4]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[3]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[2]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[1]
+userBusMem /simu_top/dut_inputFIFO/RD_DATA[0]
+saveRunSig "col_data[35:0]"
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+addGroup "G1"
+activeDirFile "" "/home/chentingran/CIMU/digital_interface/results_simutop_CIMU/vcs_simutop_CIMU.fsdb"
+addSignal -h 15 /simu_top/dut_CONTROLLER/RD_EN_inputfifo
+addSignal -h 15 -holdScope WR_EN_outputfifo
+addSignal -h 15 -UNSIGNED -HEX -holdScope a_reg[3:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope access_tmp_0[63:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope access_tmp_1[63:0]
+addSignal -h 15 -holdScope cal_b
+addSignal -h 15 -holdScope cal_done
+addSignal -h 15 -holdScope clk
+addSignal -h 15 -holdScope clk_b
+addSignal -h 15 -holdScope col_en
+addSignal -h 15 -UNSIGNED -HEX -holdScope d_reg[31:0]
+addSignal -h 15 -holdScope empty_inputfifo
+addSignal -h 15 -holdScope full_outputfifo
+addSignal -h 15 -UNSIGNED -HEX -holdScope qin[63:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope qout[63:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope reg_add_0[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope reg_add_1[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope reg_cal[63:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope reg_conf_0[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope reg_conf_1[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope reg_conf_2[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope reg_conf_3[31:0]
+addSignal -h 15 -holdScope reg_en
+addSignal -h 15 -UNSIGNED -HEX -holdScope reg_en_collum[31:0]
+addSignal -h 15 -holdScope rst
+addSignal -h 15 -holdScope rst_b
+addSignal -h 15 -holdScope stall_en
+addSignal -h 15 -UNSIGNED -HEX -holdScope state[2:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope state_tmp[2:0]
+addSignal -h 15 /simu_top/empty_inputfifo
+addSignal -h 15 -holdScope empty_inputfifo_IO_b
+addSignal -h 15 -holdScope empty_inputfifo_SM_b
+addGroup "G2"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+activeDirFile "" "/home/chentingran/CIMU/digital_interface/results_simutop_CIMU/vcs_simutop_CIMU.fsdb"
+
+GETSIGNALFORM_SCOPE_HIERARCHY_BEGIN
+getSignalForm close
+
+"/simu_top"
+"/simu_top/dut_CONTROLLER"
+
+SCOPE_LIST_BEGIN
+"/simu_top"
+"/simu_top/dut_SM"
+"/simu_top/dut_CONTROLLER"
+SCOPE_LIST_END
+
+GETSIGNALFORM_SCOPE_HIERARCHY_END
+
+

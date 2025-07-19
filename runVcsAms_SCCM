@@ -1,0 +1,42 @@
+#!/bin/csh -f
+
+echo "clean up old files"
+rm -rf csrc simv* *.fsdb
+
+echo "mkdir ./results_simutop_SCCM"
+mkdir ./results_simutop_SCCM
+
+# Compile
+echo "verilog compilation"
+vcs  \
+  -nc  \
+  -full64  \
+  -sverilog  \
+ 	./digital_interface/simu_top_SCCM.v \
+	  ./digital_interface/SM.v \
+    ./digital_interface/inputFIFO.v \
+    ./digital_interface/outputFIFO.v \
+    ./digital_interface/IO.v \
+    ./digital_interface/inputFIFO_unit.v\
+    ./digital_interface/CONTROLLER.v\
+    ./digital_interface/SHIFTER.v\
+    ./digital_interface/SIMDadd.v\
+    ./digital_interface/SIMDshifter.v\
+    ./digital_interface/FIFO_ASYN.v\
+    ./digital_interface/SCMU_wrapper.v\
+    ./digital_interface/quantize_add.v\
+    ./digital_interface/quantize_6to4.v\
+    ./digital_interface/quantize.v\
+    ./digital_interface/SCMA_wrapper.v\
+  +lint=TFIPC-L  \
+  -debug_access+all  \
+	-ad=vcsAD_SCCM.init \
+  -l ./results_simutop_SCCM/vcs_simutop_SCCM.log  \
+  
+./simv  \
+  -nc  \
+  +COMPARE  \
+  -l ./results_simutop_SCCM/simu_simutop_SCCM.log
+  
+mv ./vcs_simutop.fsdb ./results_simutop_SCCM/
+    

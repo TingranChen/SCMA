@@ -1,0 +1,32 @@
+#!/bin/csh -f
+
+echo "clean up old files"
+rm -rf csrc simv* *.fsdb
+
+echo "mkdir ./results_testbench"
+mkdir ./results_testbench
+
+# Compile
+echo "verilog compilation"
+vcs \
+	-nc \
+	-full64 \
+	-sverilog \
+	./testbench.v \
+	./SMw.v \
+  ./Relu.v \
+  ./ACT.v \
+  ./IOw.v \
+  ./SRAM_CIM.v \
+  +lint=TFIPC-L \
+  -debug_access+all \
+	-l ./results_testbench/vcs_testbench.log
+	
+# Simulate
+echo "run simulation - simv"
+./simv \
+	-nc \
+	+COMPARE \
+	-l ./results_testbench/simu_testbench.log
+	
+mv ./vcs_CIM.fsdb ./results_testbench/

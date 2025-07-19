@@ -1,0 +1,59 @@
+// *Spectre Model Format
+//* 
+//  No part of this file can be released without the consent of SMIC.
+//
+//*****************************************************************************************
+//     SMIC 0.18um Mixed Signal Enhanced 1.8V/3.3V SPICE Model  (for Spectre only)   *
+//*****************************************************************************************
+//
+//  Release version    : 1.11
+//
+//  Release date       : 10/14/2016
+//
+//  Simulation tool    : Cadence Spectre V10.1.1
+simulator lang=spectre  insensitive=yes
+// 
+//  the valid temperature range is from -40c to 125c
+// mim cap:
+//        *-------------------------------------------------------------------------* 
+//        |  mim cap type                  |  cspec = 1ff/um^2  |  cspec = 2ff/um^2 |
+//        |=========================================================================| 
+//        |   mim model                    |     mim            |     mim2          |
+//        *-------------------------------------------------------------------------*
+//
+//*************************************************************** 
+//                 mim capacitor(cspec = 1ff/um^2)              * 
+//***************************************************************
+// $$model information
+// $$model name:mim
+// $$voltage range:v,-10,10
+// $$dimension:l,15u,20u,25u,30u,40u,50u
+// $$model instance:nn,1,1,100,mm,1,1,100,tm,1,1,6,bm,2,2,8
+// $$model capability:mismatch,0,mc,0,noise,0,wpe,0,lod,0,ig,0,lpe,0
+// $$pm:rt,0
+// $$vth method:no
+// $$temperature:t,-40,25,125
+// area=wr*lr*mr, and this model is extracted from finger structure,15um*15um*1,20um*20um*1,25um*25um*1,30um*30um*1,40um*40um*1,50um*50um*1
+
+
+simulator lang=spectre  insensitive=yes
+model mim capacitor 
++cj=(9.69e-4+dmim) tc1 = -2.1978e-5 
++coeffs=[2.2742e-5 -1.0135e-5]
+**************************************************************** 
+*                 mim capacitor(cspec = 2ff/um^2)              * 
+****************************************************************
+* $$model information
+* $$model name:mim2
+* $$voltage range:v,-10,10
+* $$dimension:l,15u,20u,25u,30u,40u,50u
+* $$model instance:nn,1,1,100,mm,1,1,100,tm,1,1,6,bm,2,2,8
+* $$model capability:mismatch,0,mc,0,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+* area=wr*lr*mr, and this model is extracted from finger structure,15um*15um*1,20um*20um*1,25um*25um*1,30um*30um*1,40um*40um*1,50um*50um*1
+model mim2 capacitor 
++cj=(1.99e-03+dmim2) tc1 = 2.8737e-05 
++coeffs=[7.6813e-06 1.3589e-05]
+

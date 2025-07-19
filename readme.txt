@@ -1,0 +1,1 @@
+请在已经添加vcs与xa工具的linux环境下，运行runVcsAms_SCMU、runVcsSCMA来执行单核存算一体模拟电路混合信号仿真以及多核模拟存算一体电路混合信号仿真

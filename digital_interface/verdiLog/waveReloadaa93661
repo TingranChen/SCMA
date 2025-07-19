@@ -1,0 +1,187 @@
+Magic 271485
+Revision Verdi_N-2017.12
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 0 28 1366 566 213 65
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / -i 0 "" "/home/chentingran/SCCM/digital_interface/results_simutop_SCMU/vcs_simutop.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+; waveform viewport range
+zoom 16000.000000 50216000.000000
+cursor 16000.000000
+marker 16000.000000
+
+; visible top row signal index
+top 96
+; marker line index
+markerPos 116
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+addGroup "G1"
+activeDirFile "" "/home/chentingran/SCCM/digital_interface/results_simutop_SCMU/vcs_simutop.fsdb"
+addSignal -h 15 -UNSIGNED -HEX /simu_top/dut_SCMU_0/RD_DATA_SM_b[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope RD_DATA_inputfifo[511:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope RD_DATA_outputfifo[31:0]
+addSignal -h 15 -holdScope RD_EN_inputfifo_CTR
+addSignal -h 15 -holdScope RD_EN_inputfifo_IO_b
+addSignal -h 15 -holdScope RD_EN_inputfifo_SM_b
+addSignal -h 15 -UNSIGNED -HEX -holdScope RD_EN_outputfifo_IO_b[1:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope RD_EN_outputfifo_SM_b[1:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope WR_DATA_CTR[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope WR_DATA_IO_b[35:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope WR_EN_inputfifo_IO[15:0]
+addSignal -h 15 -holdScope WR_EN_outputfifo_CTR
+addSignal -h 15 -UNSIGNED -HEX -holdScope a_cim_IO[7:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope a_in[14:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope a_reg_IO[3:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope a_reg_SM_b[3:0]
+addSignal -h 15 -holdScope cal_CTR_b
+addSignal -h 15 -holdScope cal_done_SM
+addSignal -h 15 -holdScope clk
+addSignal -h 15 -holdScope clk_CTR_b
+addSignal -h 15 -holdScope clk_IO_b
+addSignal -h 15 -holdScope clk_SM_b
+addSignal -h 15 -holdScope clkm_IO_b
+addSignal -h 15 -holdScope clkm_SM_b
+addSignal -h 15 -holdScope col_en_CTR
+addSignal -h 15 -holdScope col_en_IO_b
+addSignal -h 15 -holdScope col_en_SM_b
+addSignal -h 15 -holdScope comp_SM
+addSignal -h 15 -UNSIGNED -HEX -holdScope d_reg_IO[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope d_reg_SM_b[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope data_in[35:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope data_in_cim[63:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope data_in_cim_IO[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope data_out[31:0]
+addSignal -h 15 -holdScope empty
+addSignal -h 15 -holdScope empty_inputfifo
+addSignal -h 15 -holdScope empty_inputfifo_IO_b
+addSignal -h 15 -holdScope empty_inputfifo_SM_b
+addSignal -h 15 -holdScope empty_outputfifo
+addSignal -h 15 -holdScope empty_outputfifo_SM_b
+addSignal -h 15 -holdScope full
+addSignal -h 15 -holdScope full_inputfifo
+addSignal -h 15 -holdScope full_outputfifo
+addSignal -h 15 -holdScope full_outputfifo_SM_b
+addSignal -h 15 -holdScope inbit_SM
+addSignal -h 15 -holdScope model_SM
+addSignal -h 15 -holdScope outputfifo_RD_EN_IO_b
+addSignal -h 15 -holdScope outputfifo_RD_EN_SM_b
+addSignal -h 15 -holdScope reg_en_IO
+addSignal -h 15 -holdScope reg_en_SM_b
+addSignal -h 15 -holdScope reg_en_inputfifo
+addSignal -h 15 -UNSIGNED -HEX -holdScope reg_en_row_inputfifo[15:0]
+addSignal -h 15 -holdScope rst
+addSignal -h 15 -holdScope rst_CTR_b
+addSignal -h 15 -holdScope rst_IO_b_SM
+addSignal -h 15 -holdScope rst_IO_b_inputfifo
+addSignal -h 15 -holdScope rst_SM_b_control
+addSignal -h 15 -holdScope rst_SM_b_outputfifo
+addSignal -h 15 -holdScope set_SM
+addSignal -h 15 -holdScope wait_SM
+addSignal -h 15 -holdScope wrt_IO
+addSignal -h 15 -holdScope wrtbuf
+addSignal -h 15 -UNSIGNED -HEX -holdScope RD_DATA_inputfifo[511:0]
+addSignal -h 15 /simu_top/dut_SCMU_0/dut_inputFIFO/CLK_RD
+addSignal -h 15 -holdScope CLK_WR
+addSignal -h 15 -UNSIGNED -HEX -holdScope RD_DATA[511:0]
+addSignal -h 15 -holdScope RD_EN
+addSignal -h 15 -UNSIGNED -HEX -holdScope RD_EN_flag[15:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope WR_EN[15:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope a_reg[3:0]
+addSignal -h 15 -holdScope col_en
+addSignal -h 15 -UNSIGNED -HEX -holdScope d_reg[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope din[35:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope din_n[35:0]
+addSignal -h 15 -holdScope empty
+addSignal -expanded -h 15 -UNSIGNED -HEX -holdScope empty_flag[15:0]
+addSignal -h 15 -holdScope empty_flag[15]
+addSignal -h 15 -holdScope empty_flag[14]
+addSignal -h 15 -holdScope empty_flag[13]
+addSignal -h 15 -holdScope empty_flag[12]
+addSignal -h 15 -holdScope empty_flag[11]
+addSignal -h 15 -holdScope empty_flag[10]
+addSignal -h 15 -holdScope empty_flag[9]
+addSignal -h 15 -holdScope empty_flag[8]
+addSignal -h 15 -holdScope empty_flag[7]
+addSignal -h 15 -holdScope empty_flag[6]
+addSignal -h 15 -holdScope empty_flag[5]
+addSignal -h 15 -holdScope empty_flag[4]
+addSignal -h 15 -holdScope empty_flag[3]
+addSignal -h 15 -holdScope empty_flag[2]
+addSignal -h 15 -holdScope empty_flag[1]
+addSignal -h 15 -holdScope empty_flag[0]
+addSignal -h 15 -holdScope full
+addSignal -h 15 -UNSIGNED -HEX -holdScope full_flag[15:0]
+addSignal -h 15 -holdScope reg_en
+addSignal -h 15 -UNSIGNED -HEX -holdScope reg_en_row[15:0]
+addSignal -h 15 -holdScope rst_n
+addSignal -h 15 -holdScope CLK_WR
+addSignal -h 15 -holdScope RD_EN
+addSignal -h 15 /simu_top/dut_SCMU_0/dut_inputFIFO/unit_0/CLK_RD
+addSignal -h 15 -holdScope CLK_WR
+addSignal -h 15 -UNSIGNED -HEX -holdScope RD_DATA[63:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope RD_EN[1:0]
+addSignal -h 15 -holdScope RD_EN_FIFO_1
+addSignal -h 15 -UNSIGNED -HEX -holdScope WR_DATA_FIFO_1[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope WR_EN[1:0]
+addSignal -h 15 -holdScope WR_EN_FIFO_1
+addSignal -h 15 -holdScope col_en
+addSignal -h 15 -UNSIGNED -HEX -holdScope din[35:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope empty[1:0]
+addSignal -h 15 -holdScope empty_0
+addSignal -h 15 -holdScope empty_1
+addSignal -h 15 -UNSIGNED -HEX -holdScope full[1:0]
+addSignal -h 15 -holdScope full_0
+addSignal -h 15 -holdScope full_1
+addSignal -h 15 -holdScope rst_n
+addGroup "G2"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+activeDirFile "" "/home/chentingran/SCCM/digital_interface/results_simutop_SCMU/vcs_simutop.fsdb"
+
+GETSIGNALFORM_SCOPE_HIERARCHY_BEGIN
+getSignalForm close
+
+"/simu_top"
+"/simu_top/dut_SCMU_0"
+"/simu_top/dut_SCMU_0/dut_inputFIFO"
+
+SCOPE_LIST_BEGIN
+"/simu_top"
+"/simu_top/dut_SCMU_0"
+"/simu_top/dut_SCMU_0/dut_inputFIFO"
+"/simu_top/dut_SCMU_0/dut_SM"
+"/simu_top/dut_SCMU_0/dut_inputFIFO/unit_0"
+SCOPE_LIST_END
+
+GETSIGNALFORM_SCOPE_HIERARCHY_END
+
+

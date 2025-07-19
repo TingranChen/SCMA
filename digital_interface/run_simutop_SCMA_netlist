@@ -1,0 +1,29 @@
+#!/bin/csh -f
+
+echo "clean up old files"
+rm -rf csrc simv* *.fsdb
+
+echo "mkdir ./results_simutop_SCMA"
+mkdir ./results_simutop_SCMA_netlist
+
+# Compile
+echo "verilog compilation"
+vcs  \
+  -nc  \
+  -full64  \
+  -sverilog  \
+	/home/chentingran/PDK/SCC55NLL_HD_RVT_V2.0b/SCC55NLL_HD_RVT_V2p0b/verilog/SCC55NLL_HD_RVT_V2p0.v \
+	/home/chentingran/SCCM/syn/SCMA_wrapper/results/SCMA_wrapper.gtech.v \
+  /home/chentingran/SCCM/digital_interface/SRAM_ChargePulsation.v \
+	./simu_top_SCMA.v \
+  +lint=TFIPC-L  \
+  -debug_access+all  \
+  -l ./results_simutop_SCMA_netlist/vcs_simutop_SCMA.log  \
+  
+./simv  \
+  -nc  \
+  +COMPARE  \
+  -l ./results_simutop_SCMA_netlist/simu_simutop_SCMA_netlist.log
+  
+mv ./vcs_simutop.fsdb ./results_simutop_SCMA_netlist/
+    

@@ -1,0 +1,90 @@
+Magic 271485
+Revision Verdi_P-2019.06-1
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 0 27 1920 343 213 65
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / -i 0 "" "/home/EDA_service/chentingran/SCCM/digital_interface/results_simutop_FIFOAYSN/vcs_simutop.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+; waveform viewport range
+zoom 3854000.000000 12216800.000000
+cursor 5680000.000000
+marker 16000.000000
+
+; visible top row signal index
+top 0
+; marker line index
+markerPos 7
+
+; Run Time Signal and Member
+; userBusMem member ...
+; saveRunSig name
+activeDirFile "" "/home/EDA_service/chentingran/SCCM/digital_interface/results_simutop_FIFOAYSN/vcs_simutop.fsdb"
+userBusMem /simu_top/dut_SCMU_0/dut_inputFIFO/unit_0/FIFO_0/WR_ADDR[2]
+userBusMem /simu_top/dut_SCMU_0/dut_inputFIFO/unit_0/FIFO_0/WR_ADDR[1]
+userBusMem /simu_top/dut_SCMU_0/dut_inputFIFO/unit_0/FIFO_0/WR_ADDR[0]
+saveRunSig "NewBus[2:0]"
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+addGroup "G1"
+activeDirFile "" "/home/EDA_service/chentingran/SCCM/digital_interface/results_simutop_FIFOAYSN/vcs_simutop.fsdb"
+addSignal -h 15 /simu_top/data_in[35:0]
+addSignal -h 15 /simu_top/dut_SCMU_0/dut_inputFIFO/WR_EN[15:0]
+addSignal -h 15 -holdScope reg_en
+addSignal -h 15 /simu_top/dut_SCMU_0/dut_inputFIFO/unit_0/FIFO_0/WR_EN
+addSignal -h 15 -holdScope RD_EN
+addGroup "G2"
+addGroup "G3"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+activeDirFile "" "/home/EDA_service/chentingran/SCCM/digital_interface/results_simutop_FIFOAYSN/vcs_simutop.fsdb"
+
+GETSIGNALFORM_SCOPE_HIERARCHY_BEGIN
+getSignalForm close
+
+"/SIMDadder"
+"/simu_top"
+"/simu_top/dut_SCMU_0"
+"/simu_top/dut_SCMU_0/dut_inputFIFO"
+"/simu_top/dut_SCMU_0/dut_inputFIFO/unit_0"
+"/simu_top/dut_SCMU_0/dut_inputFIFO/unit_0/FIFO_0"
+
+SCOPE_LIST_BEGIN
+"/SIMDadder"
+"/simu_top"
+"/simu_top/dut_SCMU_0"
+"/simu_top/dut_SCMU_0/dut_inputFIFO"
+"/simu_top/dut_SCMU_0/dut_inputFIFO/unit_0"
+"/simu_top/dut_SCMU_0/dut_inputFIFO/unit_0/FIFO_0"
+SCOPE_LIST_END
+
+GETSIGNALFORM_SCOPE_HIERARCHY_END
+
+

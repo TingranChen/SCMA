@@ -1,0 +1,38 @@
+# Layer Definition for 0.18um Mixed signal and RF			
+AA	drawing	10	0
+NW	drawing	14	0
+DNW	drawing	19	0
+DG	drawing	29	0
+GT     drawing	30	0
+NLL	drawing	35	0
+NLH	drawing	36	0
+PLH	drawing	37	0
+PLL	drawing	38	0
+HRP    drawing      39	0
+SN	drawing	40	0
+SP	drawing	43      0
+SAB    drawing	48      0
+CT	drawing	50      0
+MIM    drawing	58      0
+M1	drawing	61      0
+M2      drawing	62      0     
+M3      drawing	63      0        
+M4      drawing	64      0     
+M5      drawing	65      0     
+M6      drawing	66      0 
+V1      drawing	70      0
+V2      drawing	71      0 
+V3      drawing	72      0 
+V4      drawing	73      0 
+V5      drawing	74      0 
+VARMOS	drawing	93       0 
+#RF3T is defined as block layer for 3 terminal RF passive device
+RF3T  drawing2           183           2
+# DUMBM is defined for dummy AA protection layer
+DUMBM   drawing	90      0
+# DUMBA is defined for dummy metal protection layer
+DUMBA   drawing	91      0
+# DUMBP is defined for dummy poly protection layer
+DUMBP   drawing 92      0
+# RFDEV is defined for Dummy layer for LVS to recognize RF Device
+RFDEV   drawing 181     0

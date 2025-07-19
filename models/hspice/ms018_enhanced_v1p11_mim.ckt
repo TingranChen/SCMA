@@ -1,0 +1,77 @@
+* 
+*  No part of this file can be released without the consent of SMIC.
+*
+******************************************************************************************
+*         SMIC 0.18um Mixed Signal Enhanced 1.8V/3.3V SPICE Model  (for HSPICE only)          *
+******************************************************************************************
+*
+*  Release version    : 1.11
+*
+*  Release date       : 10/14/2016
+*
+*  Simulation tool    : Synopsys Star-HSPICE version C-2010.03
+* 
+*  the valid temperature range is from -40c to 125c
+* mim cap:
+*        *-------------------------------------------------------------------------* 
+*        |  mim cap type                  |  cspec = 1ff/um^2  |  cspec = 2ff/um^2 |
+*        |=========================================================================| 
+*        |   mim model                    |     mim_ckt        |     mim2_ckt      |
+*        *-------------------------------------------------------------------------*
+*
+**************************************************************** 
+*                 mim capacitor(cspec = 1ff/um^2)              * 
+****************************************************************
+* $$model information
+* $$model name:mim_ckt
+* $$voltage range:v,-10,10
+* $$dimension:l,15u,20u,25u,30u,40u,50u
+* $$model instance:nn,1,1,100,mm,1,1,100,tm,1,1,6,bm,2,2,8
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+* area=wr*lr*mr, and this model is extracted from finger structure,15um*15um*1,20um*20um*1,25um*25um*1,30um*30um*1,40um*40um*1,50um*50um*1
+.param 
++sigma_mis_mim = agauss(0,1,1)
+.subckt mim_ckt n2 n1 lr=25u wr=25u mismod_mim=1  mr=1
+.param
+*mismatch parameter
++dc0_mis= 'ac0*geo_fac*sigma_mis_mim*mismod_mim'
++geo_fac='1/(lr*wr*mr)'
++ac0=3.16e-16
+
++c0    = '9.69e-4+dmim+dc0_mis'    ctc1 = -2.1978e-5       dt = 'temper' 
++cvc1  = 2.2742e-5          cvc2 = -1.0135e-5       
++tcoef = '1.0+ctc1*(dt-25.0)'
+
+c1 n2 n1 'c0*lr*wr*tcoef*(1.0+v(n2,n1)*(cvc1+cvc2*v(n2,n1)))*mr' 
+
+.ends mim_ckt
+
+******************************************************************************** 
+*                 mim capacitor  (cspec = 2ff/um^2)                            * 
+********************************************************************************
+* $$model information
+* $$model name:mim2_ckt
+* $$voltage range:v,-10,10
+* $$dimension:9u,10u,12u,15u,20u,25u,30u,40u,50u
+* $$model instance:nn,1,1,100,mm,1,1,100,tm,1,1,6,bm,2,2,8
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+* area=wr*lr*mr, and this model is extracted from finger structure,9um*9um*1,10um*10um*1,12um*12um*1,15um*15um*1,20um*20um*1,25um*25um*1,30um*30um*1,40um*40um*1,50um*50um*1
+.subckt mim2_ckt n2 n1 lr=25u wr=25u mismod_mim=1 mr=1
+.param 
++dmim2_mis = 'mismod_mim*sigma_mis_mim*geo_var'
++geo_var = 'ac0_mim/(wr*lr*mr)+bc0_mim/sqrt(wr*lr*mr)+cc0_mim'   
+
+
++c0    = '1.99e-03+dmim2+dmim2_mis'  	ctc1 = 2.8737e-05       
++cvc1  = 7.6813e-06            		cvc2 = 1.3589e-05       
++tcoef = '1.0+ctc1*(temper-25.0)'
+
+c1 n2 n1 'c0*lr*wr*tcoef*(1.0+v(n2,n1)*cvc1+cvc2*v(n2,n1)*v(n2,n1))*mr' 
+.ends mim2_ckt
+

@@ -1,0 +1,17 @@
+/data/home/chentingran/SCCM/digital_interface/CONTROLLER.v
+/data/home/chentingran/SCCM/digital_interface/FIFO_ASYN.v
+/data/home/chentingran/SCCM/digital_interface/IO.v
+/data/home/chentingran/SCCM/digital_interface/SCMA_wrapper.v
+/data/home/chentingran/SCCM/digital_interface/SCMU_wrapper.v
+/data/home/chentingran/SCCM/digital_interface/SHIFTER.v
+/data/home/chentingran/SCCM/digital_interface/SIMDadd.v
+/data/home/chentingran/SCCM/digital_interface/SIMDshifter.v
+/data/home/chentingran/SCCM/digital_interface/SM.v
+/data/home/chentingran/SCCM/digital_interface/SRAM_ChargePulsation.v
+/data/home/chentingran/SCCM/digital_interface/inputFIFO.v
+/data/home/chentingran/SCCM/digital_interface/inputFIFO_unit.v
+/data/home/chentingran/SCCM/digital_interface/outputFIFO.v
+/data/home/chentingran/SCCM/digital_interface/quantize.v
+/data/home/chentingran/SCCM/digital_interface/quantize_6to4.v
+/data/home/chentingran/SCCM/digital_interface/quantize_add.v
+/data/home/chentingran/SCCM/digital_interface/simu_top_SCMA.v

@@ -1,0 +1,9 @@
+#!/bin/sh -h 
+PYTHONHOME=/home/tools/Synopsys/VCSMX/M-2017.03-SP2-4/etc/search/pyh
+export PYTHONHOME
+PYTHONPATH=/home/tools/Synopsys/VCSMX/M-2017.03-SP2-4/linux64/lib/pylib27
+export PYTHONPATH
+LD_LIBRARY_PATH=/home/tools/Synopsys/VCSMX/M-2017.03-SP2-4/linux64/lib:/home/tools/Synopsys/VCSMX/M-2017.03-SP2-4/linux64/lib/pylib27
+export LD_LIBRARY_PATH
+/home/tools/Synopsys/VCSMX/M-2017.03-SP2-4/linux64/bin/vcsfind_create_index.exe  -z  "/data/home/chentingran/SCCM/digital_interface/simv.daidir/debug_dump/fsearch/./idents_tapi.xml.gz" "/data/home/chentingran/SCCM/digital_interface/simv.daidir/debug_dump/fsearch/./idents_KUPgxw.xml.gz" -o "/data/home/chentingran/SCCM/digital_interface/simv.daidir/debug_dump/fsearch/fsearch.db_tmp"
+\mv "/data/home/chentingran/SCCM/digital_interface/simv.daidir/debug_dump/fsearch/fsearch.db_tmp" "/data/home/chentingran/SCCM/digital_interface/simv.daidir/debug_dump/fsearch/fsearch.db"

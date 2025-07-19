@@ -1,0 +1,610 @@
+* 
+*  no part of this file can be released without the consent of smic.
+*
+******************************************************************************************
+*         SMIC 0.18um Mixed Signal Enhanced 1.8V/3.3V SPICE Model  (for hspice only)          *
+******************************************************************************************
+*
+*  Release version    : 1.11
+*
+*  release date       : 10/14/2016
+*
+*  simulation tool    : synopsys star-hspice version c-2010.03
+* 
+*  the valid temperature range is from -40c to 125c
+*   resistor         :
+*        *----------------------------------------------------------------------* 
+*        |             resistor type                            | 1.8v/3.3v     |
+*        |======================================================|===============|
+*        |        silicide n+ diffusion                         |    rndif_ckt  |
+*        |------------------------------------------------------|---------------| 
+*        |        silicide p+ diffusion                         |    rpdif_ckt  |
+*        |------------------------------------------------------|---------------| 
+*        |           silicide n+ poly                           |     rnpo_ckt  |
+*        |----------------------------------------------------  |---------------| 
+*        |           silicide n+ poly(three terminal)           |  rnpo_3t_ckt  |
+*        |------------------------------------------------------|---------------| 
+*        |           silicide p+ poly                           |     rppo_ckt  |
+*        |------------------------------------------------------|---------------| 
+*        |           silicide p+ poly(three terminal)           |  rppo_3t_ckt  |
+*        |------------------------------------------------------|---------------|
+*        |        silicide nwell under aa                       |    rnwaa_ckt  |
+*        |------------------------------------------------------|---------------|
+*        |        silicide nwell under sti                      |   rnwsti_ckt  |
+*        |------------------------------------------------------|---------------| 
+*        |        non-silicide n+ diffusion                     | rndifsab_ckt  |
+*        |------------------------------------------------------|---------------| 
+*        |        non-silicide p+ diffusion                     | rpdifsab_ckt  |
+*        |------------------------------------------------------|---------------|
+*        |          non-silicide n+ poly                        |  rnposab_ckt  |
+*        |------------------------------------------------------|---------------| 
+*        |          non-silicide n+ poly(three terminal)        |rnposab_3t_ckt |
+*        |------------------------------------------------------|---------------|
+*        |          non-silicide p+ poly                        |  rpposab_ckt  |
+*        |------------------------------------------------------|---------------| 
+*        |          non-silicide p+ poly(three terminal)        |rpposab_3t_ckt |
+*        |------------------------------------------------------|---------------|
+*        |        high resistance poly                          |    rhrpo_ckt  |
+*        |------------------------------------------------------|---------------| 
+*        |        high resistance poly(three terminal)          | rhrpo_3t_ckt  |
+*        *----------------------------------------------------------------------* 
+
+*    the valid temperature range is from -40c to 125c
+******************************************************************
+*                       silicide resistors                       *
+******************************************************************
+*
+************************************************************************************ 
+*            silicide n+ diffusion resistor subcircuit netlist                     * 
+************************************************************************************
+* $$model information
+* $$model name: rndif_ckt
+* $$voltage range:v,-4,4
+* $$dimension: w,0.22u,0.5u,1u,2u,4u,l,110u,250u,500u,1000u,2000u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+.subckt rndif_ckt n2 n1 sub l=10e-6 w=1e-6 mr=1  
+.param
++rsh = '5.919+drsh_rndif'       dw = '-2.6e-8+ddw_rndif'      dl = 0                        
++rvc0 = 10.592614e-12          rvc1 = 10.398924e-5           rvc2 = 0                       
++tc1r = 3.12e-03               tc2r = 2.25e-07                 
+.param
++ro = 'rsh*(l-2*dl)/(w-2*dw)'  rvc = 'max(0,(rvc0 + rvc1 * w + rvc2 * (l/w))/(l-2*dl)/(l-2*dl))'
++tcoef_temper = '1.0+(temper-25.0)*(tc1r+tc2r*(temper-25.0))' 
++weff = 'w-2.0*dw'
+
+d1 sub n2 ndio18 area='weff*l/5*mr' pj='(weff+2*l/5)*mr'
+r1 n2 na 'tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))'
+d2 sub na ndio18 area='weff*l/5*mr' pj='2*l/5*mr'
+r2 na nb 'tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))'
+d3 sub nb ndio18 area='weff*l/5*mr' pj='2*l/5*mr'
+r3 nb nc 'tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))'
+d4 sub nc ndio18 area='weff*l/5*mr' pj='2*l/5*mr'
+r4 nc n1 'tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))'
+d5 sub n1 ndio18 area='weff*l/5*mr' pj='(weff+2*l/5)*mr'
+
+.ends rndif_ckt
+
+************************************************************************************ 
+*               silicide p+ diffusion resistor subcircuit netlist                  * 
+************************************************************************************
+* $$model information
+* $$model name: rpdif_ckt
+* $$voltage range:v,-4,4
+* $$dimension: w,0.22u,0.5u,1u,2u,4u,l,110u,250u,500u,1000u,2000u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+.subckt rpdif_ckt n2 n1 sub l=10e-6 w=1e-6 mr=1     
+.param
++rsh = '6.933+drsh_rpdif'          dw = '-3.7e-8+ddw_rpdif'      dl = 0                        
++rvc0 = 9.04e-12                  rvc1 = 9.984672e-5            rvc2 = 0                       
++tc1r = 3.18e-03                  tc2r = 3.18e-07               
+.param
++ro = 'rsh*(l-2*dl)/(w-2*dw)'  rvc = 'max(0,(rvc0 + rvc1 * w + rvc2 * (l/w))/(l-2*dl)/(l-2*dl))'
++tcoef_temper = '1.0+(temper-25.0)*(tc1r+tc2r*(temper-25.0))' 
++weff = 'w-2.0*dw'
+
+d1 n2 sub pdio18 area='weff*l/5*mr' pj='(weff+2*l/5)*mr'
+r1 n2 na 'tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))'
+d2 na sub pdio18 area='weff*l/5*mr' pj='2*l/5*mr'
+r2 na nb 'tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))'
+d3 nb sub pdio18 area='weff*l/5*mr' pj='2*l/5*mr'
+r3 nb nc 'tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))'
+d4 nc sub pdio18 area='weff*l/5*mr' pj='2*l/5*mr'
+r4 nc n1 'tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))'
+d5 n1 sub pdio18 area='weff*l/5*mr' pj='(weff+2*l/5)*mr'
+
+.ends rpdif_ckt
+************************************************************************************ 
+*               silicide n+ poly resistor subcircuit netlist                       * 
+************************************************************************************
+* $$model information
+* $$model name: rnpo_ckt
+* $$voltage range:v,-4,4
+* $$dimension: w,0.18u,0.5u,1u,2u,4u,l,90u,250u,500u,1000u,2000u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+.subckt rnpo_ckt n2 n1 l=10e-6 w=1e-6 mr=1
+
+.param
++rsh = '6.795+drsh_rnpo'        dw = '-1.3e-8+ddw_rnpo_3t'    dl = 0                        
++rvc0 = 8.089076e-11           rvc1 = 2.96441e-4             rvc2 = 0                       
++tc1r = 3.00e-03               tc2r = 9.75e-08            
+.param
++ro = 'rsh*(l-2*dl)/(w-2*dw)'  rvc = 'max(0,(rvc0 + rvc1 * w + rvc2 * (l/w))/(l-2*dl)/(l-2*dl))'
++tcoef_temper = '1.0+(temper-25.0)*(tc1r+tc2r*(temper-25.0))'  
++weff = 'w-2*dw'    leff = 'l-2*dl' 
+
+r1 n2 n1 'tcoef_temper*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))'
+
+.ends rnpo_ckt
+
+************************************************************************************ 
+*          silicide n+ poly resistor subcircuit netlist (three terminal)           * 
+************************************************************************************
+* $$model information
+* $$model name: rnpo_3t_ckt
+* $$voltage range:v,-4,4
+* $$dimension: w,0.18u,0.5u,1u,2u,4u,l,90u,250u,500u,1000u,2000u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+.subckt rnpo_3t_ckt n2 n1 sub l=10e-6 w=1e-6 flag_cc=0 mr=1
+     
+.param
++rsh = '6.795+drsh_rnpo_3t'     dw = '-1.3e-8+ddw_rnpo_3t'    dl = 0                        
++rvc0 = 8.089076e-11           rvc1 = 2.96441e-4             rvc2 = 0                       
++tc1r = 3.00e-03               tc2r = 9.75e-08            
+.param
++ro = 'rsh*(l-2*dl)/(w-2*dw)'  rvc = 'max(0,(rvc0 + rvc1 * w + rvc2 * (l/w))/(l-2*dl)/(l-2*dl))'
++tcoef_temper = '1.0+(temper-25.0)*(tc1r+tc2r*(temper-25.0))'  
++weff = 'w-2*dw'    leff = 'l-2*dl' 
+
++cox = '1.011e-04+dcox_rnpo'      cfox='1.680e-11+dcfox_rnpo'         ccoup ='5.470e-11*flag_cc'     capsw = 'cfox+ccoup'
+
+c1 n2 sub '(cox*weff*leff/2+capsw*weff+capsw*leff)*mr'
+r1 n2 n1 'tcoef_temper*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))'
+c2 n1 sub '(cox*weff*leff/2+capsw*weff+capsw*leff)*mr'
+
+.ends rnpo_3t_ckt
+************************************************************************************ 
+*               silicide p+ poly resistor subcircuit netlist                       * 
+************************************************************************************
+* $$model information
+* $$model name: rppo_ckt
+* $$voltage range:v,-4,4
+* $$dimension: w,0.18u,0.6u,1u,2u,4u,l,90u,300u,500u,1000u,2000u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+.subckt rppo_ckt n2 n1 l=10e-6 w=1e-6 mr=1
+
+.param
++rsh = '7.398+drsh_rppo'         dw = '-2e-9+ddw_rppo_3t'      dl = 0                        
++rvc0 = -7.955986e-14          rvc1 = 6.035624e-4            rvc2 = 0                       
++tc1r = 3.00e-03               tc2r = 2.76e-07            
+.param
++ro = 'rsh*(l-2*dl)/(w-2*dw)'  rvc = 'max(0,(rvc0 + rvc1 * w + rvc2 * (l/w))/(l-2*dl)/(l-2*dl))'
++tcoef_temper = '1.0+(temper-25.0)*(tc1r+tc2r*(temper-25.0))'
++weff = 'w-2*dw'    leff = 'l-2*dl' 
+
+r1 n2 n1 'tcoef_temper*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))'
+
+.ends rppo_ckt
+
+************************************************************************************ 
+*          silicide p+ poly resistor subcircuit netlist (three terminal)           * 
+************************************************************************************
+* $$model information
+* $$model name: rppo_3t_ckt
+* $$voltage range:v,-4,4
+* $$dimension: w,0.18u,0.6u,1u,2u,4u,l,90u,300u,500u,1000u,2000u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+.subckt rppo_3t_ckt n2 n1 sub l=10e-6 w=1e-6 flag_cc=0 mr=1
+    
+.param
++rsh = '7.398+drsh_rppo_3t'      dw = '-2e-9+ddw_rppo_3t'      dl = 0                        
++rvc0 = -7.955986e-14          rvc1 = 6.035624e-4            rvc2 = 0                       
++tc1r = 3.00e-03               tc2r = 2.76e-07           
+.param
++ro = 'rsh*(l-2*dl)/(w-2*dw)'  rvc = 'max(0,(rvc0 + rvc1 * w + rvc2 * (l/w))/(l-2*dl)/(l-2*dl))'
++tcoef_temper = '1.0+(temper-25.0)*(tc1r+tc2r*(temper-25.0))'
++weff = 'w-2*dw'    leff = 'l-2*dl' 
+
++cox = '1.011e-04+dcox_rppo'      cfox='1.680e-11+dcfox_rppo'         ccoup ='5.470e-11*flag_cc'     capsw = 'cfox+ccoup'
+
+c1 n2 sub '(cox*weff*leff/2+capsw*weff+capsw*leff)*mr'
+r1 n2 n1 'tcoef_temper*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))'
+c2 n1 sub '(cox*weff*leff/2+capsw*weff+capsw*leff)*mr'
+
+.ends rppo_3t_ckt
+******************************************************************
+*                     non-silicide resistors                     * 
+******************************************************************
+*
+************************************************************************************ 
+*                 nwell resistor under aa subcircuit netlist                       * 
+************************************************************************************
+* $$model information
+* $$model name: rnwaa_ckt
+* $$voltage range:v,0,3
+* $$dimension: w,0.86u,1u,2u,4u,8u,l,0.86u,1u,1.72u,2u,4u,4.3u,5u,8u,8.6u,10u,16u,20u,40u,80u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+.subckt rnwaa_ckt n2 n1 sub l=10e-6 w=1e-6 mr=1
+
+.param
++rsh = '456.2+drsh_rnwaa' tc1r =2.4940e-03 tc2r =1.9090e-06  dw = '5.3775e-08+ddw_rnwaa' dl=-5.0292e-09
++jc1a =6.6321e-03 jc1b =1.0853e-07 
++jc2a =2.4046e-10 jc2b =1.6149e-13
++rvc1 = 'jc1a + jc1b / l' rvc2 = '(jc2a + jc2b / l) / l'
++weff = 'w-2.0*dw' leff = 'l-2.0*dl' 
++tcoef_temper = '1.0+(temper-25.0)*(tc1r+tc2r*(temper-25.0))'
+
+d1 sub n2 nwdio area='weff*leff/5*mr' pj='(weff+2*leff/5)*mr'
+r1 n2 na 'rsh/mr*leff/4/weff*tcoef_temper*min(max(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1), 0.8), 1.2)'
+d2 sub na nwdio area='weff*leff/5*mr' pj='2*leff/5*mr'
+r2 na nb 'rsh/mr*leff/4/weff*tcoef_temper*min(max(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1), 0.8), 1.2)'
+d3 sub nb nwdio area='weff*leff/5*mr' pj='2*leff/5*mr'
+r3 nb nc 'rsh/mr*leff/4/weff*tcoef_temper*min(max(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1), 0.8), 1.2)'
+d4 sub nc nwdio area='weff*leff/5*mr' pj='2*leff/5*mr'
+r4 nc n1 'rsh/mr*leff/4/weff*tcoef_temper*min(max(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1), 0.8), 1.2)'
+d5 sub n1 nwdio area='weff*leff/5*mr' pj='(weff+2*leff/5)*mr'
+
+.ends rnwaa_ckt
+************************************************************************************ 
+*               nwell resistor under sti subcircuit netlist                        * 
+************************************************************************************
+* $$model information
+* $$model name: rnwsti_ckt
+* $$voltage range:v,0,3
+* $$dimension: w,0.86u,1u,2u,4u,8u,l,0.86u,1u,1.72u,2u,4u,4.3u,5u,8u,8.6u,10u,16u,20u,40u,80u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+.subckt rnwsti_ckt n2 n1 sub l=10e-6 w=1e-6 mr=1
+
+.param
++rsh = '8.873e+02+drsh_rnwsti' tc1r =2.152e-03  tc2r =2.055e-06  dw = '1.019e-07+ddw_rnwsti' dl=2.763e-11
++jc1a = 2.404e-03 jc1b =2.866e-07 
++jc2a = 0.000e+00 jc2b = 2.065e-13
++rvc1 = 'jc1a + jc1b / l' rvc2 = '(jc2a + jc2b / l) / l'
++weff = 'w-2.0*dw' leff = 'l-2.0*dl' 
++tcoef_temper = '1.0+(temper-25.0)*(tc1r+tc2r*(temper-25.0))'
+
+d1 sub n2 nwdio area='weff*leff/5*mr' pj='(weff+2*leff/5)*mr'
+r1 n2 na 'rsh/mr*leff/4/weff*tcoef_temper*min(max(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1), 0.887), 1.2)'
+d2 sub na nwdio area='weff*leff/5*mr' pj='2*leff/5*mr'
+r2 na nb 'rsh/mr*leff/4/weff*tcoef_temper*min(max(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1), 0.887), 1.2)'
+d3 sub nb nwdio area='weff*leff/5*mr' pj='2*leff/5*mr'
+r3 nb nc 'rsh/mr*leff/4/weff*tcoef_temper*min(max(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1), 0.887), 1.2)'
+d4 sub nc nwdio area='weff*leff/5*mr' pj='2*leff/5*mr'
+r4 nc n1 'rsh/mr*leff/4/weff*tcoef_temper*min(max(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1), 0.887), 1.2)'
+d5 sub n1 nwdio area='weff*leff/5*mr' pj='(weff+2*leff/5)*mr'
+
+.ends rnwsti_ckt
+*****************************************************************
+*              non-silicide n+ diffusion resistance              *
+******************************************************************
+* $$model information
+* $$model name: rndifsab_ckt
+* $$voltage range:v,-6,6
+* $$dimension: w,0.44u,1u,2u,4u,l,0.44u,0.88u,1u,2u,4u,4.4u,8u,8.8u,10u,20u,40u,80u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+.subckt rndifsab_ckt n2 n1 sub l=10e-6 w=1e-6 mismod_res=1 mr=1
+    
+.param
+
+*****mismatch parameters*****
++rshmis = 'arsh*geo_fac*sigma_mis_res*mismod_res'
++geo_fac = '1/sqrt(weff*leff*mr)'
++arsh = 1.27e-6
+
++rsh = '56.903+drsh_rndifsab+rshmis'      dw = '-4.8e-8+ddw_rndifsab'   dl = -5.4e-7               
++rvc0 = -2.900334e-12                 rvc1 = 6.62473e-7             rvc2 = 3.997676e-13            
++tc1r = 1.37e-03                      tc2r = 6.22e-07                
+.param
++ro = 'rsh*(l-2*dl)/(w-2*dw)'  rvc = 'max(0,(rvc0 + rvc1 * w + rvc2 * (l/w))/(l-2*dl)/(l-2*dl))'
++tcoef_temper = '1.0+(temper-25.0)*(tc1r+tc2r*(temper-25.0))'
++weff = 'w-2*dw'    leff = 'l-2*dl'
+
+d1    sub  n2 ndio18 area='weff*leff/5*mr' pj='(weff+2*leff/5)*mr'  
+r1    n2   nb 'tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))'
+d2    sub  nb ndio18 area='weff*leff/5*mr' pj='2*leff/5*mr'
+r2    nb   nc 'tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))'
+d3    sub  nc ndio18 area='weff*leff/5*mr' pj='2*leff/5*mr'
+r3    nc   nd 'tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))'
+d4    sub  nd ndio18 area='weff*leff/5*mr' pj='2*leff/5*mr'
+r4    nd   n1 'tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))'
+d5    sub  n1 ndio18 area='weff*leff/5*mr' pj='(weff+2*leff/5)*mr' 
+
+.ends rndifsab_ckt
+******************************************************************
+*              non-silicide p+ diffusion resistance              *
+******************************************************************
+* $$model information
+* $$model name: rpdifsab_ckt
+* $$voltage range:v,-6,6
+* $$dimension: w,0.44u,1u,2u,4u,l,0.44u,0.88u,1u,2u,4u,4.4u,8u,8.8u,10u,20u,40u,80u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+.subckt rpdifsab_ckt n2 n1 sub l=10e-6 w=1e-6 mismod_res=1 mr=1
+     
+.param
+
+*****mismatch parameters*****
++rshmis = 'arsh*geo_fac*sigma_mis_res*mismod_res'
++geo_fac = '1/sqrt(weff*leff*mr)'
++arsh = 1.0e-6
+
++rsh = '127.895+drsh_rpdifsab+rshmis'   dw = '-3e-8+ddw_rpdifsab'     dl = -3.7e-7               
++rvc0 = -13.6586e-13                  rvc1 = 9.459124e-7            rvc2 = 12.828852e-14            
++tc1r = 1.28e-03                      tc2r = 8.09e-07
+.param
++ro = 'rsh*(l-2*dl)/(w-2*dw)'  rvc = 'max(0,(rvc0 + rvc1 * w + rvc2 * (l/w))/(l-2*dl)/(l-2*dl))'
++weff = 'w-2*dw'       leff   = 'l-2*dl'
++tcoef_temper     = '1.0+(temper-25.0)*(tc1r+tc2r*(temper-25.0))' 
+
+d1    n2   sub pdio18 area='weff*leff/5*mr' pj='(weff+2*leff/5)*mr'
+r1    n2   na 'tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))'
+d2    na   sub pdio18 area='weff*leff/5*mr' pj='2*leff/5*mr'
+r2    na   nb 'tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))'
+d3    nb   sub pdio18 area='weff*leff/5*mr' pj='2*leff/5*mr'
+r3    nb   nc 'tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))'
+d4    nc   sub pdio18 area='weff*leff/5*mr' pj='2*leff/5*mr'
+r4    nc   n1 'tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))'
+d5    n1   sub pdio18 area='weff*leff/5*mr' pj='(weff+2*leff/5)*mr'  
+
+.ends rpdifsab_ckt
+******************************************************************
+*                non-silicide n+ poly resistance                 *
+******************************************************************
+* $$model information
+* $$model name: rnposab_ckt
+* $$voltage range:v,-6,6
+* $$dimension: w,0.6u,1u,2u,4u,l,0.6u,1u,1.2u,2u,3u,4u,5u,6u,8u,10u,12u,20u,40u,80u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+.subckt rnposab_ckt n2 n1 l=10e-6 w=1e-6 mismod_res=1 mr=1
+   
+.param
+
+*****mismatch parameters*****
++rshmis = 'arsh*geo_fac*sigma_mis_res*mismod_res'
++geo_fac = '1/sqrt(weff*leff*mr)'
++arsh = 9.23e-6
+
++rsh = '275.916+drsh_rnposab+rshmis'    dw = '2.6e-8+ddw_rnposab'     dl = -3.4e-7                  
++rvc0 = 13.690146e-13                 rvc1 = 7.556902e-7            rvc2 = 2.438386e-14            
++tc1r = -1.35e-03                     tc2r = 1.74e-06
+.param
++ro = 'rsh*(l-2*dl)/(w-2*dw)'  rvc = 'max(0,(rvc0 + rvc1 * w + rvc2 * (l/w))/(l-2*dl)/(l-2*dl))'
++tcoef_temper = '1.0+(temper-25.0)*(tc1r+tc2r*(temper-25.0))'
++weff = 'w-2*dw'    leff = 'l-2*dl'
+
+r1    n2 n1 'tcoef_temper*ro/mr*(0.5+1/(2+rvc*v(n2,n1)*v(n2,n1)))'
+
+.ends rnposab_ckt
+
+******************************************************************
+*        non-silicide n+ poly resistance (three terminal)        *
+******************************************************************
+* $$model information
+* $$model name: rnposab_3t_ckt
+* $$voltage range:v,-6,6
+* $$dimension: w,0.6u,1u,2u,4u,l,0.6u,1u,1.2u,2u,3u,4u,5u,6u,8u,10u,12u,20u,40u,80u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+.subckt rnposab_3t_ckt n2 n1 sub l=10e-6 w=1e-6 mismod_res=1 flag_cc=0 mr=1
+
+.param
+
+*****mismatch parameters*****
++rshmis = 'arsh*geo_fac*sigma_mis_res*mismod_res'
++geo_fac = '1/sqrt(weff*leff*mr)'
++arsh = 9.23e-6
+
++rsh = '275.916+drsh_rnposab_3t+rshmis'      dw = '2.6e-8+ddw_rnposab_3t'     dl = -3.4e-7                  
++rvc0 = 13.690146e-13                      rvc1 = 7.556902e-7               rvc2 = 2.438386e-14            
++tc1r = -1.35e-03                          tc2r = 1.74e-06
+.param
++ro = 'rsh*(l-2*dl)/(w-2*dw)'  rvc = 'max(0,(rvc0 + rvc1 * w + rvc2 * (l/w))/(l-2*dl)/(l-2*dl))'
++tcoef_temper = '1.0+(temper-25.0)*(tc1r+tc2r*(temper-25.0))'
++weff = 'w-2*dw'    leff = 'l-2*dl'
+
++cox = '1.011e-04+dcox_rnposab'      cfox='1.680e-11+dcfox_rnposab'         ccoup ='5.470e-11*flag_cc'     capsw = 'cfox+ccoup'
+
+c1    n2 sub '(cox*weff*leff/2+capsw*weff+capsw*leff)*mr'
+r1    n2 n1 'tcoef_temper*ro/mr*(0.5+1/(2+rvc*v(n2,n1)*v(n2,n1)))'
+c2    n1 sub '(cox*weff*leff/2+capsw*weff+capsw*leff)*mr'
+
+.ends rnposab_3t_ckt
+******************************************************************
+*                non-silicide p+ poly resistance                 *
+******************************************************************
+* $$model information
+* $$model name: rpposab_ckt
+* $$voltage range:v,-6,6
+* $$dimension: w,0.6u,1u,2u,4u,l,0.6u,1u,1.2u,2u,3u,4u,5u,6u,8u,10u,12u,20u,40u,80u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+.subckt rpposab_ckt n2 n1 l=10e-6 w=1e-6 mismod_res=1 mr=1
+
+.param
+
+*****mismatch parameters*****
++rshmis = 'arsh*geo_fac*sigma_mis_res*mismod_res'
++geo_fac = '1/sqrt(weff*leff*mr)'
++arsh = 3.6e-6
+
++rsh = '316.9+drsh_rpposab+rshmis'   dw = '1.7e-8+ddw_rpposab'     dl = -4.6e-7                  
++rvc0 = 6.44166e-13                  rvc1 = -3.699408e-9          rvc2 = -4.515544e-14           
++tc1r = -2.22e-04                    tc2r = 5.86e-07
+.param
++ro = 'rsh*(l-2*dl)/(w-2*dw)'  rvc = 'max(0,(rvc0 + rvc1 * w + rvc2 * (l/w))/(l-2*dl)/(l-2*dl))'
++tcoef_temper = '1.0+(temper-25.0)*(tc1r+tc2r*(temper-25.0))'
++weff = 'w-2*dw' leff = 'l-2*dl'
+
+r1    n2 n1  'tcoef_temper*ro/mr*(0.5+1/(2+rvc*v(n2,n1)*v(n2,n1)))'
+
+.ends rpposab_ckt
+
+******************************************************************
+*        non-silicide p+ poly resistance (three terminal)        *
+******************************************************************
+* $$model information
+* $$model name: rpposab_3t_ckt
+* $$voltage range:v,-6,6
+* $$dimension: w,0.6u,1u,2u,4u,l,0.6u,1u,1.2u,2u,3u,4u,5u,6u,8u,10u,12u,20u,40u,80u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+.subckt rpposab_3t_ckt n2 n1 sub l=10e-6 w=1e-6 mismod_res=1 flag_cc=0 mr=1
+   
+.param
+
+*****mismatch parameters*****
++rshmis = 'arsh*geo_fac*sigma_mis_res*mismod_res'
++geo_fac = '1/sqrt(weff*leff*mr)'
++arsh = 3.6e-6
+
++rsh = '316.9+drsh_rpposab_3t+rshmis'   dw = '1.7e-8+ddw_rpposab_3t'  dl = -4.6e-7                  
++rvc0 = 6.44166e-13                     rvc1 = -3.699408e-9           rvc2 = -4.515544e-14           
++tc1r = -2.22e-04                       tc2r = 5.86e-07
+.param
++ro = 'rsh*(l-2*dl)/(w-2*dw)'  rvc = 'max(0,(rvc0 + rvc1 * w + rvc2 * (l/w))/(l-2*dl)/(l-2*dl))'
++tcoef_temper = '1.0+(temper-25.0)*(tc1r+tc2r*(temper-25.0))'
++weff = 'w-2*dw' leff = 'l-2*dl'
+
++cox = '1.011e-04+dcox_rpposab'      cfox='1.680e-11+dcfox_rpposab'         ccoup ='5.470e-11*flag_cc'     capsw = 'cfox+ccoup'
+
+c1    n2 sub '(cox*weff*leff/2+capsw*weff+capsw*leff)*mr'
+r1    n2 n1  'tcoef_temper*ro/mr*(0.5+1/(2+rvc*v(n2,n1)*v(n2,n1)))'
+c2    n1 sub '(cox*weff*leff/2+capsw*weff+capsw*leff)*mr'
+
+.ends rpposab_3t_ckt
+***************************************************************** 
+*                non-silicide hr poly resistance                * 
+*****************************************************************
+* $$model information
+* $$model name: rhrpo_ckt
+* $$voltage range:v,-6,6
+* $$dimension: w,0.8u,1u,1.5u,2u,4u,l,0.8u,1u,1.5u,1.6u,2u,3u,4u,5u,7.5u,8u,10u,15u,20u,40u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+.subckt rhrpo_ckt n2 n1 l=10e-6 w=1e-6 mismod_res=1 mr=1
+
+.param
+
+*****mismatch parameters*****
++rshmis = 'arsh*geo_fac*sigma_mis_res*mismod_res'
++geo_fac = '1/sqrt(weff*leff*mr)'
++arsh = 1.22e-5
+
++rsh = '1050+drsh_rhrpo+rshmis'       dw = '3.2e-9+ddw_rhrpo'       dl = 2e-8                     
++rvc0 =-2.95e-16                     rvc1 = 1.295e-7             rvc2 = 2.826e-15          
++tc1r = -8.37e-04                     tc2r = 1.72e-06             
+.param
++ro = 'rsh*(l-2*dl)/(w-2*dw)'  rvc = 'max(0,(rvc0 + rvc1 * w + rvc2 * (l/w))/(l-2*dl)/(l-2*dl))'
++tcoef_temper = '1.0+(temper-25.0)*(tc1r+tc2r*(temper-25.0))'
++weff = 'w-2*dw'   leff = 'l-2*dl'
+
+r1    n2 n1  'tcoef_temper*ro/mr*(0.5+1/(2+rvc*v(n2,n1)*v(n2,n1)))'
+
+.ends rhrpo_ckt
+
+***************************************************************** 
+*         non-silicide hr poly resistance(three terminal)       * 
+*****************************************************************
+* $$model information
+* $$model name: rhrpo_3t_ckt
+* $$voltage range:v,-6,6
+* $$dimension: w,0.8u,1u,1.5u,2u,4u,l,0.8u,1u,1.5u,1.6u,2u,3u,4u,5u,7.5u,8u,10u,15u,20u,40u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+.subckt rhrpo_3t_ckt n2 n1 sub l=10e-6 w=1e-6 mismod_res=1 flag_cc=0 mr=1
+    
+.param
+
+*****mismatch parameters*****
++rshmis = 'arsh*geo_fac*sigma_mis_res*mismod_res'
++geo_fac = '1/sqrt(weff*leff*mr)'
++arsh = 1.22e-5
+
++rsh = '1050+drsh_rhrpo_3t+rshmis'     dw = '3.2e-9+ddw_rhrpo_3t'       dl = 2e-8                     
++rvc0 =-2.95e-16                     rvc1 = 1.295e-7             rvc2 = 2.826e-15        
++tc1r = -8.37e-04                      tc2r = 1.72e-06             
+.param
++ro = 'rsh*(l-2*dl)/(w-2*dw)'  rvc = 'max(0,(rvc0 + rvc1 * w + rvc2 * (l/w))/(l-2*dl)/(l-2*dl))'
++tcoef_temper = '1.0+(temper-25.0)*(tc1r+tc2r*(temper-25.0))'
++weff = 'w-2*dw'   leff = 'l-2*dl'
+
++cox = '1.011e-04+dcox_rhrpo'      cfox='1.680e-11+dcfox_rhrpo'         ccoup ='5.470e-11*flag_cc'     capsw = 'cfox+ccoup'
+
+c1    n2 sub '(cox*weff*leff/2+capsw*weff+capsw*leff)*mr'
+r1    n2 n1  'tcoef_temper*ro/mr*(0.5+1/(2+rvc*v(n2,n1)*v(n2,n1)))'
+c2    n1 sub '(cox*weff*leff/2+capsw*weff+capsw*leff)*mr'
+
+.ends rhrpo_3t_ckt

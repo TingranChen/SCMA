@@ -1,0 +1,571 @@
+// *spectre model format
+//* 
+//  no part of this file can be released without the consent of smic.
+//
+//*****************************************************************************************
+//      SMIC 0.18um Mixed Signal Enhanced 1.8V/3.3V SPICE Model  (for spectre only)   *
+//*****************************************************************************************
+//
+//  Release version    : 1.11
+//
+//  release date       : 10/14/2016
+//
+//  simulation tool    : cadence spectre v10.1.1
+// * 
+// *   the valid temperature range is from -40c to 125c
+simulator lang=spectre  insensitive=yes
+
+// *
+// * no part of this file can be released without the consent of smic.
+//*        *----------------------------------------------------------------------* 
+//*        |             resistor type                            | 1.8v/3.3v     |
+//*        |======================================================|===============|
+//*        |        silicide n+ diffusion                         |    rndif      |
+//*        |------------------------------------------------------|---------------| 
+//*        |        silicide p+ diffusion                         |    rpdif      |
+//*        |------------------------------------------------------|---------------| 
+//*        |           silicide n+ poly                           |     rnpo      |
+//*        |------------------------------------------------------|---------------| 
+//*        |           silicide n+ poly(3t)                       |     rnpo_3t   |
+//*        |------------------------------------------------------|---------------| 
+//*        |           silicide p+ poly                           |     rppo      |
+//*        |------------------------------------------------------|---------------| 
+//*        |           silicide p+ poly(3t)                       |     rppo_3t   |
+//*        |------------------------------------------------------|---------------|
+//*        |        silicide nwell under aa                       |    rnwaa      |
+//*        |------------------------------------------------------|---------------|
+//*        |        silicide nwell under sti                      |    rnwsti     |
+//*        |------------------------------------------------------|---------------| 
+//*        |        non-silicide n+ diffusion                     |   rndifsab    |
+//*        |------------------------------------------------------|---------------| 
+//*        |        non-silicide p+ diffusion                     |   rpdifsab    |
+//*        |------------------------------------------------------|---------------|
+//*        |          non-silicide n+ poly                        |   rnposab     |
+//*        |------------------------------------------------------|---------------| 
+//*        |          non-silicide n+ poly(3t)                    |   rnposab_3t  |
+//*        |------------------------------------------------------|---------------|
+//*        |          non-silicide p+ poly                        |   rpposab     |
+//*        |------------------------------------------------------|---------------| 
+//*        |          non-silicide p+ poly(3t)                    |   rpposab_3t  |
+//*        |------------------------------------------------------|---------------|
+//*        |        high resistance poly                          |     rhrpo     |
+//*        |------------------------------------------------------|---------------|
+//*        |        high resistance poly(3t)                      |     rhrpo_3t  |
+//*        |------------------------------------------------------|---------------| 
+//*        |                  metal 1                             |      rm1      |
+//*        |------------------------------------------------------|---------------| 
+//*        |                  metal 2                             |      rm2      |
+//*        |------------------------------------------------------|---------------| 
+//*        |                  metal 3                             |      rm3      |
+//*        |------------------------------------------------------|---------------|  
+//*        |                  metal 4                             |      rm4      |
+//*        |------------------------------------------------------|---------------| 
+//*        |                  metal 5                             |      rm5      |
+//*        |------------------------------------------------------|---------------| 
+//*        |                  metal 6 (9825a)                     |      rm6      |
+//*        |------------------------------------------------------|---------------| 
+//*        |                 top   metal mtt1(34100a)             |     rmtt1     |
+//*        //*--------------------------------------------------------------------* 
+//*        |                 top   metal mtt2(40650a)             |     rmtt2     |
+//*        //*--------------------------------------------------------------------* 
+//*        |                 top   metal tm2(22000a)              |     rtm2      |
+//*        //*--------------------------------------------------------------------* 
+//*    the valid temperature range is from -40c to 125c
+//*
+//******************************************************************
+//*                         resistor model                         *
+//****************************************************************** 
+//*
+//******************************************************************
+//*                       silicide resistors                       *
+//******************************************************************
+//*
+//******************************************************************
+//*                silicide n+ diffusion resistance                *
+//******************************************************************
+* $$model information
+* $$model name: rndif
+* $$voltage range:v,-4,4
+* $$dimension: w,0.22u,0.5u,1u,2u,4u,l,110u,250u,500u,1000u,2000u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+model rndif resistor
++nonlinform=r
++rsh = 5.919+drsh_rndif       etch = -2.6e-8+ddw_rndif
++tc1 = 3.12e-03              tc2 = 2.25e-07
++tnom = 25.0     
+//*  
+//******************************************************************
+//*                silicide p+ diffusion resistance                *
+//******************************************************************
+* $$model information
+* $$model name: rpdif
+* $$voltage range:v,-4,4
+* $$dimension: w,0.22u,0.5u,1u,2u,4u,l,110u,250u,500u,1000u,2000u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+model rpdif resistor
++nonlinform=r
++rsh = 6.933+drsh_rpdif       etch = -3.7e-8+ddw_rpdif                      
++tc1 = 3.18e-03               tc2 = 3.18e-07
++tnom = 25.0              
+//*
+//******************************************************************
+//*                  silicide n+ poly resistance                   *
+//******************************************************************
+* $$model information
+* $$model name: rnpo
+* $$voltage range:v,-4,4
+* $$dimension: w,0.18u,0.5u,1u,2u,4u,l,90u,250u,500u,1000u,2000u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+model rnpo resistor
++nonlinform=r
++rsh = 6.795+drsh_rnpo        etch = -1.3e-8+ddw_rnpo                          
++tc1 = 3.00e-03               tc2 = 9.75e-08 
++tnom = 25.0        
+//*
+//*
+//******************************************************************
+//*                  silicide p+ poly resistance                   *
+//******************************************************************
+* $$model information
+* $$model name: rppo
+* $$voltage range:v,-4,4
+* $$dimension: w,0.18u,0.6u,1u,2u,4u,l,90u,300u,500u,1000u,2000u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+model rppo resistor
++nonlinform=r
++rsh = 7.398+drsh_rppo         etch = -2e-9+ddw_rppo                       
++tc1 = 3.00e-03               tc2 = 2.76e-07
++tnom = 25.0        
+//*
+//******************************************************************
+//*                  silicide n+ poly resistance(3t)                   *
+//******************************************************************
+* $$model information
+* $$model name: rnpo
+* $$voltage range:v,-4,4
+* $$dimension: w,0.18u,0.5u,1u,2u,4u,l,90u,250u,500u,1000u,2000u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+model rnpo_3t resistor
++nonlinform=r
++rsh = 6.795+drsh_rnpo_3t        etch = -1.3e-8+ddw_rnpo_3t                          
++tc1 = 3.00e-03               tc2 = 9.75e-08 
++cj = 1.011e-04+dcj_rnpo   cjsw = 1.680e-11+dcfox_rnpo
++tnom = 25.0        
+//*
+//*
+//******************************************************************
+//*                  silicide p+ poly resistance(3t)                   *
+//******************************************************************
+* $$model information
+* $$model name: rppo
+* $$voltage range:v,-4,4
+* $$dimension: w,0.18u,0.6u,1u,2u,4u,l,90u,300u,500u,1000u,2000u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+model rppo_3t resistor
++nonlinform=r
++rsh = 7.398+drsh_rppo_3t         etch = -2e-9+ddw_rppo_3t                       
++tc1 = 3.00e-03               tc2 = 2.76e-07
++cj = 1.011e-04+dcj_rnpo   cjsw = 1.680e-11+dcfox_rnpo
++tnom = 25.0        
+//*
+//******************************************************************
+//*                     non-silicide resistors                     * 
+//******************************************************************
+//*
+//******************************************************************
+//*                   nwell resistance under aa                    *
+//******************************************************************
+* $$model information
+* $$model name: rnwaa
+* $$voltage range:v,0,3
+* $$dimension: w,0.86u,1u,2u,4u,8u,l,0.86u,1u,1.72u,2u,4u,4.3u,5u,8u,8.6u,10u,16u,20u,40u,80u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+model rnwaa resistor
++nonlinform=r
++rsh = 456.2+drsh_rnwaa   etch = 5.3775e-08+ddw_rnwaa 
++etchl =-5.0292e-09
++tc1 =2.494e-03             tc2 =1.909e-06
++tnom = 25.0         
+//*
+//******************************************************************
+//*                   nwell resistance under sti                   *
+//******************************************************************
+* $$model information
+* $$model name: rnwsti
+* $$voltage range:v,0,3
+* $$dimension: w,0.86u,1u,2u,4u,8u,l,0.86u,1u,1.72u,2u,4u,4.3u,5u,8u,8.6u,10u,16u,20u,40u,80u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+model rnwsti resistor
++nonlinform=r
++rsh = 8.873e+02+drsh_rnwsti   etch = 1.019e-07+ddw_rnwsti 
++etchl =2.763e-11
++tc1 =2.152e-03  tc2 =2.055e-06
++tnom = 25.0             
+//*
+//******************************************************************
+//*              non-silicide n+ diffusion resistance              *
+//******************************************************************
+* $$model information
+* $$model name: rndifsab
+* $$voltage range:v,-6,6
+* $$dimension: w,0.44u,1u,2u,4u,l,0.44u,0.88u,1u,2u,4u,4.4u,8u,8.8u,10u,20u,40u,80u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+model rndifsab resistor
++nonlinform=r
++coeffs = [6.17e-04  0.01602]
++tc1 = 1.37e-03     tc2 = 6.22e-07  etch = -4.8e-8+ddw_rndifsab
++etchl = -5.4e-7       rsh = 56.903+drsh_rndifsab
++tnom = 25.0 
+//*
+//******************************************************************
+//*              non-silicide p+ diffusion resistance              *
+//******************************************************************
+* $$model information
+* $$model name: rpdifsab
+* $$voltage range:v,-6,6
+* $$dimension: w,0.44u,1u,2u,4u,l,0.44u,0.88u,1u,2u,4u,4.4u,8u,8.8u,10u,20u,40u,80u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+model rpdifsab resistor
++nonlinform=r
++coeffs = [-8.08e-05  3.65e-03]
++tc1 = 1.28e-03 tc2 = 8.09e-07 etch = -3e-8+ddw_rpdifsab
++etchl = -3.7e-7
++tnom = 25.0     rsh = 127.895+drsh_rpdifsab
+//*
+//******************************************************************
+//*                non-silicide n+ poly resistance                 *
+//******************************************************************
+* $$model information
+* $$model name: rnposab
+* $$voltage range:v,-6,6
+* $$dimension: w,0.6u,1u,2u,4u,l,0.6u,1u,1.2u,2u,3u,4u,5u,6u,8u,10u,12u,20u,40u,80u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+model rnposab resistor
++nonlinform=r
++coeffs = [2.07e-04  -0.02321]
++tc1 = -1.35e-03   tc2 = 1.74e-06 etch = 2.6e-8+ddw_rnposab
++etchl = -3.4e-7
++tnom = 25.0 rsh = 275.916+drsh_rnposab
+//*
+//*
+//******************************************************************
+//*                non-silicide p+ poly resistance                 *
+//******************************************************************
+* $$model information
+* $$model name: rpposab
+* $$voltage range:v,-6,6
+* $$dimension: w,0.6u,1u,2u,4u,l,0.6u,1u,1.2u,2u,3u,4u,5u,6u,8u,10u,12u,20u,40u,80u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+model rpposab resistor
++nonlinform=r
++coeffs = [3.98e-05  -6.65e-03]
++tc1 = -2.22e-04     tc2 = 5.86e-07  etch = 1.7e-8+ddw_rpposab
++etchl = -4.6e-7
++tnom = 25.0          rsh = 316.9+drsh_rpposab
+//*
+
+//******************************************************************
+//*                non-silicide n+ poly resistance(3t)                 *
+//******************************************************************
+* $$model information
+* $$model name: rnposab_3t
+* $$voltage range:v,-6,6
+* $$dimension: w,0.6u,1u,2u,4u,l,0.6u,1u,1.2u,2u,3u,4u,5u,6u,8u,10u,12u,20u,40u,80u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+model rnposab_3t resistor
++nonlinform=r
++coeffs = [2.07e-04  -0.02321]
++tc1 = -1.35e-03   tc2 = 1.74e-06 etch = 2.6e-8+ddw_rnposab_3t
++etchl = -3.4e-7
++tnom = 25.0 rsh = 275.916+drsh_rnposab_3t
++cj = 1.011e-04+dcj_rnposab   cjsw = 1.680e-11+dcfox_rnposab
+
+//*
+//*
+//******************************************************************
+//*                non-silicide p+ poly resistance(3t)                 *
+//******************************************************************
+* $$model information
+* $$model name: rpposab_3t
+* $$voltage range:v,-6,6
+* $$dimension: w,0.6u,1u,2u,4u,l,0.6u,1u,1.2u,2u,3u,4u,5u,6u,8u,10u,12u,20u,40u,80u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+model rpposab_3t resistor
++nonlinform=r
++coeffs = [3.98e-05  -6.65e-03]
++tc1 = -2.22e-04     tc2 = 5.86e-07  etch = 1.7e-8+ddw_rpposab_3t
++etchl = -4.6e-7
++tnom = 25.0          rsh = 316.9+drsh_rpposab_3t
++cj = 1.011e-04+dcj_rpposab   cjsw = 1.680e-11+dcfox_rpposab
+//*
+//****************************************************************** 
+//*                non-silicide hr poly resistance                 * 
+//****************************************************************** 
+* $$model information
+* $$model name: rhrpo
+* $$voltage range:v,-6,6
+* $$dimension: w,0.8u,1u,1.5u,2u,4u,l,0.8u,1u,1.5u,1.6u,2u,3u,4u,5u,7.5u,8u,10u,15u,20u,40u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+model rhrpo resistor
++nonlinform=r
++coeffs = [-1.07e-04  -4.98e-03]
++tc1 = -8.37e-04   tc2 = 1.72e-06  etch = 3.2e-9+ddw_rhrpo
++etchl = 2e-8
++tnom = 25.0        rsh = 1050+drsh_rhrpo
+//*
+//****************************************************************** 
+//*                non-silicide hr poly resistance                 * 
+//****************************************************************** 
+* $$model information
+* $$model name: rhrpo_3t
+* $$voltage range:v,-6,6
+* $$dimension: w,0.8u,1u,1.5u,2u,4u,l,0.8u,1u,1.5u,1.6u,2u,3u,4u,5u,7.5u,8u,10u,15u,20u,40u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+model rhrpo_3t resistor
++nonlinform=r
++coeffs = [-1.07e-04  -4.98e-03]
++tc1 = -8.37e-04   tc2 = 1.72e-06  etch = 3.2e-9+ddw_rhrpo_3t
++etchl = 2e-8
++tnom = 25.0        rsh = 1050+drsh_rhrpo_3t
++cj = 1.011e-04+dcj_rhrpo    cjsw = 1.680e-11+dcfox_rhrpo
+//*
+//******************************************************************
+//*                        metal resistors                         * 
+//******************************************************************
+//*
+//******************************************************************
+//*                      metal 1 resistance                        * 
+//******************************************************************
+* $$model information
+* $$model name: rm1
+* $$voltage range:v,-3,3
+* $$dimension: w,0.23u,0.5u,1u,2u,5u,l,2300u,3000u,6000u,15000u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+model rm1 resistor
+*metal resistor
++nonlinform=r
++tc1 = 3.39e-03      tc2 = -6.25e-07             etch = 2.3e-8+ddw_rm1
++tnom = 25            rsh  = 0.068+drsh_rm1 
+//******************************************************************
+//*                      metal 2 resistance                        * 
+//******************************************************************
+* $$model information
+* $$model name: rm2
+* $$voltage range:v,-3,3
+* $$dimension: w,0.28u,0.5u,1u,2u,5u,l,2800u,3000u,6000u,15000u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+model rm2 resistor
+*metal resistor
++nonlinform=r
++tc1 = 3.37e-03      tc2 = -6.37e-07             etch = -8e-9+ddw_rm2
++tnom = 25            rsh  = 0.08986+drsh_rm2 
+//******************************************************************
+//*                      metal 3 resistance                        * 
+//******************************************************************
+* $$model information
+* $$model name: rm3
+* $$voltage range:v,-3,3
+* $$dimension: w,0.28u,0.5u,1u,2u,5u,l,2800u,3000u,6000u,15000u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+model rm3 resistor
+*metal resistor
++nonlinform=r
++tc1 = 3.37e-03      tc2 = -6.37e-07             etch = -8e-9+ddw_rm3
++tnom = 25            rsh  = 0.08986+drsh_rm3  
+//******************************************************************
+//*                      metal 4 resistance                        * 
+//******************************************************************
+* $$model information
+* $$model name: rm4
+* $$voltage range:v,-3,3
+* $$dimension: w,0.28u,0.5u,1u,2u,5u,l,2800u,3000u,6000u,15000u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+model rm4 resistor
+*metal resistor
++nonlinform=r
++tc1 = 3.37e-03      tc2 = -6.37e-07             etch = -8e-9+ddw_rm4
++tnom = 25            rsh  = 0.08986+drsh_rm4  
+//******************************************************************
+//*                      metal 5 resistance                        * 
+//******************************************************************
+* $$model information
+* $$model name: rm5
+* $$voltage range:v,-3,3
+* $$dimension: w,0.28u,0.5u,1u,2u,5u,l,2800u,3000u,6000u,15000u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,1,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+model rm5 resistor
+*metal resistor
++nonlinform=r
++tc1 = 3.37e-03      tc2 = -6.37e-07             etch = -8e-9+ddw_rm5
++tnom = 25            rsh  = 0.08986+drsh_rm5  
+//******************************************************************
+//*                      metal 6 resistance(9000a)               * 
+//******************************************************************
+* $$model information
+* $$model name: rm6
+* $$voltage range:v,-3,3
+* $$dimension: w,0.44u,0.6u,1u,2u,5u,l,4400u,3600u,6000u,12000u,25000u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,0,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+model rm6 resistor
++tc1r = 3.60e-03      tc2r = -5.15e-07              dw = 2.7e-9+ddw_rm6
++tref = 25.0          rsh = 0.0297+drsh_rm6
+
+//******************************************************************
+//*                         mtt1 top metal resistor (33000a)       * 
+//******************************************************************
+* $$model information
+* $$model name: rtm_thick
+* $$voltage range:v,-3,3
+* $$dimension: w,1.8u,2u,5u,l,4400u,3600u,6000u,12000u,25000u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,0,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+model rmtt1 resistor
++tc1r = 3.60e-03      tc2r = -5.15e-07              dw = 2.7e-9+ddw_rmtt1
++tref = 25.0          rsh = 0.01+drsh_rmtt1
+
+//******************************************************************
+//*                         mtt2 top metal resistor (40000a)       * 
+//******************************************************************
+* $$model information
+* $$model name: rtm_thick
+* $$voltage range:v,-3,3
+* $$dimension: w,1.8u,2u,5u,l,4400u,3600u,6000u,12000u,25000u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,0,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+model rmtt2 resistor
++tc1r = 3.60e-03      tc2r = -5.15e-07              dw = 2.7e-9+ddw_rmtt2
++tref = 25.0          rsh = 0.0083+drsh_rmtt2
+//******************************************************************
+//*                         top metal 2 resistor (22000a)          * 
+//******************************************************************
+* $$model information
+* $$model name: rtm_thick
+* $$voltage range:v,-3,3
+* $$dimension: w,1.8u,2u,5u,l,4400u,3600u,6000u,12000u,25000u
+* $$model instance:mr,1,1,100
+* $$model capability:mismatch,0,mc,1,noise,0,wpe,0,lod,0,ig,0,lpe,0
+* $$pm:rt,0
+* $$vth method:no
+* $$temperature:t,-40,25,125
+
+model rtm2 resistor
++tc1r = 3.60e-03      tc2r = -5.15e-07              dw = 2.7e-9+ddw_rtm2
++tref = 25.0          rsh = 0.015+drsh_rtm2

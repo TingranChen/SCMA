@@ -1,0 +1,101 @@
+*design* DebussyLib (btIdent Verdi_N-2017.12)
+Command arguments:
+    +define+verilog
+    /home/chentingran/CIMU/digital_interface/ACT.v
+    /home/chentingran/CIMU/digital_interface/CONTROLLER.v
+    /home/chentingran/CIMU/digital_interface/FIFO_ASYN.v
+    /home/chentingran/CIMU/digital_interface/inputFIFO.v
+    /home/chentingran/CIMU/digital_interface/inputFIFO_unit.v
+    /home/chentingran/CIMU/digital_interface/IO.v
+    /home/chentingran/CIMU/digital_interface/IOw.v
+    /home/chentingran/CIMU/digital_interface/outputFIFO.v
+    /home/chentingran/CIMU/digital_interface/POL.v
+    /home/chentingran/CIMU/digital_interface/Relu.v
+    /home/chentingran/CIMU/digital_interface/SHIFTER.v
+    /home/chentingran/CIMU/digital_interface/SIMDadd.v
+    /home/chentingran/CIMU/digital_interface/SIMDshifter.v
+    /home/chentingran/CIMU/digital_interface/simu_top.v
+    /home/chentingran/CIMU/digital_interface/simu_top_CIMU.v
+    /home/chentingran/CIMU/digital_interface/SM.v
+    /home/chentingran/CIMU/digital_interface/SRAM_CIM.v
+    /home/chentingran/CIMU/digital_interface/SRAM_CIM_55nm.v
+    /home/chentingran/CIMU/digital_interface/system_io.v
+    /home/chentingran/CIMU/digital_interface/testbench.v
+
+
+*Error* Syntax error at )
+"/home/chentingran/CIMU/digital_interface/POL.v", 42: 
+
+*Error* Module simu_top redefined
+"/home/chentingran/CIMU/digital_interface/simu_top_CIMU.v", 3: 
+
+*Warning* too many digits in binary
+"/home/chentingran/CIMU/digital_interface/simu_top_CIMU.v", 262: 
+Highest level modules:
+POL
+simu_top
+SRAM_CIM_55nm
+system_io
+top
+
+
+*Warning* port sizes differ (6 vs 8) in port connection (port data)
+"/home/chentingran/CIMU/digital_interface/ACT.v", 43: 
+
+*Warning* port sizes differ (6 vs 8) in port connection (port out)
+"/home/chentingran/CIMU/digital_interface/ACT.v", 45: 
+
+*Warning* Failed to find the specified instance parameter CHIP_EN_DATA in the master inputFIFO
+"/home/chentingran/CIMU/digital_interface/simu_top_CIMU.v", 109: 
+
+*Warning* Failed to find the specified instance parameter DATA_IN_ADDR in the master SM
+"/home/chentingran/CIMU/digital_interface/simu_top_CIMU.v", 135: 
+
+*Warning* Failed to find the specified instance parameter DATA_OUT_ADDR in the master SM
+"/home/chentingran/CIMU/digital_interface/simu_top_CIMU.v", 135: 
+
+*Warning* Failed to find the specified instance parameter ADDR_CIM_IN_WIDTH in the master SM
+"/home/chentingran/CIMU/digital_interface/simu_top_CIMU.v", 135: 
+
+*Warning* Failed to find the specified instance parameter CHIP_EN_DATA in the master SM
+"/home/chentingran/CIMU/digital_interface/simu_top_CIMU.v", 135: 
+
+*Warning* Failed to find the specified instance parameter DATA_IN_WIDTH in the master outputFIFO
+"/home/chentingran/CIMU/digital_interface/simu_top_CIMU.v", 217: 
+
+*Warning* Failed to find the specified instance parameter DATA_OUT_WIDTH in the master outputFIFO
+"/home/chentingran/CIMU/digital_interface/simu_top_CIMU.v", 217: 
+
+*Warning* Failed to find the specified instance parameter ADDR_IN_WIDTH in the master outputFIFO
+"/home/chentingran/CIMU/digital_interface/simu_top_CIMU.v", 217: 
+
+*Warning* Failed to find the specified instance parameter REG_DATA_WIDTH in the master outputFIFO
+"/home/chentingran/CIMU/digital_interface/simu_top_CIMU.v", 217: 
+
+*Warning* Failed to find the specified instance parameter REG_DEPTH in the master outputFIFO
+"/home/chentingran/CIMU/digital_interface/simu_top_CIMU.v", 217: 
+
+*Warning* Failed to find the specified instance parameter REG_ADDR in the master outputFIFO
+"/home/chentingran/CIMU/digital_interface/simu_top_CIMU.v", 217: 
+
+*Warning* Failed to find the specified instance parameter DATA_IN_ADDR in the master outputFIFO
+"/home/chentingran/CIMU/digital_interface/simu_top_CIMU.v", 217: 
+
+*Warning* Failed to find the specified instance parameter DATA_OUT_ADDR in the master outputFIFO
+"/home/chentingran/CIMU/digital_interface/simu_top_CIMU.v", 217: 
+
+*Warning* Failed to find the specified instance parameter ADDR_CIM_IN_WIDTH in the master outputFIFO
+"/home/chentingran/CIMU/digital_interface/simu_top_CIMU.v", 217: 
+
+*Warning* Failed to find the specified instance parameter CHIP_EN_DATA in the master outputFIFO
+"/home/chentingran/CIMU/digital_interface/simu_top_CIMU.v", 217: 
+
+*Error* view SMw is not defined for instance smw
+"/home/chentingran/CIMU/digital_interface/system_io.v", 63: 
+
+*Warning* port sizes differ (8 vs 6) in port connection (port data_in)
+"/home/chentingran/CIMU/digital_interface/system_io.v", 82: 
+
+*Warning* port sizes differ (8 vs 6) in port connection (port data_out)
+"/home/chentingran/CIMU/digital_interface/system_io.v", 83: 
+Total	3 error(s),   20 warning(s)

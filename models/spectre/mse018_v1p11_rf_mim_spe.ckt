@@ -1,0 +1,185 @@
+//* 
+//* No part of this file can be released without the consent of SMIC.
+//*
+//******************************************************************************************
+//* 0.18um Mixed Signal 1P6M with MIM Salicide 1.8V/3.3V RF SPICE Model (for SPECTRE only) *
+//******************************************************************************************
+//*
+//* Release version    : 1.11
+//*
+//* Release date       : 04/24/2015
+//*
+//* Simulation tool    : Cadence spectre V10.1.1
+//*
+//*
+//*  MIM Capacitor   :
+//*
+//*        *-------------------------------*-------------------------------*  
+//*        |  1fF/um^2 subckt  |  mim1_rf  |        mim1_shield_rf         |
+//*        *-------------------------------*-------------------------------*
+//*        |  2fF/um^2 subckt  |  mim2_rf  |        mim2_shield_rf         |
+//*        *-------------------------------*-------------------------------*
+simulator lang=spectre  insensitive=yes
+//*******************************
+//* 0.18um 1fF/um^2 MIM Capacitor
+//*******************************
+//* 1=port1, 2=port2
+subckt mim1_rf (1 2)
+//* mim capacitor scalable model parameters
+parameters lr=10 wr=10 mismod_mim=1 mr=1
+//****mismatch parameter
+
+parameters dc0_mis_rf=ac0_rf*geo_fac_rf*sigma_mis_mim_rf*mismod_mim
+parameters geo_fac_rf=1/(lr*wr*mr)
+parameters ac0_rf = 3.16e-16
+
++c0    = 9.69e-4+dmim_rf+dc0_mis_rf      ctc1 = -2.1978e-5         dt = temp  
++cvc1  = 2.2742e-5               cvc2 = -1.0135e-5        
++tcoef = 1.0+ctc1*(dt-25.0)
+
++ls_rf     = max(7.43e-11*pwr((lr*wr*1e12),-0.204),1e-15)
++cf_rf     = (c0*lr*wr*mr)              
++rs_rf     = max(0.14417+185.93086/(lr*wr*1e12), 1e-6)
++rsub1_rf  = max(4.88e+03-0.6495*lr*wr*1e12, 1e-3)
++csub1_rf  = max((0.1*lr*1e6)*1e-15, 1e-18)  
++cox1_rf   = max((2.5e-03*lr*wr*1e12)*1e-15, 1e-18)            
++rsub2_rf  = max(4.88e+03-0.6495*lr*wr*1e12, 1e-3)
++csub2_rf  = max((0.1*lr*1e6)*1e-15, 1e-18)  
++cox2_rf   = max((6.38e-03*lr*wr*1e12)*1e-15, 1e-18)
+
+//* equivalent circuit
+
+ls    (1 11)  inductor   l=ls_rf          m=mr 
+cf    (22 2)  capacitor  c=cf_rf*tcoef*(1.0+v(22,2)*(cvc1+cvc2*v(22,2)))
+rs    (11 22) resistor   r=rs_rf          m=mr     
+rsub1 (10 0)  resistor   r=rsub1_rf       m=mr    
+csub1 (10 0)  capacitor  c=csub1_rf       m=mr    
+cox1  (1 10)  capacitor  c=cox1_rf        m=mr    
+rsub2 (20 0)  resistor   r=rsub2_rf       m=mr       
+csub2 (20 0)  capacitor  c=csub2_rf       m=mr       
+cox2  (2 20)  capacitor  c=cox2_rf        m=mr       
+ends mim1_rf
+//****************************************************
+//* 0.18um 1fF/um^2 MIM Capacitor with shielding layer
+//****************************************************
+//* 1=port1, 2=port2
+subckt mim1_shield_rf (1 2)
+//* mim capacitor scalable model parameters
+parameters lr=10 wr=10 mismod_mim=1 mr=1
+//****mismatch parameter
+
+parameters dc0_mis_rf=ac0_rf*geo_fac_rf*sigma_mis_mim_rf*mismod_mim
+parameters geo_fac_rf=1/(lr*wr*mr)
+parameters ac0_rf = 3.16e-16
+
++c0    = 9.69e-4+dmim_rf+dc0_mis_rf      ctc1 = -2.1978e-5         dt = temp  
++cvc1  = 2.2742e-5               cvc2 = -1.0135e-5        
++tcoef = 1.0+ctc1*(dt-25.0)
+
++ls_rf     = max(7.43e-11*pwr((lr*wr*1e12),-0.204),1e-15)
++cf_rf     = (c0*lr*wr*mr)              
++rs_rf     = max(0.14417+185.93086/(lr*wr*1e12), 1e-6)
++rsub1_rf  = max(4.88e+03-0.6495*lr*wr*1e12, 1e-3)
++csub1_rf  = max((0.1*lr*1e6)*1e-15, 1e-18)  
++cox1_rf   = max((2.5e-03*lr*wr*1e12)*1e-15, 1e-18)            
++rsub2_rf  = max((4.88e+03-0.6495*lr*wr*1e12)/(262731*pwr(lr*wr,0.38965)), 1e-3)
++csub2_rf  = max((0.1*lr*1e6)*1e-15, 1e-18)  
++cox2_rf   = max((6.38e-03*lr*wr*1e12)*1e-15+0.42*(0.105*lr*wr*1e12+0.9)*1e-15, 1e-18)
+
+//* equivalent circuit
+
+ls    (1 11)  inductor   l=ls_rf          m=mr 
+cf    (22 2)  capacitor  c=cf_rf*tcoef*(1.0+v(22,2)*(cvc1+cvc2*v(22,2)))
+rs    (11 22) resistor   r=rs_rf          m=mr     
+rsub1 (10 0)  resistor   r=rsub1_rf       m=mr    
+csub1 (10 0)  capacitor  c=csub1_rf       m=mr    
+cox1  (1 10)  capacitor  c=cox1_rf        m=mr    
+rsub2 (20 0)  resistor   r=rsub2_rf       m=mr       
+csub2 (20 0)  capacitor  c=csub2_rf       m=mr       
+cox2  (2 20)  capacitor  c=cox2_rf        m=mr       
+
+ends mim1_shield_rf
+//*******************************
+//* 0.18um 2fF/um^2 MIM Capacitor
+//*******************************
+//* 1=port1, 2=port2
+subckt mim2_rf (1 2)
+//* mim capacitor scalable model parameters
+parameters lr=10 wr=10 mismod_mim=1 mr=1
+//****mismatch parameter
+
+parameters dmim2_mis_rf = mismod_mim*sigma_mis_mim_rf*geo_var_rf
+parameters geo_var_rf = ac0_mim_rf/(wr*lr*mr)+bc0_mim_rf/sqrt(wr*lr*mr)+cc0_mim_rf 
+parameters ac0_mim_rf = 2.63e-16
+parameters bc0_mim_rf = 2.8e-12
+parameters cc0_mim_rf = 0
+
++c0    = 1.99e-3+dmim2_rf+dmim2_mis_rf      ctc1 = 2.8737e-05          dt = temp  
++cvc1  = 7.6813e-06          cvc2 = 1.3589e-05          
++tcoef = 1.0+ctc1*(dt-25.0)
+
++ls_rf     = max(7.43e-11*pwr((lr*wr*1e12),-0.204),1e-15)*0.6
++cf_rf     = (c0*lr*wr*mr)              
++rs_rf     = max(0.14417+185.93086/(lr*wr*1e12), 1e-6)
++rsub1_rf  = max(4.88e+03-0.6495*lr*wr*1e12, 1e-3)
++csub1_rf  = max((0.1*lr*1e6)*1e-15, 1e-18)  
++cox1_rf   = max((2.5e-03*lr*wr*1e12)*1e-15, 1e-18)            
++rsub2_rf  = max(4.88e+03-0.6495*lr*wr*1e12, 1e-3)
++csub2_rf  = max((0.1*lr*1e6)*1e-15, 1e-18)  
++cox2_rf   = max((6.38e-03*lr*wr*1e12)*1e-15, 1e-18)
+
+//* equivalent circuit
+
+ls    (1 11)  inductor   l=ls_rf          m=mr 
+cf    (22 2)  capacitor  c=cf_rf*tcoef*(1.0+v(22,2)*(cvc1+cvc2*v(22,2)))
+rs    (11 22) resistor   r=rs_rf          m=mr     
+rsub1 (10 0)  resistor   r=rsub1_rf       m=mr    
+csub1 (10 0)  capacitor  c=csub1_rf       m=mr    
+cox1  (1 10)  capacitor  c=cox1_rf        m=mr    
+rsub2 (20 0)  resistor   r=rsub2_rf       m=mr       
+csub2 (20 0)  capacitor  c=csub2_rf       m=mr       
+cox2  (2 20)  capacitor  c=cox2_rf        m=mr       
+ends mim2_rf
+//****************************************************
+//* 0.18um 2fF/um^2 MIM Capacitor with shielding layer
+//****************************************************
+//* 1=port1, 2=port2
+subckt mim2_shield_rf (1 2)
+
+//* mim capacitor scalable model parameters
+parameters lr=10 wr=10 mismod_mim=1 mr=1
+//****mismatch parameter
+
+parameters dmim2_mis_rf = mismod_mim*sigma_mis_mim_rf*geo_var_rf
+parameters geo_var_rf = ac0_mim_rf/(wr*lr*mr)+bc0_mim_rf/sqrt(wr*lr*mr)+cc0_mim_rf 
+parameters ac0_mim_rf = 2.63e-16
+parameters bc0_mim_rf = 2.8e-12
+parameters cc0_mim_rf = 0
+
++c0    = 1.99e-3+dmim2_rf+dmim2_mis_rf      ctc1 = 2.8737e-05          dt = temp  
++cvc1  = 7.6813e-06          cvc2 = 1.3589e-05          
++tcoef = 1.0+ctc1*(dt-25.0)
+
++ls_rf     = max(7.43e-11*pwr((lr*wr*1e12),-0.204),1e-15)*0.6
++cf_rf     = (c0*lr*wr*mr)              
++rs_rf     = max(0.14417+185.93086/(lr*wr*1e12), 1e-6)
++rsub1_rf  = max(4.88e+03-0.6495*lr*wr*1e12, 1e-3)
++csub1_rf  = max((0.1*lr*1e6)*1e-15, 1e-18)  
++cox1_rf   = max((2.5e-03*lr*wr*1e12)*1e-15, 1e-18)            
++rsub2_rf  = max((4.88e+03-0.6495*lr*wr*1e12)/(262731*pwr(lr*wr,0.38965)), 1e-3)
++csub2_rf  = max((0.1*lr*1e6)*1e-15, 1e-18)  
++cox2_rf   = max((6.38e-03*lr*wr*1e12)*1e-15+0.42*(0.105*lr*wr*1e12+0.9)*1e-15, 1e-18)
+
+//* equivalent circuit
+
+ls    (1 11)  inductor   l=ls_rf          m=mr 
+cf    (22 2)  capacitor  c=cf_rf*tcoef*(1.0+v(22,2)*(cvc1+cvc2*v(22,2)))
+rs    (11 22) resistor   r=rs_rf          m=mr     
+rsub1 (10 0)  resistor   r=rsub1_rf       m=mr    
+csub1 (10 0)  capacitor  c=csub1_rf       m=mr    
+cox1  (1 10)  capacitor  c=cox1_rf        m=mr    
+rsub2 (20 0)  resistor   r=rsub2_rf       m=mr       
+csub2 (20 0)  capacitor  c=csub2_rf       m=mr       
+cox2  (2 20)  capacitor  c=cox2_rf        m=mr       
+
+ends mim2_shield_rf

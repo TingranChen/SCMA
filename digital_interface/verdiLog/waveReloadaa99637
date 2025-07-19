@@ -1,0 +1,100 @@
+Magic 271485
+Revision Verdi_N-2017.12
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 0 28 1366 566 213 65
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / -i 0 "" "/home/chentingran/SCCM/digital_interface/results_simutop_SCMU/vcs_simutop.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+; waveform viewport range
+zoom 16000.000000 101420000.000000
+cursor 27037969.86817325652
+marker 16000.000000
+
+; visible top row signal index
+top 5
+; marker line index
+markerPos 27
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+addGroup "G1"
+activeDirFile "" "/home/chentingran/SCCM/digital_interface/results_simutop_SCMU/vcs_simutop.fsdb"
+addSignal -h 15 /simu_top/dut_SCMU_0/dut_inputFIFO/CLK_RD
+addSignal -h 15 -holdScope CLK_WR
+addSignal -h 15 -UNSIGNED -HEX -holdScope RD_DATA[511:0]
+addSignal -h 15 -holdScope RD_EN
+addSignal -h 15 -UNSIGNED -HEX -holdScope RD_EN_flag[15:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope WR_EN[15:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope a_reg[3:0]
+addSignal -h 15 -holdScope col_en
+addSignal -h 15 -UNSIGNED -HEX -holdScope d_reg[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope din[35:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope din_n[35:0]
+addSignal -h 15 -holdScope empty
+addSignal -h 15 -UNSIGNED -HEX -holdScope empty_flag[15:0]
+addSignal -h 15 -holdScope full
+addSignal -h 15 -UNSIGNED -HEX -holdScope full_flag[15:0]
+addSignal -h 15 -holdScope reg_en
+addSignal -h 15 -UNSIGNED -HEX -holdScope reg_en_row[15:0]
+addSignal -expanded -h 15 -UNSIGNED -HEX -holdScope reg_en_row_flag[7:0]
+addSignal -h 15 -holdScope reg_en_row_flag[7]
+addSignal -h 15 -holdScope reg_en_row_flag[6]
+addSignal -h 15 -holdScope reg_en_row_flag[5]
+addSignal -h 15 -holdScope reg_en_row_flag[4]
+addSignal -h 15 -holdScope reg_en_row_flag[3]
+addSignal -h 15 -holdScope reg_en_row_flag[2]
+addSignal -h 15 -holdScope reg_en_row_flag[1]
+addSignal -h 15 -holdScope reg_en_row_flag[0]
+addSignal -h 15 -holdScope rst_n
+addGroup "G2"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+activeDirFile "" "/home/chentingran/SCCM/digital_interface/results_simutop_SCMU/vcs_simutop.fsdb"
+
+GETSIGNALFORM_SCOPE_HIERARCHY_BEGIN
+getSignalForm close
+
+"/simu_top"
+"/simu_top/dut_SCMU_0"
+"/simu_top/dut_SCMU_0/dut_inputFIFO"
+"/simu_top/dut_SCMU_0/dut_inputFIFO/unit_1"
+
+SCOPE_LIST_BEGIN
+"/simu_top"
+"/simu_top/dut_SCMU_0"
+"/simu_top/dut_SCMU_0/dut_inputFIFO"
+"/simu_top/dut_SCMU_0/dut_inputFIFO/unit_0"
+"/simu_top/dut_SCMU_0/dut_inputFIFO/unit_2"
+"/simu_top/dut_SCMU_0/dut_inputFIFO/unit_1"
+SCOPE_LIST_END
+
+GETSIGNALFORM_SCOPE_HIERARCHY_END
+
+

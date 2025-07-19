@@ -1,0 +1,136 @@
+{
+    "PEModules": [],
+    "MlibObjs": {},
+    "NameTable": {
+        "std": [
+            "std",
+            "reYIK",
+            "module",
+            1
+        ],
+        "inputFIFO_unit": [
+            "inputFIFO_unit",
+            "uWeev",
+            "module",
+            3
+        ],
+        "simu_top": [
+            "simu_top",
+            "aP1ZN",
+            "module",
+            2
+        ],
+        "...MASTER...": [
+            "SIM",
+            "amcQw",
+            "module",
+            7
+        ],
+        "SCMU_wrapper": [
+            "SCMU_wrapper",
+            "vvs1n",
+            "module",
+            5
+        ],
+        "SHIFTER": [
+            "SHIFTER",
+            "m6QUn",
+            "module",
+            4
+        ],
+        "quantize_add": [
+            "quantize_add",
+            "S2xFs",
+            "module",
+            6
+        ]
+    },
+    "LVLData": [
+        "SIM"
+    ],
+    "PrevCompiledModules": {},
+    "CompileStrategy": "fullobj",
+    "stat": {
+        "ru_self_end": {
+            "ru_utime_sec": 0.42497699999999999,
+            "ru_nivcsw": 62,
+            "ru_maxrss_kb": 84912,
+            "ru_stime_sec": 0.070161000000000001,
+            "ru_minflt": 32431,
+            "ru_majflt": 0,
+            "ru_nvcsw": 31
+        },
+        "quadSpeed": 71208.091638221682,
+        "ru_self_cgstart": {
+            "ru_utime_sec": 0.18621199999999999,
+            "ru_nivcsw": 48,
+            "ru_maxrss_kb": 66112,
+            "ru_stime_sec": 0.057373,
+            "ru_minflt": 26579,
+            "ru_majflt": 0,
+            "ru_nvcsw": 31
+        },
+        "outputSizePerQuad": 55.172567933184332,
+        "ru_childs_cgstart": {
+            "ru_utime_sec": 0.017222999999999999,
+            "ru_nivcsw": 18,
+            "ru_maxrss_kb": 18512,
+            "ru_stime_sec": 0.052677000000000002,
+            "ru_minflt": 5235,
+            "ru_majflt": 0,
+            "ru_nvcsw": 9
+        },
+        "nMops": 69082,
+        "mopSpeed": 289330.51326618221,
+        "nQuads": 17002,
+        "Frontend(%)": 43.816959506043851,
+        "totalObjSize": 938044,
+        "ru_childs_end": {
+            "ru_utime_sec": 0.017222999999999999,
+            "ru_nivcsw": 18,
+            "ru_maxrss_kb": 18512,
+            "ru_stime_sec": 0.052677000000000002,
+            "ru_minflt": 5235,
+            "ru_majflt": 0,
+            "ru_nvcsw": 9
+        },
+        "mop/quad": 4.0631690389365955,
+        "CodeGen(%)": 56.183040493956142,
+        "peak_mem_kb": 231612
+    },
+    "CompileStatus": "Successful",
+    "CurCompileUdps": {},
+    "SIMBData": {
+        "out": "amcQwB.o",
+        "bytes": 123890,
+        "archive": "archive.0/_295823_archive_1.a"
+    },
+    "CurCompileModules": [
+        "...MASTER...",
+        "...MASTER...",
+        "std",
+        "std",
+        "simu_top",
+        "simu_top",
+        "inputFIFO_unit",
+        "inputFIFO_unit",
+        "SHIFTER",
+        "SHIFTER",
+        "SCMU_wrapper",
+        "SCMU_wrapper",
+        "quantize_add",
+        "quantize_add"
+    ],
+    "CompileProcesses": [
+        "cgproc.295823.json"
+    ],
+    "Misc": {
+        "daidir_abs": "/data/home/chentingran/SCCM/digital_interface/simv.daidir",
+        "csrc_abs": "/data/home/chentingran/SCCM/digital_interface/csrc",
+        "csrc": "csrc",
+        "cwd": "/data/home/chentingran/SCCM/digital_interface",
+        "archive_dir": "archive.0",
+        "daidir": "simv.daidir",
+        "default_output_dir": "csrc"
+    }
+}

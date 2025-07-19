@@ -1,0 +1,256 @@
+0 
+49
++itf+/home/tools/Synopsys/VCSMX/M-2017.03-SP2-4/linux64/lib/vcsdp_lite.tab
++lint=TFIPC-L
++vcsd1
++vpi
+-Mamsrun=
+-Masflags=
+-Mcc=/usr/bin/gcc
+-Mcfl= -pipe -fPIC -O -I/home/tools/Synopsys/VCSMX/M-2017.03-SP2-4/include
+-Mcplusplus=g++
+-Mcrt0=
+-Mcrtn=
+-Mcsrc=
+-Mexternalobj=
+-Mldflags= -rdynamic
+-Mobjects= /home/tools/Synopsys/VCSMX/M-2017.03-SP2-4/linux64/lib/libvirsim.so /home/tools/Synopsys/VCSMX/M-2017.03-SP2-4/linux64/lib/liberrorinf.so /home/tools/Synopsys/VCSMX/M-2017.03-SP2-4/linux64/lib/libsnpsmalloc.so /home/tools/Synopsys/VCSMX/M-2017.03-SP2-4/linux64/lib/libvfs.so
+-Mout=simv
+-Msaverestoreobj=/home/tools/Synopsys/VCSMX/M-2017.03-SP2-4/linux64/lib/vcs_save_restore_new.o
+-Msyslibs=/home/tools/Synopsys/Verdi/N-2017.12/share/PLI/VCS/LINUX64/pli.a -ldl
+-Mvcsaceobjs=
+-Mxcflags= -pipe -fPIC -I/home/tools/Synopsys/VCSMX/M-2017.03-SP2-4/include
+-P
+-debug_access+all
+-fsdb
+-full64
+-gen_obj
+-l
+-nc
+-picarchive
+-sverilog
+./CONTROLLER.v
+./FIFO_ASYN.v
+./IO.v
+./SCMA_wrapper.v
+./SCMU_wrapper.v
+./SHIFTER.v
+./SIMDadd.v
+./SIMDshifter.v
+./SM.v
+./SRAM_ChargePulsation.v
+./inputFIFO.v
+./inputFIFO_unit.v
+./outputFIFO.v
+./quantize.v
+./quantize_6to4.v
+./quantize_add.v
+./results_simutop_SCMA/vcs_simutop_SCMU.log
+./simu_top_SCMA.v
+/home/tools/Synopsys/VCSMX/M-2017.03-SP2-4/linux64/bin/vcs1
+/home/tools/Synopsys/Verdi/N-2017.12/share/PLI/VCS/LINUX64/verdi.tab
+176
+uvm_home=/home/tools/Cadence/INCISIVE152/152.060/tools/uvm
+sysc_uni_pwd=/home/chentingran/SCCM/digital_interface
+ml_uvm=/home/tools/Cadence/INCISIVE152/152.060/tools/uvm/uvm_lib/uvm_ml/sc/ml_uvm
+ml_seq_dir=/home/tools/Cadence/INCISIVE152/152.060/specman/src
+XLOCALEDIR=/home/tools/Synopsys/ICCompiler/O-2018.06-SP1/etc/locale
+XKEYSYMDB=/home/tools/Synopsys/ICCompiler/O-2018.06-SP1/etc/XKeysymDB
+XDG_SESSION_ID=52382
+XDG_RUNTIME_DIR=/run/user/1038
+XA_WAIT_LICENSE=1
+XA_HOME=/home/tools/Synopsys/XA/O-2018.09-SP1
+XA_64=1
+WV_HOME=/home/tools/Synopsys/CustomWaveView/O-2018.09
+VMR_MODE_FLAG=64
+VMM_HOME=/home/tools/Synopsys/VCSMX/M-2017.03-SP2-4/etc/vmm
+VMANAGER_PATH=/home/tools/Cadence/INCISIVE152/152.060/kits/VerificationKit/soc_verification_lib:/home/tools/Cadence/INCISIVE152/152.060/kits/VerificationKit/soc_verification_lib/e_ex_lib/cdn_vm_ext/e
+VERDI_PD_UPF_SCOPE_TREE=1
+VERDI_HOME=/home/tools/Synopsys/Verdi/N-2017.12
+VERDI_DIR=/home/tools/Synopsys/Verdi/N-2017.12
+VERDI3_EXPAND_BETA=0
+VENDOR=unknown
+VCS_MX_HOME_INTERNAL=1
+VCS_MODE_FLAG=64
+VCS_LOG_FILE=./results_simutop_SCMA/vcs_simutop_SCMU.log
+VCS_LIC_EXPIRE_WARNING=7
+VCS_HOME=/home/tools/Synopsys/VCSMX/M-2017.03-SP2-4
+VCS_DEPTH=0
+VCS_CC=/usr/bin/gcc
+VCS_ARG_ADDED_FOR_TMP=1
+VCS_ARCH=linux64
+VCSMX_HOME=/home/tools/Synopsys/VCSMX/M-2017.03-SP2-4
+VCSD_VERDI_PLI=VCS
+UNAME=/bin/uname
+TOOL_HOME=/home/tools/Synopsys/VCSMX/M-2017.03-SP2-4/linux64
+TMAX_HOME=/home/tools/Synopsys/TetraMax/N-2017.09-SP5-2
+TMAX_DIR=/home/tools/Synopsys/TetraMax
+THREAD_EVENT_INT=0
+TESSENT_HOME=/home/tools/Mentor/Tessent/2018.2
+SYNOPSYS_TMAX=/home/tools/Synopsys/TetraMax/N-2017.09-SP5-2
+STARRC_LICENSE_WAIT=
+STARRC_HOME=/home/tools/Synopsys/StarRC/N-2017.12-SP3-2
+STARRCXT_LICENSE_WAIT=
+SSV_HOME=/home/tools/Cadence/SSV161/161.ISR3
+SSH_TTY=/dev/pts/30
+SSH_CONNECTION=172.34.209.1 58204 172.34.64.251 22
+SSH_CLIENT=172.34.209.1 58204 22
+SSH_ASKPASS=/usr/libexec/openssh/gnome-ssh-askpass
+SPECTRE_DEFAULTS=-E
+SPECMAN_PATH=/home/tools/Cadence/INCISIVE152/152.060/kits/VerificationKit/soc_verification_lib/e_ex_lib:/home/tools/Cadence/INCISIVE152/152.060/kits/VerificationKit/soc_verification_lib/abv_formal:/home/tools/Cadence/INCISIVE152/152.060/kits/VerificationKit/util_lib:/home/tools/Cadence/INCISIVE152/152.060/kits/VerificationKit/misc/links:/home/tools/Cadence/INCISIVE152/152.060/kits/VerificationKit:/home/tools/Cadence/INCISIVE152/152.060/kits/VerificationKit/ovm_ex_lib/e_ex_lib:/home/tools/Cadence/INCISIVE152/152.060/kits/VerificationKit/misc:/home/tools/Cadence/INCISIVE152/152.060/kits/VerificationKit/soc_verification_lib/uvm_e_ex_lib/interface_uvc_lib:/home/tools/Cadence/INCISIVE152/152.060/kits/VerificationKit/soc_verification_lib/uvm_e_ex_lib/apb_subsystem:/home/tools/Cadence/INCISIVE152/152.060/kits/VerificationKit/soc_verification_lib/uvm_e_ex_lib
+SOCV_KIT_HOME=/home/tools/Cadence/INCISIVE152/152.060/kits/VerificationKit
+SNPS_VCS_INTERNAL_TEST_SINGLE_CPU=1
+SNPS_VCS_CLANG_PATH=/fs/src/interfaces/LLVM_Project/QSCM/opt/llvm-3.9.1/linux64
+SNPS_SHARED_LIC_MULTICORE_KEY=auto
+SNPS_MAX_WAITTIME=43200
+SNPS_MAX_QUEUETIME=43200
+SNPSLMD_QUEUE=true
+SLI_LOCAL_MODE=1
+SKILLPRO_PATH=/home/tools/Cadence/SkillPro/skillpro_v4.2E
+SKILLPRO_LIC_FILE=5888@60.173.195.129:5888@60.173.195.130:5888@60.173.195.76
+SCRNAME=vcs
+SCRIPT_NAME=vcs
+REMOTEHOST=172.34.209.1
+QT_PLUGIN_PATH=/usr/lib64/kde4/plugins:/usr/lib/kde4/plugins
+QT_GRAPHICSSYSTEM_CHECKED=1
+QTLIB=/usr/lib64/qt-3.3/lib
+QTINC=/usr/lib64/qt-3.3/include
+QTDIR=/usr/lib64/qt-3.3
+QRC_MOS_LW_PRECISION=Y
+QRC_HOME=/home/tools/Cadence/EXT171/171.S041
+PW_ROLLBACK_POWERROOT=1
+PT_HOME=/home/tools/Synopsys/PrimeTime/M-2016.12-SP3-3
+PEX_ENABLE_PREPRODUCTION_BETA=991486
+PERL_MM_OPT=INSTALL_BASE=/home/chentingran/perl5
+PERL_MB_OPT=--install_base /home/chentingran/perl5
+PERL_LOCAL_LIB_ROOT=/home/chentingran/perl5
+PERL_HOMEDIR=1
+PERL5LIB=/home/chentingran/perl5/lib/perl5
+OVA_UUM=0
+OSTYPE=linux
+OA_UNSUPPORTED_PLAT=linux_rhel50_gcc44x
+OA_PLUGIN_PATH=/home/tools/Mentor/Calibre/2018.2_33.24/aoi_cal_2018.2_33.24/shared/pkgs/icv/tools/queryskl
+NOVAS_VERILOG_SYNTAX_MAX_ERROR=1000000
+NOVAS_SHOW_PD_HIERARCHY_TREE=1
+NOVAS_PROTECTED_DOWNGRADE=1
+NOVAS_PD_UPF_SCOPE_TREE=1
+NOVAS_LIC_EXP_CTRL=0
+NOVAS_LICENSE_QUEUE=1
+NOVAS_IDLE_LICENSE_CHECKBACK_SILENCE=1
+NOVAS_IDLE_LICENSE_CHECKBACK=10
+NOVAS_HOME=/home/tools/Synopsys/Verdi/N-2017.12
+NOVAS_FSDB_STRUCT=1
+NOVAS_FSDB_POWER=1
+NOVAS_FSDB_ENV_WRITER_MEM_LIMIT=64
+NOVAS_FSDB_ENV_SYNC_CONTROL=off
+NOVAS_FSDB_ENV_NOVAS_LOCK=on
+NOVAS_FSDB_ENV_DISABLE_OLD_FSDB_VER_MSG=on
+NOVAS_FSDBEXTRACT_DISABLE_EXIT_ON_ERROR=1
+NOVAS_DISABLE_PROTECT=1
+NOVAS=/home/tools/Synopsys/Verdi/N-2017.12
+NCPROTECT_KEYDB=/home/tools/Cadence/INCISIVE152/152.060/kits/VerificationKit/misc/ip_keys
+MOZILLA_HOME=/usr/bin/firefox
+MODULESHOME=/usr/share/Modules
+MODULEPATH=/usr/share/Modules/modulefiles:/etc/modulefiles
+MMSIMHOME=/home/tools/Cadence/SPECTRE171/171.ISR6
+MGLS_LICENSE_FILE=1717@60.173.195.76:1717@60.173.195.129:1717@60.173.195.130
+MGC_RVE_RELEASE_LICENSE_TIME=0.3
+MGC_HOME=/home/tools/Mentor/Calibre/2018.2_33.24/aoi_cal_2018.2_33.24
+MGC_DRV_RELEASE_LICENSE_TIME=0.5
+MGC_DIR=/home/tools/Mentor/Tessent/2018.2
+MGC_CALIBRE_REALTIME_VIRTUOSO_SAVE_MESSENGER_CELL=1
+MGC_CALIBRE_REALTIME_VIRTUOSO_ENABLED=1
+MGC_CALIBRE_PRESERVE_MENU_TRIGGER=
+META_QUEUE=1
+MAX_ERC_EC_SIZE=1000000000000
+Laker_TCL_ToolBox=1
+Laker_TCL_L3=1
+LTRAN_SHELL=ABC
+LTRAN_ROOT=/home/tools/Synopsys/TetraMax/N-2017.09-SP5-2/amd64/syn/ltran
+LOADEDMODULES=
+LIBRARY_HOME=/home/tools/Synopsys/LibraryCompiler/N-2017.12-SP3
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+LEO_HOME=/home/tools/Synopsys/LakerOA/L-2016.09-SP2-1
+LC_TIME=C
+LC_NUMERIC=C
+LC_MONETARY=C
+LC_CTYPE=C
+LC_COLLATE=C
+LC_ALL=C
+LAKER_HOME=/home/tools/Synopsys/LakerOA/L-2016.09-SP2-1
+KIT_SETUP_SAVE=/home/tools/Cadence/INCISIVE152/152.060/kits/VerificationKit
+KDEDIRS=/usr
+INST_DIR=/home/tools/Mentor
+INNOVUSDIR=/home/tools/Cadence/INNOVUS171/171.ISR5
+INCISIVE_HOME=/home/tools/Cadence/INCISIVE152/152.060
+ICC_HOME=/home/tools/Synopsys/ICCompiler/O-2018.06-SP1
+ICC_CDE_WS=4
+ICC2_HOME=/home/tools/Synopsys/ICC2/O-2018.06-SP1
+HSPICE_INST_DIR=/home/tools/Synopsys/HSPICE/M-2017.03-SP2-4/hspice
+HSPICE_HOME=/home/tools/Synopsys/HSPICE/M-2017.03-SP2-4/hspice
+HOSTTYPE=x86_64-linux
+GROUP=chentingran
+FSDB_TASK_BACKWARD_COMPATIBLE=1
+FSDB_NO_MDA_STRUCT=1
+FSDB_GATE=0
+FSDB2VCD_DONT_SHOW_DUMPOFF=1
+FORMALITY_HOME=/home/tools/Synopsys/Formality/M-2016.12-SP4
+FFW_ENABLE_AUTO_ADJUST_LIMIT_SIZE=1
+ESA_ARY=0
+EDI_HOME=/home/tools/Cadence/EDI142/142.ISR8
+DW_WAIT_LICENSE=1
+DVE_RPC_SINGLE_CPU=1
+DMS_DESIGN=/home/tools/Cadence/INCISIVE152/152.060/kits/VerificationKit/designs/socv/ams
+DESIGNCOMPILER_HOME=/home/tools/Synopsys/Synthesis/N-2017.09-SP5-3
+DEFAULT_VCS_HOME=/home/tools/Synopsys/VCSMX/M-2017.03-SP2-4
+CVS_RSH=ssh
+CONFRML_HOME=/home/tools/Cadence/CONFRML172/172.S300
+CDS_XVNC_TENBASE=+
+CDS_SPECTRERF_FBENABLE=1
+CDS_SITE=/home/tools/Cadence/IC617/617.721/tools/dfII/local
+CDS_ROOT=/home/tools/Cadence/IC617/617.721
+CDS_Netlisting_Mode=Analog
+CDS_LOAD_ENV=CWD
+CDS_LIC_ONLY=1
+CDS_LIC_FILE=5288@60.173.195.129:5288@60.173.195.130:5288@60.173.195.76
+CDS_INST_DIR=/home/tools/Cadence/IC617/617.721
+CDS_AUTO_64BIT=ALL
+CDSROOT=/home/tools/Cadence/IC617/617.721
+CDSHOME=/home/tools/Cadence/IC617/617.721
+CDSDIR=/home/tools/Cadence/IC617/617.721
+CDS=/home/tools/Cadence/IC617/617.721
+CALIBRE_WAIVER_USE_RVE_EXPAND_FACTOR=1
+CALIBRE_WAIVER_OLD_ENGINE=137955
+CALIBRE_PERC_TRACE_PATH_ENABLE=1237104
+CALIBRE_HOME=/home/tools/Mentor/Calibre/2018.2_33.24/aoi_cal_2018.2_33.24
+CALIBRE_DFM_DP_VISUALIZATION_ENABLE=7639361
+CADHOME=/home/tools/Cadence
+CADENCE_DIR=/home/tools/Cadence/IC617/617.721
+0
+19
+1664964647 ./quantize_add.v
+1664359265 ./quantize_6to4.v
+1664359265 ./quantize.v
+1666948965 ./SCMA_wrapper.v
+1666947035 ./SCMU_wrapper.v
+1666182881 ./SRAM_ChargePulsation.v
+1664359266 ./FIFO_ASYN.v
+1664359265 ./SIMDshifter.v
+1664359265 ./SIMDadd.v
+1664359265 ./SHIFTER.v
+1664956611 ./CONTROLLER.v
+1664682152 ./inputFIFO_unit.v
+1664963366 ./IO.v
+1664456504 ./outputFIFO.v
+1664957752 ./inputFIFO.v
+1664380275 ./SM.v
+1673427433 ./simu_top_SCMA.v
+1510485143 /home/tools/Synopsys/Verdi/N-2017.12/share/PLI/VCS/LINUX64/verdi.tab
+1516939391 /home/tools/Synopsys/VCSMX/M-2017.03-SP2-4/linux64/lib/vcsdp_lite.tab
+5
+0 
+1516940994 /home/tools/Synopsys/VCSMX/M-2017.03-SP2-4/linux64/lib/libvirsim.so
+1516940277 /home/tools/Synopsys/VCSMX/M-2017.03-SP2-4/linux64/lib/liberrorinf.so
+1516940258 /home/tools/Synopsys/VCSMX/M-2017.03-SP2-4/linux64/lib/libsnpsmalloc.so
+1516940611 /home/tools/Synopsys/VCSMX/M-2017.03-SP2-4/linux64/lib/libvfs.so
+1673521894 simv.daidir

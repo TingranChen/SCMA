@@ -1,0 +1,44 @@
+{
+    "std": [
+        "std",
+        "reYIK",
+        "module",
+        1
+    ],
+    "inputFIFO_unit": [
+        "inputFIFO_unit",
+        "uWeev",
+        "module",
+        3
+    ],
+    "simu_top": [
+        "simu_top",
+        "aP1ZN",
+        "module",
+        2
+    ],
+    "...MASTER...": [
+        "SIM",
+        "amcQw",
+        "module",
+        7
+    ],
+    "SCMU_wrapper": [
+        "SCMU_wrapper",
+        "vvs1n",
+        "module",
+        5
+    ],
+    "SHIFTER": [
+        "SHIFTER",
+        "m6QUn",
+        "module",
+        4
+    ],
+    "quantize_add": [
+        "quantize_add",
+        "S2xFs",
+        "module",
+        6
+    ]
+}

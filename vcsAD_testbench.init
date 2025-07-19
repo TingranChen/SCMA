@@ -1,0 +1,3 @@
+bus_format <%d>;
+use_spice -cell SRAM_CIM;
+choose xa -n SRAM_CIM.spi -c xa_testbench.cfg -o results_Amstestbench/xa/xa;

@@ -1,0 +1,719 @@
+verdiWindowResize -win $_Verdi_1 -1 "27" "1366" "669"
+wvCreateWindow
+wvSetPosition -win $_nWave2 {("G1" 0)}
+wvOpenFile -win $_nWave2 \
+           {/home/chentingran/SCCM/digital_interface/results_simutop_FIFOAYSN/vcs_simutop.fsdb}
+wvGetSignalOpen -win $_nWave2
+wvGetSignalSetScope -win $_nWave2 "/SHIFTER"
+wvGetSignalSetScope -win $_nWave2 "/simu_top"
+wvGetSignalSetdebExit
+in $_nWave2 "/simu_top/dut_SCMU_0"
+wvGetSignalSetScope -win $_nWave2 "/simu_top"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_CONTROLLER"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_IO"
+wvSetPosition -win $_nWave2 {("G1" 4)}
+wvSetPosition -win $_nWave2 {("G1" 4)}
+wvAddSignal -win $_nWave2 -clear
+wvAddSignal -win $_nWave2 -group {"G1" \
+{/simu_top/dut_SCMU_0/dut_IO/a_cim\[7:0\]} \
+{/simu_top/dut_SCMU_0/dut_IO/a_in\[10:0\]} \
+{/simu_top/dut_SCMU_0/dut_IO/wrt_en} \
+{/simu_top/dut_SCMU_0/dut_IO/wrt} \
+}
+wvAddSignal -win $_nWave2 -group {"G2" \
+}
+wvSelectSignal -win $_nWave2 {( "G1" 4 )} 
+wvSetPosition -win $_nWave2 {("G1" 4)}
+wvGetSignalClose -win $_nWave2
+wvSelectSignal -win $_nWave2 {( "G1" 2 )} 
+wvSelectSignal -win $_nWave2 {( "G1" 1 )} 
+wvGetSignalOpen -win $_nWave2
+wvGetSignalSetScope -win $_nWave2 "/SHIFTER"
+wvGetSignalSetScope -win $_nWave2 "/simu_top"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_IO"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_CONTROLLER"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0"
+wvGetSignalSetSignalFilter -win $_nWave2 "*matrix*"
+wvDisplayGridCount -win $_nWave2 -off
+wvGetSignalClose -win $_nWave2
+wvReloadFile -win $_nWave2
+wvGetSignalOpen -win $_nWave2
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0"
+wvSetPosition -win $_nWave2 {("G1" 5)}
+wvSetPosition -win $_nWave2 {("G1" 5)}
+wvAddSignal -win $_nWave2 -clear
+wvAddSignal -win $_nWave2 -group {"G1" \
+{/simu_top/dut_SCMU_0/dut_IO/a_cim\[7:0\]} \
+{/simu_top/dut_SCMU_0/dut_IO/a_in\[10:0\]} \
+{/simu_top/dut_SCMU_0/dut_IO/wrt_en} \
+{/simu_top/dut_SCMU_0/dut_IO/wrt} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[4:0\]} \
+}
+wvAddSignal -win $_nWave2 -group {"G2" \
+}
+wvSelectSignal -win $_nWave2 {( "G1" 5 )} 
+wvSetPosition -win $_nWave2 {("G1" 5)}
+wvGetSignalClose -win $_nWave2
+wvGetSignalOpen -win $_nWave2
+wvGetSignalSetScope -win $_nWave2 "/SHIFTER"
+wvGetSignalSetScope -win $_nWave2 "/simu_top"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_IO"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_CONTROLLER"
+wvSetPosition -win $_nWave2 {("G1" 6)}
+wvSetPosition -win $_nWave2 {("G1" 6)}
+wvAddSignal -win $_nWave2 -clear
+wvAddSignal -win $_nWave2 -group {"G1" \
+{/simu_top/dut_SCMU_0/dut_IO/a_cim\[7:0\]} \
+{/simu_top/dut_SCMU_0/dut_IO/a_in\[10:0\]} \
+{/simu_top/dut_SCMU_0/dut_IO/wrt_en} \
+{/simu_top/dut_SCMU_0/dut_IO/wrt} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[4:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/matrix_act\[4:0\]} \
+}
+wvAddSignal -win $_nWave2 -group {"G2" \
+}
+wvSelectSignal -win $_nWave2 {( "G1" 6 )} 
+wvSetPosition -win $_nWave2 {("G1" 6)}
+wvGetSignalClose -win $_nWave2
+wvSelectSignal -win $_nWave2 {( "G1" 2 )} 
+wvSelectSignal -win $_nWave2 {( "G1" 1 )} 
+wvScrollDown -win $_nWave2 3
+wvSelectSignal -win $_nWave2 {( "G1" 5 )} 
+wvSelectSignal -win $_nWave2 {( "G1" 6 )} 
+wvSelectSignal -win $_nWave2 {( "G1" 5 )} 
+wvSelectSignal -win $_nWave2 {( "G1" 5 )} 
+wvSelectSignal -win $_nWave2 {( "G1" 5 )} 
+wvSetPosition -win $_nWave2 {("G1" 5)}
+wvExpandBus -win $_nWave2 {("G1" 5)}
+wvSetPosition -win $_nWave2 {("G1" 11)}
+wvScrollUp -win $_nWave2 3
+wvScrollDown -win $_nWave2 3
+wvScrollDown -win $_nWave2 2
+wvScrollUp -win $_nWave2 2
+wvScrollUp -win $_nWave2 3
+wvScrollDown -win $_nWave2 4
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvScrollUp -win $_nWave2 3
+wvSelectSignal -win $_nWave2 {( "G1" 5 )} 
+wvSelectSignal -win $_nWave2 {( "G1" 4 )} 
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollUp -win $_nWave2 1
+wvScrollUp -win $_nWave2 1
+wvScrollUp -win $_nWave2 1
+wvScrollUp -win $_nWave2 1
+wvSetCursor -win $_nWave2 5724649.340866 -snap {("G1" 4)}
+wvSetCursor -win $_nWave2 6068543.879473 -snap {("G1" 6)}
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollUp -win $_nWave2 1
+wvScrollUp -win $_nWave2 1
+wvSelectSignal -win $_nWave2 {( "G1" 4 )} 
+wvGetSignalOpen -win $_nWave2
+wvGetSignalSetScope -win $_nWave2 "/SHIFTER"
+wvGetSignalSetScope -win $_nWave2 "/simu_top"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_IO"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_CONTROLLER"
+wvGetSignalSetSignalFilter -win $_nWave2 "*col_en*"
+wvSetPosition -win $_nWave2 {("G1" 12)}
+wvSetPosition -win $_nWave2 {("G1" 12)}
+wvAddSignal -win $_nWave2 -clear
+wvAddSignal -win $_nWave2 -group {"G1" \
+{/simu_top/dut_SCMU_0/dut_IO/a_cim\[7:0\]} \
+{/simu_top/dut_SCMU_0/dut_IO/a_in\[10:0\]} \
+{/simu_top/dut_SCMU_0/dut_IO/wrt_en} \
+{/simu_top/dut_SCMU_0/dut_IO/wrt} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[4:0\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[4\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[3\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[2\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[1\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/matrix_act\[4:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/col_en} \
+}
+wvAddSignal -win $_nWave2 -group {"G2" \
+}
+wvSelectSignal -win $_nWave2 {( "G1" 12 )} 
+wvSetPosition -win $_nWave2 {("G1" 12)}
+wvGetSignalClose -win $_nWave2
+wvScrollDown -win $_nWave2 9
+wvSelectSignal -win $_nWave2 {( "G1" 9 )} 
+wvGetSignalOpen -win $_nWave2
+wvGetSignalSetScope -win $_nWave2 "/SHIFTER"
+wvGetSignalSetScope -win $_nWave2 "/simu_top"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_CONTROLLER"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_IO"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_CONTROLLER"
+wvGetSignalSetScope -win $_nWave2 \
+           "/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_sramcim"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_inputFIFO"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_sramcim"
+wvSetPosition -win $_nWave2 {("G1" 14)}
+wvSetPosition -win $_nWave2 {("G1" 14)}
+wvAddSignal -win $_nWave2 -clear
+wvAddSignal -win $_nWave2 -group {"G1" \
+{/simu_top/dut_SCMU_0/dut_IO/a_cim\[7:0\]} \
+{/simu_top/dut_SCMU_0/dut_IO/a_in\[10:0\]} \
+{/simu_top/dut_SCMU_0/dut_IO/wrt_en} \
+{/simu_top/dut_SCMU_0/dut_IO/wrt} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[4:0\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[4\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[3\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[2\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[1\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/matrix_act\[4:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/col_en} \
+{/simu_top/dut_SCMU_0/dut_sramcim/sel_array\[15:0\]} \
+{/simu_top/dut_SCMU_0/dut_sramcim/q\[191:0\]} \
+}
+wvAddSignal -win $_nWave2 -group {"G2" \
+}
+wvSelectSignal -win $_nWave2 {( "G1" 14 )} 
+wvSetPosition -win $_nWave2 {("G1" 14)}
+wvGetSignalClose -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvScrollDown -win $_nWave2 11
+wvSelectSignal -win $_nWave2 {( "G1" 13 )} 
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvSetCursor -win $_nWave2 5913791.337100 -snap {("G1" 13)}
+wvSetCursor -win $_nWave2 8407026.741996 -snap {("G1" 14)}
+wvSetCursor -win $_nWave2 6687554.048964 -snap {("G1" 14)}
+wvGetSignalOpen -win $_nWave2
+wvGetSignalSetScope -win $_nWave2 "/SHIFTER"
+wvGetSignalSetScope -win $_nWave2 "/simu_top"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_CONTROLLER"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_IO"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_sramcim"
+wvSetPosition -win $_nWave2 {("G1" 15)}
+wvSetPosition -win $_nWave2 {("G1" 15)}
+wvAddSignal -win $_nWave2 -clear
+wvAddSignal -win $_nWave2 -group {"G1" \
+{/simu_top/dut_SCMU_0/dut_IO/a_cim\[7:0\]} \
+{/simu_top/dut_SCMU_0/dut_IO/a_in\[10:0\]} \
+{/simu_top/dut_SCMU_0/dut_IO/wrt_en} \
+{/simu_top/dut_SCMU_0/dut_IO/wrt} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[4:0\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[4\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[3\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[2\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[1\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/matrix_act\[4:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/col_en} \
+{/simu_top/dut_SCMU_0/dut_sramcim/sel_array\[15:0\]} \
+{/simu_top/dut_SCMU_0/dut_sramcim/q\[191:0\]} \
+{/simu_top/dut_SCMU_0/dut_sramcim/data_in_cim\[511:0\]} \
+}
+wvAddSignal -win $_nWave2 -group {"G2" \
+}
+wvSelectSignal -win $_nWave2 {( "G1" 15 )} 
+wvSetPosition -win $_nWave2 {("G1" 15)}
+wvGetSignalClose -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvScrollDown -win $_nWave2 11
+wvSetCursor -win $_nWave2 7351369.181722 -snap {("G1" 14)}
+wvSetCursor -win $_nWave2 8205221.679065 -snap {("G1" 14)}
+wvSetCursor -win $_nWave2 8748582.359192 -snap {("G1" 14)}
+wvSetCursor -win $_nWave2 11834094.792774 -snap {("G1" 15)}
+wvSelectSignal -win $_nWave2 {( "G1" 14 )} 
+wvSetCursor -win $_nWave2 11581820.191286 -snap {("G1" 14)}
+wvSetCursor -win $_nWave2 6478110.945802 -snap {("G1" 14)}
+wvSetCursor -win $_nWave2 11969934.962806 -snap {("G1" 12)}
+wvSetCursor -win $_nWave2 6691574.070138 -snap {("G1" 14)}
+wvSetCursor -win $_nWave2 8030570.031881 -snap {("G1" 14)}
+wvSetCursor -win $_nWave2 8962045.483528 -snap {("G1" 13)}
+wvSetCursor -win $_nWave2 6303459.298618 -snap {("G1" 13)}
+wvSetCursor -win $_nWave2 5798910.095643 -snap {("G1" 13)}
+wvSetCursor -win $_nWave2 6691574.070138 -snap {("G1" 14)}
+wvSetCursor -win $_nWave2 7642455.260361 -snap {("G1" 14)}
+wvGetSignalOpen -win $_nWave2
+wvGetSignalSetScope -win $_nWave2 "/SHIFTER"
+wvGetSignalSetScope -win $_nWave2 "/simu_top"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_CONTROLLER"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_IO"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_sramcim"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_sramcim"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_outputFIFO"
+wvSetPosition -win $_nWave2 {("G1" 17)}
+wvSetPosition -win $_nWave2 {("G1" 17)}
+wvAddSignal -win $_nWave2 -clear
+wvAddSignal -win $_nWave2 -group {"G1" \
+{/simu_top/dut_SCMU_0/dut_IO/a_cim\[7:0\]} \
+{/simu_top/dut_SCMU_0/dut_IO/a_in\[10:0\]} \
+{/simu_top/dut_SCMU_0/dut_IO/wrt_en} \
+{/simu_top/dut_SCMU_0/dut_IO/wrt} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[4:0\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[4\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[3\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[2\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[1\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/matrix_act\[4:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/col_en} \
+{/simu_top/dut_SCMU_0/dut_sramcim/sel_array\[15:0\]} \
+{/simu_top/dut_SCMU_0/dut_sramcim/q\[191:0\]} \
+{/simu_top/dut_SCMU_0/dut_sramcim/data_in_cim\[511:0\]} \
+{/simu_top/dut_SCMU_0/dut_outputFIFO/WR_EN} \
+{/simu_top/dut_SCMU_0/dut_outputFIFO/qin\[63:0\]} \
+}
+wvAddSignal -win $_nWave2 -group {"G2" \
+}
+wvSelectSignal -win $_nWave2 {( "G1" 17 )} 
+wvSetPosition -win $_nWave2 {("G1" 17)}
+wvGetSignalClose -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvScrollDown -win $_nWave2 14
+wvSelectSignal -win $_nWave2 {( "G1" 17 )} 
+wvSetCursor -win $_nWave2 5701881.402763 -snap {("G1" 17)}
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvGetSignalOpen -win $_nWave2
+wvGetSignalSetScope -win $_nWave2 "/SHIFTER"
+wvGetSignalSetScope -win $_nWave2 "/simu_top"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_CONTROLLER"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_IO"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_sramcim"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_outputFIFO"
+wvGetSignalSetScope -win $_nWave2 \
+           "/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize"
+wvSetPosition -win $_nWave2 {("G1" 18)}
+wvSetPosition -win $_nWave2 {("G1" 18)}
+wvAddSignal -win $_nWave2 -clear
+wvAddSignal -win $_nWave2 -group {"G1" \
+{/simu_top/dut_SCMU_0/dut_IO/a_cim\[7:0\]} \
+{/simu_top/dut_SCMU_0/dut_IO/a_in\[10:0\]} \
+{/simu_top/dut_SCMU_0/dut_IO/wrt_en} \
+{/simu_top/dut_SCMU_0/dut_IO/wrt} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[4:0\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[4\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[3\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[2\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[1\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/matrix_act\[4:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/col_en} \
+{/simu_top/dut_SCMU_0/dut_sramcim/sel_array\[15:0\]} \
+{/simu_top/dut_SCMU_0/dut_sramcim/q\[191:0\]} \
+{/simu_top/dut_SCMU_0/dut_sramcim/data_in_cim\[511:0\]} \
+{/simu_top/dut_SCMU_0/dut_outputFIFO/WR_EN} \
+{/simu_top/dut_SCMU_0/dut_outputFIFO/qin\[63:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/matrix_1} \
+}
+wvAddSignal -win $_nWave2 -group {"G2" \
+}
+wvSelectSignal -win $_nWave2 {( "G1" 18 )} 
+wvSetPosition -win $_nWave2 {("G1" 18)}
+wvGetSignalClose -win $_nWave2
+wvScrollDown -win $_nWave2 15
+wvGetSignalOpen -win $_nWave2
+wvGetSignalSetScope -win $_nWave2 "/SHIFTER"
+wvGetSignalSetScope -win $_nWave2 "/simu_top"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_CONTROLLER"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_IO"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_outputFIFO"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_sramcim"
+wvGetSignalSetScope -win $_nWave2 \
+           "/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize"
+wvSetPosition -win $_nWave2 {("G1" 19)}
+wvSetPosition -win $_nWave2 {("G1" 19)}
+wvAddSignal -win $_nWave2 -clear
+wvAddSignal -win $_nWave2 -group {"G1" \
+{/simu_top/dut_SCMU_0/dut_IO/a_cim\[7:0\]} \
+{/simu_top/dut_SCMU_0/dut_IO/a_in\[10:0\]} \
+{/simu_top/dut_SCMU_0/dut_IO/wrt_en} \
+{/simu_top/dut_SCMU_0/dut_IO/wrt} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[4:0\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[4\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[3\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[2\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[1\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/matrix_act\[4:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/col_en} \
+{/simu_top/dut_SCMU_0/dut_sramcim/sel_array\[15:0\]} \
+{/simu_top/dut_SCMU_0/dut_sramcim/q\[191:0\]} \
+{/simu_top/dut_SCMU_0/dut_sramcim/data_in_cim\[511:0\]} \
+{/simu_top/dut_SCMU_0/dut_outputFIFO/WR_EN} \
+{/simu_top/dut_SCMU_0/dut_outputFIFO/qin\[63:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/matrix_1} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/cim_quantize\[127:0\]} \
+}
+wvAddSignal -win $_nWave2 -group {"G2" \
+}
+wvSelectSignal -win $_nWave2 {( "G1" 19 )} 
+wvSetPosition -win $_nWave2 {("G1" 19)}
+wvGetSignalClose -win $_nWave2
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 0
+wvScrollDown -win $_nWave2 0
+wvScrollDown -win $_nWave2 0
+wvSetCursor -win $_nWave2 6459761.955367 -snap {("G1" 19)}
+wvGetSignalOpen -win $_nWave2
+wvGetSignalSetScope -win $_nWave2 "/SHIFTER"
+wvGetSignalSetScope -win $_nWave2 "/simu_top"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_CONTROLLER"
+wvGetSignalSetScope -win $_nWave2 \
+           "/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_IO"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_outputFIFO"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_sramcim"
+wvGetSignalSetScope -win $_nWave2 \
+           "/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize"
+wvSetPosition -win $_nWave2 {("G1" 20)}
+wvSetPosition -win $_nWave2 {("G1" 20)}
+wvAddSignal -win $_nWave2 -clear
+wvAddSignal -win $_nWave2 -group {"G1" \
+{/simu_top/dut_SCMU_0/dut_IO/a_cim\[7:0\]} \
+{/simu_top/dut_SCMU_0/dut_IO/a_in\[10:0\]} \
+{/simu_top/dut_SCMU_0/dut_IO/wrt_en} \
+{/simu_top/dut_SCMU_0/dut_IO/wrt} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[4:0\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[4\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[3\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[2\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[1\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/matrix_act\[4:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/col_en} \
+{/simu_top/dut_SCMU_0/dut_sramcim/sel_array\[15:0\]} \
+{/simu_top/dut_SCMU_0/dut_sramcim/q\[191:0\]} \
+{/simu_top/dut_SCMU_0/dut_sramcim/data_in_cim\[511:0\]} \
+{/simu_top/dut_SCMU_0/dut_outputFIFO/WR_EN} \
+{/simu_top/dut_SCMU_0/dut_outputFIFO/qin\[63:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/matrix_1} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/cim_quantize\[127:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/cim_input\[191:0\]} \
+}
+wvAddSignal -win $_nWave2 -group {"G2" \
+}
+wvSelectSignal -win $_nWave2 {( "G1" 20 )} 
+wvSetPosition -win $_nWave2 {("G1" 20)}
+wvGetSignalClose -win $_nWave2
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 0
+wvScrollUp -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 0
+wvScrollDown -win $_nWave2 0
+wvScrollDown -win $_nWave2 0
+wvGetSignalOpen -win $_nWave2
+wvGetSignalSetScope -win $_nWave2 "/SHIFTER"
+wvGetSignalSetScope -win $_nWave2 "/simu_top"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_CONTROLLER"
+wvGetSignalSetScope -win $_nWave2 \
+           "/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_IO"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_outputFIFO"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_sramcim"
+wvGetSignalSetScope -win $_nWave2 \
+           "/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize"
+wvGetSignalSetScope -win $_nWave2 \
+           "/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/DUT_0"
+wvGetSignalSetScope -win $_nWave2 \
+           "/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/QA_0"
+wvGetSignalSetScope -win $_nWave2 \
+           "/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/DUT_31"
+wvSetPosition -win $_nWave2 {("G1" 22)}
+wvSetPosition -win $_nWave2 {("G1" 22)}
+wvAddSignal -win $_nWave2 -clear
+wvAddSignal -win $_nWave2 -group {"G1" \
+{/simu_top/dut_SCMU_0/dut_IO/a_cim\[7:0\]} \
+{/simu_top/dut_SCMU_0/dut_IO/a_in\[10:0\]} \
+{/simu_top/dut_SCMU_0/dut_IO/wrt_en} \
+{/simu_top/dut_SCMU_0/dut_IO/wrt} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[4:0\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[4\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[3\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[2\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[1\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/matrix_act\[4:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/col_en} \
+{/simu_top/dut_SCMU_0/dut_sramcim/sel_array\[15:0\]} \
+{/simu_top/dut_SCMU_0/dut_sramcim/q\[191:0\]} \
+{/simu_top/dut_SCMU_0/dut_sramcim/data_in_cim\[511:0\]} \
+{/simu_top/dut_SCMU_0/dut_outputFIFO/WR_EN} \
+{/simu_top/dut_SCMU_0/dut_outputFIFO/qin\[63:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/matrix_1} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/cim_quantize\[127:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/cim_input\[191:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/DUT_31/b6_input\[5:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/DUT_31/b4_output\[3:0\]} \
+}
+wvAddSignal -win $_nWave2 -group {"G2" \
+}
+wvSelectSignal -win $_nWave2 {( "G1" 22 )} 
+wvSetPosition -win $_nWave2 {("G1" 22)}
+wvGetSignalClose -win $_nWave2
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollUp -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollUp -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 0
+wvScrollDown -win $_nWave2 0
+wvScrollDown -win $_nWave2 0
+wvScrollDown -win $_nWave2 0
+wvGetSignalOpen -win $_nWave2
+wvGetSignalSetScope -win $_nWave2 "/SHIFTER"
+wvGetSignalSetScope -win $_nWave2 "/simu_top"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_CONTROLLER"
+wvGetSignalSetScope -win $_nWave2 \
+           "/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_IO"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_outputFIFO"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_sramcim"
+wvGetSignalSetScope -win $_nWave2 \
+           "/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/DUT_31"
+wvGetSignalSetScope -win $_nWave2 \
+           "/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/DUT_10"
+wvSetPosition -win $_nWave2 {("G1" 24)}
+wvSetPosition -win $_nWave2 {("G1" 24)}
+wvAddSignal -win $_nWave2 -clear
+wvAddSignal -win $_nWave2 -group {"G1" \
+{/simu_top/dut_SCMU_0/dut_IO/a_cim\[7:0\]} \
+{/simu_top/dut_SCMU_0/dut_IO/a_in\[10:0\]} \
+{/simu_top/dut_SCMU_0/dut_IO/wrt_en} \
+{/simu_top/dut_SCMU_0/dut_IO/wrt} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[4:0\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[4\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[3\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[2\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[1\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/matrix_act\[4:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/col_en} \
+{/simu_top/dut_SCMU_0/dut_sramcim/sel_array\[15:0\]} \
+{/simu_top/dut_SCMU_0/dut_sramcim/q\[191:0\]} \
+{/simu_top/dut_SCMU_0/dut_sramcim/data_in_cim\[511:0\]} \
+{/simu_top/dut_SCMU_0/dut_outputFIFO/WR_EN} \
+{/simu_top/dut_SCMU_0/dut_outputFIFO/qin\[63:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/matrix_1} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/cim_quantize\[127:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/cim_input\[191:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/DUT_31/b6_input\[5:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/DUT_31/b4_output\[3:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/DUT_10/b6_input\[5:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/DUT_10/b4_output\[3:0\]} \
+}
+wvAddSignal -win $_nWave2 -group {"G2" \
+}
+wvSelectSignal -win $_nWave2 {( "G1" 24 )} 
+wvSetPosition -win $_nWave2 {("G1" 24)}
+wvGetSignalClose -win $_nWave2
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 0
+wvGetSignalOpen -win $_nWave2
+wvGetSignalSetScope -win $_nWave2 "/SHIFTER"
+wvGetSignalSetScope -win $_nWave2 "/simu_top"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_CONTROLLER"
+wvGetSignalSetScope -win $_nWave2 \
+           "/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize"
+wvGetSignalSetScope -win $_nWave2 \
+           "/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/DUT_31"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_IO"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_outputFIFO"
+wvGetSignalSetScope -win $_nWave2 "/simu_top/dut_SCMU_0/dut_sramcim"
+wvGetSignalSetScope -win $_nWave2 \
+           "/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/DUT_10"
+wvGetSignalSetScope -win $_nWave2 \
+           "/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/DUT_22"
+wvGetSignalSetScope -win $_nWave2 \
+           "/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/QA_7"
+wvSetPosition -win $_nWave2 {("G1" 27)}
+wvSetPosition -win $_nWave2 {("G1" 27)}
+wvAddSignal -win $_nWave2 -clear
+wvAddSignal -win $_nWave2 -group {"G1" \
+{/simu_top/dut_SCMU_0/dut_IO/a_cim\[7:0\]} \
+{/simu_top/dut_SCMU_0/dut_IO/a_in\[10:0\]} \
+{/simu_top/dut_SCMU_0/dut_IO/wrt_en} \
+{/simu_top/dut_SCMU_0/dut_IO/wrt} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[4:0\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[4\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[3\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[2\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[1\]} \
+{/simu_top/dut_SCMU_0/matrix_act_inputfifo\[0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/matrix_act\[4:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/col_en} \
+{/simu_top/dut_SCMU_0/dut_sramcim/sel_array\[15:0\]} \
+{/simu_top/dut_SCMU_0/dut_sramcim/q\[191:0\]} \
+{/simu_top/dut_SCMU_0/dut_sramcim/data_in_cim\[511:0\]} \
+{/simu_top/dut_SCMU_0/dut_outputFIFO/WR_EN} \
+{/simu_top/dut_SCMU_0/dut_outputFIFO/qin\[63:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/matrix_1} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/cim_quantize\[127:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/cim_input\[191:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/DUT_31/b6_input\[5:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/DUT_31/b4_output\[3:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/DUT_10/b6_input\[5:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/DUT_10/b4_output\[3:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/QA_7/input_a\[3:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/QA_7/input_b\[3:0\]} \
+{/simu_top/dut_SCMU_0/dut_CONTROLLER/dut_quantize/QA_7/output_sum\[3:0\]} \
+}
+wvAddSignal -win $_nWave2 -group {"G2" \
+}
+wvSelectSignal -win $_nWave2 {( "G1" 27 )} 
+wvSetPosition -win $_nWave2 {("G1" 27)}
+wvGetSignalClose -win $_nWave2
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 0
+wvScrollDown -win $_nWave2 0
+wvScrollDown -win $_nWave2 0
+wvScrollUp -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollUp -win $_nWave2 1
+wvScrollUp -win $_nWave2 1
+wvScrollUp -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 0
+wvScrollDown -win $_nWave2 0
+wvScrollDown -win $_nWave2 0
+wvScrollDown -win $_nWave2 0
+wvScrollDown -win $_nWave2 0
+wvScrollDown -win $_nWave2 0
+wvScrollDown -win $_nWave2 0
+wvScrollDown -win $_nWave2 0
+wvScrollDown -win $_nWave2 0
+wvScrollDown -win $_nWave2 0
+wvScrollDown -win $_nWave2 0
+wvScrollDown -win $_nWave2 0
+wvScrollDown -win $_nWave2 0
+wvScrollDown -win $_nWave2 0
+wvScrollDown -win $_nWave2 0

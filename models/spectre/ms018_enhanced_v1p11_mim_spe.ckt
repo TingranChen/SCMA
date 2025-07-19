@@ -1,0 +1,65 @@
+// *Spectre Model Format
+simulator lang=spectre  insensitive=yes
+// *
+//* 
+//  No part of this file can be released without the consent of SMIC.
+//
+//*****************************************************************************************
+//      SMIC 0.18um Mixed Signal Enhanced 1.8V/3.3V SPICE Model  (for Spectre only)   *
+//*****************************************************************************************
+//
+//  Release version    : 1.11
+//
+//  Release date       : 10/14/2016
+//
+//  Simulation tool    : Cadence Spectre V10.1.1
+// * mim cap:
+//*        *-------------------------------------------------------------------------* 
+//*        |  mim cap type                  |  cspec = 1ff/um^2  |  cspec = 2ff/um^2 |
+//*        |=========================================================================| 
+//*        |   mim model                    |     mim            |     mim2          |
+//*        *-------------------------------------------------------------------------*
+// *
+// **************************************************************** 
+// *                 mim capacitor(cspec = 1ff/um^2)              * 
+// ****************************************************************
+// * area=wr*lr*mr, and this model is extracted from finger structure,15um*15um*1,20um*20um*1,25um*25um*1,30um*30um*1,40um*40um*1,50um*50um*1
+parameters sigma_mis_mim=0
+
+statistics {
+    mismatch {
+        vary sigma_mis_mim dist=gauss std=1/1
+        }
+    }
+subckt mim_ckt (n2 n1)
+parameters lr=25u wr=25u mismod_mim=1 mr=1 
+// *mismatch parameter
+parameters dc0_mis=ac0*geo_fac*sigma_mis_mim*mismod_mim
+parameters geo_fac=1/(lr*wr*mr)
+parameters ac0 = 3.16e-16
+parameters c0 = 9.69e-4+dmim+dc0_mis  
+parameters ctc1 = -2.1978e-5  
+parameters dt = temp 
+parameters cvc1 = 2.2742e-5  
+parameters cvc2 = -1.0135e-5 
+parameters tcoef = 1.0+ctc1*(dt-25.0)
+
+c1 ( n2 n1 ) bsource c=c0*lr*wr*tcoef*(1.0+v(n2,n1)*(cvc1+cvc2*v(n2,n1)))*mr
+ends mim_ckt
+// ******************************************************************************** 
+// *                 mim capacitor  (cspec = 2ff/um^2)                            * 
+// ********************************************************************************
+// * area=wr*lr*mr, and this model is extracted from finger structure,9um*9um*1,10um*10um*1,12um*12um*1,15um*15um*1,20um*20um*1,25um*25um*1,30um*30um*1,40um*40um*1,50um*50um*1
+subckt mim2_ckt (n2 n1)
+parameters lr=25u wr=25u mismod_mim=1 mr=1 
+parameters dmim2_mis = mismod_mim*sigma_mis_mim*geo_var
+parameters geo_var = ac0_mim/(wr*lr*mr)+bc0_mim/sqrt(wr*lr*mr)+cc0_mim   
+parameters c0 = 1.99e-03+dmim2+dmim2_mis  
+parameters ctc1 = 2.8737e-05 
+parameters cvc1 = 7.6813e-06 
+parameters cvc2 = 1.3589e-05 
+parameters tcoef = 1.0+ctc1*(temp-25.0)
+ 
+c1 ( n2 n1 ) bsource c=c0*lr*wr*tcoef*(1.0+v(n2,n1)*(cvc1+cvc2*v(n2,n1)))*mr
+ends mim2_ckt
+

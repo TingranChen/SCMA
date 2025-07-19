@@ -1,0 +1,948 @@
+*this file contains 1.8v and 3.3v corner model parameters.                            
+*corners for mosfet:   tt, ff, ss, snfp, fnsp are corners for global variation.
+*                      mc is for monte carlo simulation of global variation.
+*corners for bjt:      bjt_tt, bjt_ff, bjt_ss are corners for global variation. 
+*                      bjt_mc is for monte carlo simulation of global variation.
+*corner for diode:      dio_tt, dio_ff, dio_ss are corners for global variation.
+*corners for resistor: res_tt, res_ff, res_ss are corners for global variation. 
+*                      res_mc is for monte carlo simulation of global variation.
+*corners for varactor: var_tt, var_ff, var_ss are corners for global variation.
+*                      var_mc is for monte carlo simulation of global variation.
+*corners for mim:      mim_tt, mim_ff, mim_ss are corners for global variation. 
+*                      mim_mc is for monte carlo simulation of global variation.
+*this file should be used with the model parameter files 'ms018_enhanced_v1p11.mdl', 
+*                                                        'ms018_enhanced_v1p11_bjt.mdl', 
+*                                                        'ms018_enhanced_v1p11_res.mdl', 
+*                                                        'ms018_enhanced_v1p11_res.ckt', 
+*                                                        'ms018_enhanced_v1p11_dio.mdl',
+*                                                        'ms018_enhanced_v1p11_mim.ckt', 
+*                                                        'ms018_enhanced_v1p11_var.ckt',
+*                                                        'ms018_enhanced_v1p11_mis.mdl'.
+*no part of this file can be released without the consent of smic.
+
+
+.option gmindc=1e-14 
+.param
+********************************
+**       bsim  model          **
+********************************
+*1.8v core nmos (tt corner)
++dtoxe_n18      = 0            dxl_n18       = 0            dxw_n18       = 0 
++dcj_n18       = 0            dcjsw_n18     = 0            dcjswg_n18    = 0
++dcgdo_n18     = 0            dcgdl_n18     = 0            dcf_n18       =0
++dvth0_n18      = 0            dlvth0_n18     = 0            dpvth0_n18    = 0            
++du0_n18       = 0            dlu0_n18      = 0            dpu0_n18      = 0  
++dvsat_n18     = 0            dlvsat_n18    = 0            dpvsat_n18    = 0            
++dvoff_n18     = 0            dwvth0_n18     = 0            dwu0_n18      = 0  
+
+*1.8v core pmos (tt corner)
++dtoxe_p18      = 0            dxl_p18       = 0            dxw_p18       = 0 
++dcj_p18       = 0            dcjsw_p18     = 0            dcjswg_p18    = 0
++dcgdo_p18     = 0            dcgdl_p18     = 0            dcf_p18       =0
++dvth0_p18      = 0            dlvth0_p18     = 0            dpvth0_p18    = 0            
++du0_p18       = 0            dlu0_p18      = 0            dpu0_p18      = 0  
++dvsat_p18     = 0            dlvsat_p18    = 0            dpvsat_p18    = 0            
++dvoff_p18     = 0            dwvth0_p18     = 0            dwu0_p18      = 0  
++dlpe0_p18     = 0            dminv_p18     = 0            dlminv_p18    = 0     
+
+*1.8v core native nmos (tt corner)
++dtoxe_nt18      = 0            dxl_nt18       = 0            dxw_nt18       = 0 
++dcj_nt18       = 0            dcjsw_nt18     = 0            dcjswg_nt18    = 0
++dcgdo_nt18     = 0            dcgdl_nt18     = 0            dcf_nt18       =0
++dvth0_nt18      = 0            dlvth0_nt18     = 0            dpvth0_nt18    = 0            
++du0_nt18       = 0            dlu0_nt18      = 0            dpu0_nt18      = 0  
++dvsat_nt18     = 0            dlvsat_nt18    = 0            dpvsat_nt18    = 0            
++dvoff_nt18     = 0            dwvth0_nt18     = 0            dwu0_nt18      = 0 
+
+*nmvt18(TT corner)
++dtoxe_nmvt18= 0           dxl_nmvt18= 0             dxw_nmvt18= 0            
++dvth0_nmvt18= 0           dlvth0_nmvt18= 0          dwvth0_nmvt18= 0         
++dpvth0_nmvt18= 0          du0_nmvt18= 0             dlu0_nmvt18= 0           
++dwu0_nmvt18= 0            dpu0_nmvt18= 0            dvsat_nmvt18= 0          
++dpvsat_nmvt18= 0          dwvsat_nmvt18= 0          dlvsat_nmvt18= 0         
++dcjs_nmvt18 = 0           dcjsws_nmvt18 = 0         dcjswgs_nmvt18 = 0                 
++dcgdo_nmvt18 = 0          dcgsl_nmvt18 = 0          dcgso_nmvt18 = 0                   
++dcgdl_nmvt18 = 0          dcf_nmvt18 = 0                     
+
+*pmvt18(TT corner)
++dtoxe_pmvt18= 0           dxl_pmvt18= 0             dxw_pmvt18= 0            
++dvth0_pmvt18= 0           dlvth0_pmvt18= 0          dwvth0_pmvt18= 0         
++dpvth0_pmvt18= 0          du0_pmvt18= 0             dlu0_pmvt18= 0           
++dwu0_pmvt18= 0            dpu0_pmvt18= 0            dvsat_pmvt18= 0          
++dpvsat_pmvt18= 0          dwvsat_pmvt18= 0          dlvsat_pmvt18= 0         
++dcjs_pmvt18= 0            dcjsws_pmvt18= 0          dcjswgs_pmvt18= 0        
++dcgdo_pmvt18= 0           dcgso_pmvt18= 0           dcgdl_pmvt18= 0          
++dcgsl_pmvt18= 0           dcf_pmvt18=0
+
+*n33_ckt(TT corner)
++dtoxe_n33= 0              dxl_n33 = 0               dxw_n33 = 0              
++dcjs_n33= 0               dcjsws_n33= 0             dcjswgs_n33= 0           
++dcgdo_n33= 0              dcgdl_n33= 0              dcgso_n33= 0             
++dcgsl_n33= 0              dcf_n33 = 0               dvth0_n33= 0             
++dlvth0_n33= 0             dwvth0_n33= 0             dpvth0_n33= 0            
++du0_n33 = 0               dlu0_n33= 0               dwu0_n33= 0              
++dpu0_n33= 0               dvsat_n33= 0              dlvsat_n33= 0            
++dwvsat_n33= 0             dpvsat_n33= 0             djtsswgs_n33= 0          
++djtsswgd_n33= 0           dlagidl_n33= 0            dpagidl_n33= 0           
+
+*p33_ckt(TT corner)
++dtoxe_p33= 0              dxl_p33 = 0               dxw_p33 = 0              
++dcjs_p33= 0               dcjsws_p33= 0             dcjswgs_p33= 0           
++dcgdo_p33= 0              dcgso_p33= 0              dcgdl_p33= 0             
++dcgsl_p33= 0              dcf_p33 = 0               dvth0_p33= 0             
++dlvth0_p33= 0             dwvsat_p33= 0             dpvth0_p33= 0            
++du0_p33 = 0               dlu0_p33= 0               dwu0_p33= 0              
++dpu0_p33= 0               dvsat_p33= 0              dlvsat_p33= 0            
++dpvsat_p33= 0             dwvth0_p33= 0             dagidl_p33= 0            
++dlagidl_p33= 0            dwagidl_p33= 0            dpagidl_p33= 0           
+
+*3.3v mvt nmos (tt corner)
++dtoxe_nmvt33 = 0                   dxl_nmvt33 = 0                     dxw_nmvt33 = 0                     
++dcjs_nmvt33 = 0                    dcjsws_nmvt33 = 0                  dcjswgs_nmvt33 = 0                 
++dcgdo_nmvt33 = 0                   dcgdl_nmvt33 = 0                   dcgso_nmvt33 = 0                   
++dcgsl_nmvt33 = 0                   dcf_nmvt33 = 0                     dvth0_nmvt33 = 0                   
++dlvth0_nmvt33 = 0                  dwvth0_nmvt33 = 0                  dpvth0_nmvt33 = 0                  
++du0_nmvt33 = 0                     dlu0_nmvt33 = 0                    dwu0_nmvt33 = 0                    
++dvsat_nmvt33 = 0                   dlvsat_nmvt33 = 0                  dpvsat_nmvt33 = 0                  
++dpu0_nmvt33 = 0                    dwvsat_nmvt33 = 0                  dvoff_nmvt33 = 0
+
+*3.3v native mos (tt corner)
++dtoxe_nnt33 = 0                   dxl_nnt33 = 0                     dxw_nnt33 = 0                     
++dcjs_nnt33 = 0                    dcjsws_nnt33 = 0                  dcjswgs_nnt33 = 0                 
++dcgdo_nnt33 = 0                   dcgdl_nnt33 = 0                   dcgso_nnt33 = 0                   
++dcgsl_nnt33 = 0                   dcf_nnt33 = 0                     dvth0_nnt33 = 0                   
++dlvth0_nnt33 = 0                  dwvth0_nnt33 = 0                  dpvth0_nnt33 = 0                  
++du0_nnt33 = 0                     dlu0_nnt33 = 0                    dwu0_nnt33 = 0                    
++dvsat_nnt33 = 0                   dlvsat_nnt33 = 0                  dpvsat_nnt33 = 0                  
++dpu0_nnt33 = 0                    dwvsat_nnt33 = 0                  dvoff_nnt33 = 0
+
++sigma_mis_a=agauss(0,1,1)
++sigma_mis_b=agauss(0,1,1)
++sigma_mis_c=agauss(0,1,1)
++sigma_mis_d=agauss(0,1,1)
++sigma_mis_e=agauss(0,1,1)
++sigma_mis_f=agauss(0,1,1)
++sigma_mis_g=agauss(0,1,1)
++sigma_mis_h=agauss(0,1,1)
+
+*1.8v nmos (TT corner)
+.subckt n18_ckt d g s b w=1e-6 l=1e-6 sa=4.48e-006 sb=4.48e-006 sd='sdr' as='asr' ad='adr' ps='psr' pd='pdr' nrd='nrdr' nrs='nrsr' nf=1 mr=1 sca=0 scb=0 scc=0 mismod=1 
+.param 
++dmcgr = 2.7e-7
++dmcir = 2.7e-7
++sdr = '2*dmcgr'
++adr = '(nf*dmcgr+dmcir)*(w/nf)'
++asr = '(nf*dmcgr+dmcir)*(w/nf)'
++pdr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++psr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++nrdr = 'dmcgr/nf/(w/nf)'
++nrsr = 'dmcgr/nf/(w/nf)'
+******mismatch******
++dtoxe_n18_mis     = '0+atoxe_n18*geo_fac*sigma_mis_a*mismod'
++dvth0_n18_mis     = '0+avth0_n18*geo_fac*sigma_mis_b*mismod'
++du0_n18_mis       = '0+au0_n18*geo_fac*sigma_mis_c*mismod'
++dvsat_n18_mis     = '0+avsat_n18*geo_fac*sigma_mis_d*mismod'
+
++dtoxe_n18_mismatch         = '0+dtoxe_n18_mis'               
++dvth0_n18_mismatch         = '0+dvth0_n18_mis'  
++du0_n18_mismatch           = '0+du0_n18_mis'               
++dvsat_n18_mismatch         = '0+dvsat_n18_mis'  
+   
++geo_fac='1/sqrt(wef*lef*mr)'
++lef=l
++wef=w
++atoxe_n18=1e-024
++avth0_n18=3.6e-009
++avsat_n18 = 1e-012
++au0_n18   = 1.2e-010
+
+m1 d g s b n18_ckt w=w l=l sa=sa sb=sb sd=sd as=as ad=ad ps=ps pd=pd nrd=nrd nrs=nrs sca=sca scb=scb scc=scc nf=nf m=mr
+
+.inc 'ms018_enhanced_v1p11_mis.mdl'
+.ends n18_ckt
+
+*1.8v pmos (TT corner)
+.subckt p18_ckt d g s b w=1e-6 l=1e-6 sa=4.48e-006 sb=4.48e-006 sd='sdr' as='asr' ad='adr' ps='psr' pd='pdr' nrd='nrdr' nrs='nrsr' nf=1 mr=1 sca=0 scb=0 scc=0 mismod=1 
+.param 
++dmcgr = 2.7e-7
++dmcir = 2.7e-7
++sdr = '2*dmcgr'
++adr = '(nf*dmcgr+dmcir)*(w/nf)'
++asr = '(nf*dmcgr+dmcir)*(w/nf)'
++pdr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++psr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++nrdr = 'dmcgr/nf/(w/nf)'
++nrsr = 'dmcgr/nf/(w/nf)'
+******mismatch******
++dtoxe_p18_mis     = '0+atoxe_p18*geo_fac*sigma_mis_a*mismod'
++dvth0_p18_mis     = '0+avth0_p18*geo_fac*sigma_mis_b*mismod'
++du0_p18_mis     = '0+au0_p18*geo_fac*sigma_mis_c*mismod'
++dvoff_p18_mis     = '0+avoff_p18*geo_fac*sigma_mis_d*mismod'
++dvsat_p18_mis     = '0+avsat_p18*geo_fac*sigma_mis_e*mismod'
+
++dtoxe_p18_mismatch         = '0+dtoxe_p18_mis'               
++dvth0_p18_mismatch         = '0+dvth0_p18_mis'  
++du0_p18_mismatch           = '0+du0_p18_mis'               
++dvoff_p18_mismatch         = '0+dvoff_p18_mis'  
++dvsat_p18_mismatch         = '0+dvsat_p18_mis'  
+   
++geo_fac='1/sqrt(wef*lef*mr)'
++lef=l
++wef=w
++atoxe_p18= 1e-024
++avth0_p18= 3e-009
++avoff_p18 = 8.28e-012
++au0_p18   = 3.8e-011
++avsat_p18 = 1e-07
+
+m1 d g s b p18_ckt w=w l=l sa=sa sb=sb sd=sd as=as ad=ad ps=ps pd=pd nrd=nrd nrs=nrs sca=sca scb=scb scc=scc nf=nf m=mr
+
+.inc 'ms018_enhanced_v1p11_mis.mdl'
+.ends p18_ckt
+
+*1.8v ntive nmos (TT corner)
+.subckt nnt18_ckt d g s b w=1e-6 l=1e-6 sa=4.54e-006 sb=4.54e-006 sd='sdr' as='asr' ad='adr' ps='psr' pd='pdr' nrd='nrdr' nrs='nrsr' nf=1 mr=1 mismod=1 
+.param 
++dmcgr = 3.7e-007
++dmcir = 2.7e-007
++sdr = '2*dmcgr'
++adr = '(nf*dmcgr+dmcir)*(w/nf)'
++asr = '(nf*dmcgr+dmcir)*(w/nf)'
++pdr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++psr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++nrdr = 'dmcgr/nf/(w/nf)'
++nrsr = 'dmcgr/nf/(w/nf)'
+
+
++dtoxe_nnt18_mis     = '0+atoxe_nnt18*geo_fac*sigma_mis_a*mismod'
++dvth0_nnt18_mis     = '0+avth0_nnt18*geo_fac*sigma_mis_b*mismod'
++dvoff_nnt18_mis     = '0+avoff_nnt18*geo_fac*sigma_mis_c*mismod'
++du0_nnt18_mis       = '0+au0_nnt18*geo_fac*sigma_mis_d*mismod'
++dvsat_nnt18_mis     = '0+avsat_nnt18*geo_fac*sigma_mis_e*mismod'
++dpdiblc2_nnt18_mis  = '0+apdiblc2_nnt18*geo_fac*sigma_mis_f*mismod'
+
+
++dtoxe_nnt18_mismatch         = '0+dtoxe_nnt18_mis'               
++dvth0_nnt18_mismatch         = '0+dvth0_nnt18_mis'  
++du0_nnt18_mismatch           = '0+du0_nnt18_mis'               
++dvsat_nnt18_mismatch         = '0+dvsat_nnt18_mis'  
++dvoff_nnt18_mismatch         = '0+dvoff_nnt18_mis' 
++dpdiblc2_nnt18_mismatch      = '0+dpdiblc2_nnt18_mis'   
+   
++geo_fac='1/sqrt(wef*lef*mr)'
++lef=l
++wef=w
++atoxe_nnt18=1e-022
++avth0_nnt18=2.4e-009
++avsat_nnt18 = 5e-004
++au0_nnt18   = 2.34e-010
++avoff_nnt18 = 4.6e-009
++apdiblc2_nnt18 = 3.3E-009
+
+m1 d g s b nnt18_ckt w=w l=l sa=sa sb=sb sd=sd as=as ad=ad ps=ps pd=pd nrd=nrd nrs=nrs nf=nf m=mr
+
+.inc 'ms018_enhanced_v1p11_mis.mdl'
+.ends nnt18_ckt
+
+*1.8v dnw nmos (TT corner)
+.subckt n18_dnw_ckt d g s b t b2 w=1e-6 l=1e-6 sa=4.48e-006 sb=4.48e-006 sd='sdr' as='asr' ad='adr' ps='psr' pd='pdr' nrd='nrdr' nrs='nrsr' nf=1 mr=1 sca=0 scb=0 scc=0 mismod=1 
+.param 
++dmcgr = 2.7e-7
++dmcir = 2.7e-7
++sdr = '2*dmcgr'
++adr = '(nf*dmcgr+dmcir)*(w/nf)'
++asr = '(nf*dmcgr+dmcir)*(w/nf)'
++pdr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++psr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++nrdr = 'dmcgr/nf/(w/nf)'
++nrsr = 'dmcgr/nf/(w/nf)'
+******mismatch******
++dtoxe_n18_dnw_mis     = '0+atoxe_n18_dnw*geo_fac*sigma_mis_a*mismod'
++dvth0_n18_dnw_mis     = '0+avth0_n18_dnw*geo_fac*sigma_mis_b*mismod'
++du0_n18_dnw_mis       = '0+au0_n18_dnw*geo_fac*sigma_mis_c*mismod'
++dvsat_n18_dnw_mis     = '0+avsat_n18_dnw*geo_fac*sigma_mis_d*mismod'
+
++dtoxe_n18_dnw_mismatch         = 'dtoxe_n18_dnw+dtoxe_n18_dnw_mis'               
++dvth0_n18_dnw_mismatch         = 'dvth0_n18_dnw+dvth0_n18_dnw_mis'  
++du0_n18_dnw_mismatch           = 'du0_n18_dnw+du0_n18_dnw_mis'               
++dvsat_n18_dnw_mismatch         = 'dvsat_n18_dnw+dvsat_n18_dnw_mis' 
+   
++geo_fac='1/sqrt(wef*lef*mr)'
++lef=l
++wef=w
++atoxe_n18_dnw=1e-024
++avth0_n18_dnw=3.6e-009
++avsat_n18_dnw = 1e-012
++au0_n18_dnw   = 1.2e-010
+
++dtoxe_n18_dnw      = 0            dxl_n18_dnw       = 0            dxw_n18_dnw       = 0 
++dcj_n18_dnw       = 0            dcjsw_n18_dnw     = 0            dcjswg_n18_dnw    = 0
++dcgdo_n18_dnw     = 0            dcgdl_n18_dnw     = 0            dcf_n18_dnw       =0
++dvth0_n18_dnw      = 0            dlvth0_n18_dnw     = 0            dpvth0_n18_dnw    = 0            
++du0_n18_dnw       = 0            dlu0_n18_dnw      = 0            dpu0_n18_dnw      = 0  
++dvsat_n18_dnw     = 0            dlvsat_n18_dnw    = 0            dpvsat_n18_dnw    = 0            
++dvoff_n18_dnw     = 0            dwvth0_n18_dnw     = 0            dwu0_n18_dnw      = 0  
+
+m1 d g s b n18_dnw_ckt w=w l=l sa=sa sb=sb sd=sd as=as ad=ad ps=ps pd=pd nrd=nrd nrs=nrs sca=sca scb=scb scc=scc nf=nf m=mr
+
+.inc 'ms018_enhanced_v1p11_mis.mdl'
+.ends n18_dnw_ckt
+
+*1.8v dnw nmos (TT corner)
+.subckt n18_dnw_4t_ckt d g s b w=1e-6 l=1e-6 sa=4.48e-006 sb=4.48e-006 sd='sdr' as='asr' ad='adr' ps='psr' pd='pdr' nrd='nrdr' nrs='nrsr' nf=1 mr=1 sca=0 scb=0 scc=0 mismod=1 
+.param 
++dmcgr = 2.7e-7
++dmcir = 2.7e-7
++sdr = '2*dmcgr'
++adr = '(nf*dmcgr+dmcir)*(w/nf)'
++asr = '(nf*dmcgr+dmcir)*(w/nf)'
++pdr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++psr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++nrdr = 'dmcgr/nf/(w/nf)'
++nrsr = 'dmcgr/nf/(w/nf)'
+******mismatch******
++dtoxe_n18_dnw_mis     = '0+atoxe_n18_dnw*geo_fac*sigma_mis_a*mismod'
++dvth0_n18_dnw_mis     = '0+avth0_n18_dnw*geo_fac*sigma_mis_b*mismod'
++du0_n18_dnw_mis       = '0+au0_n18_dnw*geo_fac*sigma_mis_c*mismod'
++dvsat_n18_dnw_mis     = '0+avsat_n18_dnw*geo_fac*sigma_mis_d*mismod'
+
++dtoxe_n18_dnw_mismatch         = 'dtoxe_n18_dnw+dtoxe_n18_dnw_mis'               
++dvth0_n18_dnw_mismatch         = 'dvth0_n18_dnw+dvth0_n18_dnw_mis'  
++du0_n18_dnw_mismatch           = 'du0_n18_dnw+du0_n18_dnw_mis'               
++dvsat_n18_dnw_mismatch         = 'dvsat_n18_dnw+dvsat_n18_dnw_mis'
+   
++geo_fac='1/sqrt(wef*lef*mr)'
++lef=l
++wef=w
++atoxe_n18_dnw=1e-024
++avth0_n18_dnw=3.6e-009
++avsat_n18_dnw = 1e-012
++au0_n18_dnw   = 1.2e-010
+
++dtoxe_n18_dnw      = 0            dxl_n18_dnw       = 0            dxw_n18_dnw       = 0 
++dcj_n18_dnw       = 0            dcjsw_n18_dnw     = 0            dcjswg_n18_dnw    = 0
++dcgdo_n18_dnw     = 0            dcgdl_n18_dnw     = 0            dcf_n18_dnw       =0
++dvth0_n18_dnw      = 0            dlvth0_n18_dnw     = 0            dpvth0_n18_dnw    = 0            
++du0_n18_dnw       = 0            dlu0_n18_dnw      = 0            dpu0_n18_dnw      = 0  
++dvsat_n18_dnw     = 0            dlvsat_n18_dnw    = 0            dpvsat_n18_dnw    = 0            
++dvoff_n18_dnw     = 0            dwvth0_n18_dnw     = 0            dwu0_n18_dnw      = 0  
+
+m1 d g s b n18_dnw_4t_ckt w=w l=l sa=sa sb=sb sd=sd as=as ad=ad ps=ps pd=pd nrd=nrd nrs=nrs sca=sca scb=scb scc=scc nf=nf m=mr
+
+.inc 'ms018_enhanced_v1p11_mis.mdl'
+.ends n18_dnw_4t_ckt
+
+*1.8v dnw pmos (TT corner)
+.subckt p18_dnw_ckt d g s b b2 w=1e-6 l=1e-6 sa=4.48e-006 sb=4.48e-006 sd='sdr' as='asr' ad='adr' ps='psr' pd='pdr' nrd='nrdr' nrs='nrsr' nf=1 mr=1 sca=0 scb=0 scc=0 mismod=1 
+.param 
++dmcgr = 2.7e-7
++dmcir = 2.7e-7
++sdr = '2*dmcgr'
++adr = '(nf*dmcgr+dmcir)*(w/nf)'
++asr = '(nf*dmcgr+dmcir)*(w/nf)'
++pdr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++psr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++nrdr = 'dmcgr/nf/(w/nf)'
++nrsr = 'dmcgr/nf/(w/nf)'
+******mismatch******
++dtoxe_p18_dnw_mis     = '0+atoxe_p18_dnw*geo_fac*sigma_mis_a*mismod'
++dvth0_p18_dnw_mis     = '0+avth0_p18_dnw*geo_fac*sigma_mis_b*mismod'
++du0_p18_dnw_mis     = '0+au0_p18_dnw*geo_fac*sigma_mis_c*mismod'
++dvoff_p18_dnw_mis     = '0+avoff_p18_dnw*geo_fac*sigma_mis_d*mismod'
++dvsat_p18_dnw_mis     = '0+avsat_p18_dnw*geo_fac*sigma_mis_e*mismod'
+
++dtoxe_p18_dnw_mismatch         = 'dtoxe_p18_dnw+dtoxe_p18_dnw_mis'               
++dvth0_p18_dnw_mismatch         = 'dvth0_p18_dnw+dvth0_p18_dnw_mis'  
++du0_p18_dnw_mismatch           = 'du0_p18_dnw+du0_p18_dnw_mis'               
++dvoff_p18_dnw_mismatch         = 'dvoff_p18_dnw+dvoff_p18_dnw_mis'  
++dvsat_p18_dnw_mismatch         = 'dpvsat_p18_dnw+dvsat_p18_dnw_mis'  
+   
++geo_fac='1/sqrt(wef*lef*mr)'
++lef=l
++wef=w
++atoxe_p18_dnw= 1e-024
++avth0_p18_dnw= 3e-009
++avoff_p18_dnw = 8.28e-012
++au0_p18_dnw   = 3.8e-011
++avsat_p18_dnw = 1e-07
+
++dtoxe_p18_dnw      = 0            dxl_p18_dnw       = 0            dxw_p18_dnw       = 0 
++dcj_p18_dnw       = 0            dcjsw_p18_dnw     = 0            dcjswg_p18_dnw    = 0
++dcgdo_p18_dnw     = 0            dcgdl_p18_dnw     = 0            dcf_p18_dnw       =0
++dvth0_p18_dnw      = 0            dlvth0_p18_dnw     = 0            dpvth0_p18_dnw    = 0            
++du0_p18_dnw       = 0            dlu0_p18_dnw      = 0            dpu0_p18_dnw      = 0  
++dvsat_p18_dnw     = 0            dlvsat_p18_dnw    = 0            dpvsat_p18_dnw    = 0            
++dvoff_p18_dnw     = 0            dwvth0_p18_dnw     = 0            dwu0_p18_dnw      = 0  
++dlpe0_p18_dnw     = 0            dminv_p18_dnw     = 0            dlminv_p18_dnw    = 0    
+
+m1 d g s b p18_dnw_ckt w=w l=l sa=sa sb=sb sd=sd as=as ad=ad ps=ps pd=pd nrd=nrd nrs=nrs sca=sca scb=scb scc=scc nf=nf m=mr
+
+.inc 'ms018_enhanced_v1p11_mis.mdl'
+.ends p18_dnw_ckt
+
+*1.8v pmos (TT corner)
+.subckt p18_dnw_4t_ckt d g s b w=1e-6 l=1e-6 sa=4.48e-006 sb=4.48e-006 sd='sdr' as='asr' ad='adr' ps='psr' pd='pdr' nrd='nrdr' nrs='nrsr' nf=1 mr=1 sca=0 scb=0 scc=0 mismod=1 
+.param 
++dmcgr = 2.7e-7
++dmcir = 2.7e-7
++sdr = '2*dmcgr'
++adr = '(nf*dmcgr+dmcir)*(w/nf)'
++asr = '(nf*dmcgr+dmcir)*(w/nf)'
++pdr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++psr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++nrdr = 'dmcgr/nf/(w/nf)'
++nrsr = 'dmcgr/nf/(w/nf)'
+******mismatch******
++dtoxe_p18_dnw_mis     = '0+atoxe_p18_dnw*geo_fac*sigma_mis_a*mismod'
++dvth0_p18_dnw_mis     = '0+avth0_p18_dnw*geo_fac*sigma_mis_b*mismod'
++du0_p18_dnw_mis     = '0+au0_p18_dnw*geo_fac*sigma_mis_c*mismod'
++dvoff_p18_dnw_mis     = '0+avoff_p18_dnw*geo_fac*sigma_mis_d*mismod'
++dvsat_p18_dnw_mis     = '0+avsat_p18_dnw*geo_fac*sigma_mis_e*mismod'
+
++dtoxe_p18_dnw_mismatch         = 'dtoxe_p18_dnw+dtoxe_p18_dnw_mis'               
++dvth0_p18_dnw_mismatch         = 'dvth0_p18_dnw+dvth0_p18_dnw_mis'  
++du0_p18_dnw_mismatch           = 'du0_p18_dnw+du0_p18_dnw_mis'               
++dvoff_p18_dnw_mismatch         = 'dvoff_p18_dnw+dvoff_p18_dnw_mis'  
++dvsat_p18_dnw_mismatch         = 'dpvsat_p18_dnw+dvsat_p18_dnw_mis'
+   
++geo_fac='1/sqrt(wef*lef*mr)'
++lef=l
++wef=w
++atoxe_p18_dnw= 1e-024
++avth0_p18_dnw= 3e-009
++avoff_p18_dnw = 8.28e-012
++au0_p18_dnw   = 3.8e-011
++avsat_p18_dnw = 1e-07
+
++dtoxe_p18_dnw      = 0            dxl_p18_dnw       = 0            dxw_p18_dnw       = 0 
++dcj_p18_dnw       = 0            dcjsw_p18_dnw     = 0            dcjswg_p18_dnw    = 0
++dcgdo_p18_dnw     = 0            dcgdl_p18_dnw     = 0            dcf_p18_dnw       =0
++dvth0_p18_dnw      = 0            dlvth0_p18_dnw     = 0            dpvth0_p18_dnw    = 0            
++du0_p18_dnw       = 0            dlu0_p18_dnw      = 0            dpu0_p18_dnw      = 0  
++dvsat_p18_dnw     = 0            dlvsat_p18_dnw    = 0            dpvsat_p18_dnw    = 0            
++dvoff_p18_dnw     = 0            dwvth0_p18_dnw     = 0            dwu0_p18_dnw      = 0  
++dlpe0_p18_dnw     = 0            dminv_p18_dnw     = 0            dlminv_p18_dnw    = 0    
+
+m1 d g s b p18_dnw_4t_ckt w=w l=l sa=sa sb=sb sd=sd as=as ad=ad ps=ps pd=pd nrd=nrd nrs=nrs sca=sca scb=scb scc=scc nf=nf m=mr
+
+.inc 'ms018_enhanced_v1p11_mis.mdl'
+.ends p18_dnw_4t_ckt
+
+*nmvt18_ckt(TT corner)
+.subckt nmvt18_ckt d g s b  w=1e-6 l=1e-6 sa=4.54E-6 sb=4.54E-6 sd='sdr' as='asr' ad='adr' ps='psr' pd='pdr' nrd='nrdr' nrs='nrsr' nf=1 mr=1 sca=0 scb=0 scc=0 mismod=1   
+.param
++dmcgr = 3.7E-7
++dmcir = 3.7e-7
++sdr = '2*dmcgr'
++adr = '(nf*dmcgr+dmcir)*(w/nf)'
++asr = '(nf*dmcgr+dmcir)*(w/nf)'
++pdr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++psr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++nrdr = 'dmcgr/nf/(w/nf)'
++nrsr = 'dmcgr/nf/(w/nf)'
+******mismatch******
++xlr = 1E-8                    
++xwr = 1E-8         
++lef = 'l+xlr'                
++wef = 'w/nf+xwr'             
++geo_fac = '1/sqrt(wef*lef*nf*mr)' 
++atoxe_nmvt18 = 5E-19          
++axl_nmvt18 = 6E-17            
++axw_nmvt18 = 6E-17            
++avth0_nmvt18 = 2.2E-9       
++au0_nmvt18 = 2.4E-10        
++avoff_nmvt18 = 1.6E-9        
++avsat_nmvt18 = 2.5E-4 
++aeta0_nmvt18 = 0
+        
++dtoxe_nmvt18_mis = '0+atoxe_nmvt18*geo_fac*sigma_mis_a*mismod'
++dxl_nmvt18_mis = '0+axl_nmvt18*geo_fac*sigma_mis_b*mismod'
++dxw_nmvt18_mis = '0+axw_nmvt18*geo_fac*sigma_mis_c*mismod'
++dvth0_nmvt18_mis = '0+avth0_nmvt18*geo_fac*sigma_mis_d*mismod'
++du0_nmvt18_mis = '0+au0_nmvt18*geo_fac*sigma_mis_e*mismod'
++dvoff_nmvt18_mis = '0+avoff_nmvt18*geo_fac*sigma_mis_f*mismod'
++dvsat_nmvt18_mis = '0+avsat_nmvt18*geo_fac*sigma_mis_g*mismod'
++deta0_nmvt18_mis = '0+aeta0_nmvt18*geo_fac*sigma_mis_h*mismod'
+
++dtoxe_nmvt18_mismatch = '0+dtoxe_nmvt18_mis'
++dxl_nmvt18_mismatch ='0+dxl_nmvt18_mis'
++dxw_nmvt18_mismatch ='0+dxw_nmvt18_mis'
++dvth0_nmvt18_mismatch='0+dvth0_nmvt18_mis'
++du0_nmvt18_mismatch ='0+du0_nmvt18_mis'
++dvoff_nmvt18_mismatch ='0+dvoff_nmvt18_mis'
++dvsat_nmvt18_mismatch ='0+dvsat_nmvt18_mis'
++deta0_nmvt18_mismatch = '0+deta0_nmvt18_mis'
+M1 d g s b nmvt18_ckt w=w l=l sa=sa sb=sb sd=sd as=as ad=ad ps=ps pd=pd nrd=nrd nrs=nrs sca=sca scb=scb scc=scc nf=nf m=mr
+.inc 'ms018_enhanced_v1p11_mis.mdl'
+.ends nmvt18_ckt
+
+*pmvt18_ckt(TT corner)
+.subckt pmvt18_ckt d g s b  w=1e-6 l=1e-6 sa=4.54E-6 sb=4.54E-6 sd='sdr' as='asr' ad='adr' ps='psr' pd='pdr' nrd='nrdr' nrs='nrsr' nf=1 mr=1 sca=0 scb=0 scc=0 mismod=1   
+.param
++dmcgr = 3.7E-7
++dmcir = 3.7e-7
++sdr = '2*dmcgr'
++adr = '(nf*dmcgr+dmcir)*(w/nf)'
++asr = '(nf*dmcgr+dmcir)*(w/nf)'
++pdr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++psr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++nrdr = 'dmcgr/nf/(w/nf)'
++nrsr = 'dmcgr/nf/(w/nf)'
+******mismatch******
++xlr = 1E-8                    
++xwr = 1E-8         
++lef = 'l+xlr'                
++wef = 'w/nf+xwr'             
++geo_fac = '1/sqrt(wef*lef*nf*mr)' 
++atoxe_p18mvt = 5E-19          
++axl_p18mvt = 6E-17            
++axw_p18mvt = 6E-17            
++avth0_p18mvt = -3.3E-9        
++au0_p18mvt = 4.5E-11          
++avoff_p18mvt = 0              
++avsat_p18mvt = 0              
++aeta0_p18mvt = 0  
+            
++dtoxe_pmvt18_mis = '0+atoxe_p18mvt*geo_fac*sigma_mis_a*mismod'
++dxl_pmvt18_mis = '0+axl_p18mvt*geo_fac*sigma_mis_b*mismod'
++dxw_pmvt18_mis = '0+axw_p18mvt*geo_fac*sigma_mis_c*mismod'
++dvth0_pmvt18_mis = '0+avth0_p18mvt*geo_fac*sigma_mis_d*mismod'
++du0_pmvt18_mis = '0+au0_p18mvt*geo_fac*sigma_mis_e*mismod'
++dvoff_pmvt18_mis = '0+avoff_p18mvt*geo_fac*sigma_mis_f*mismod'
++dvsat_pmvt18_mis = '0+avsat_p18mvt*geo_fac*sigma_mis_g*mismod'
++deta0_pmvt18_mis = '0+aeta0_p18mvt*geo_fac*sigma_mis_h*mismod'
+
++dtoxe_pmvt18_mismatch='0+dtoxe_pmvt18_mis'
++dxl_pmvt18_mismatch ='0+dxl_pmvt18_mis'
++dxw_pmvt18_mismatch ='0+dxw_pmvt18_mis'
++dvth0_pmvt18_mismatch='0+dvth0_pmvt18_mis'
++du0_pmvt18_mismatch ='0+du0_pmvt18_mis'
++dvoff_pmvt18_mismatch='0+dvoff_pmvt18_mis'
++dvsat_pmvt18_mismatch='0+dvsat_pmvt18_mis'
++deta0_pmvt18_mismatch='0+deta0_pmvt18_mis'
+
+M1 d g s b pmvt18_ckt w=w l=l sa=sa sb=sb sd=sd as=as ad=ad ps=ps pd=pd nrd=nrd nrs=nrs sca=sca scb=scb scc=scc nf=nf m=mr
+.inc 'ms018_enhanced_v1p11_mis.mdl'
+.ends pmvt18_ckt
+
+*n33_ckt(TT corner)
+.subckt n33_ckt d g s b  w=1e-6 l=1e-6 sa=5.33e-6 sb=5.33e-6 sd='sdr' as='asr' ad='adr' ps='psr' pd='pdr' nrd='nrdr' nrs='nrsr' nf=1 mr=1 sca=0 scb=0 scc=0 mismod=1   
+.param
++dmcgr = 2.7e-007
++dmcir = 2.7e-007
++sdr = '2*dmcgr'
++adr = '(nf*dmcgr+dmcir)*(w/nf)'
++asr = '(nf*dmcgr+dmcir)*(w/nf)'
++pdr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++psr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++nrdr = 'dmcgr/nf/(w/nf)'
++nrsr = 'dmcgr/nf/(w/nf)'
+******mismatch******
++xlr = 1E-8                    
++xwr = 1E-8         
++lef = 'l+xlr'                
++wef = 'w/nf+xwr'             
++geo_fac = '1/sqrt(wef*lef*nf*mr)' 
++atoxe_n33 = 5E-19             
++axl_n33 = 6E-17              
++axw_n33 = 6E-17              
++avth0_n33 = 8E-9            
++au0_n33 = 1.55E-10          
++avoff_n33 = 7e-9             
++avsat_n33 = 0
+
++dtoxe_n33_mis = 'dtoxe_n33+atoxe_n33*geo_fac*sigma_mis_a*mismod'
++dxl_n33_mis = 'dxl_n33+axl_n33*geo_fac*sigma_mis_b*mismod'
++dxw_n33_mis = 'dxw_n33+axw_n33*geo_fac*sigma_mis_c*mismod'
++dvth0_n33_mis = 'dvth0_n33+avth0_n33*geo_fac*sigma_mis_d*mismod'
++du0_n33_mis = 'du0_n33+au0_n33*geo_fac*sigma_mis_e*mismod'
++dvoff_n33_mis = '0+avoff_n33*geo_fac*sigma_mis_f*mismod'
++dvsat_n33_mis = 'dvsat_n33+avsat_n33*geo_fac*sigma_mis_g*mismod'
+
++dtoxe_n33_mismatch = '0+dtoxe_n33_mis'
++dxl_n33_mismatch ='0+dxl_n33_mis'
++dxw_n33_mismatch ='0+dxw_n33_mis'
++dvth0_n33_mismatch='0+dvth0_n33_mis'
++du0_n33_mismatch ='0+du0_n33_mis'
++dvoff_n33_mismatch ='0+dvoff_n33_mis'
++dvsat_n33_mismatch ='0+dvsat_n33_mis'
+M1 d g s b n33_ckt w=w l=l sa=sa sb=sb sd=sd as=as ad=ad ps=ps pd=pd nrd=nrd nrs=nrs sca=sca scb=scb scc=scc nf=nf m=mr
+.inc 'ms018_enhanced_v1p11_mis.mdl'
+.ends n33_ckt
+
+*p33_ckt(TT corner)
+.subckt p33_ckt d g s b  w=1e-6 l=1e-6 sa=5.33e-6 sb=5.33e-6 sd='sdr' as='asr' ad='adr' ps='psr' pd='pdr' nrd='nrdr' nrs='nrsr' nf=1 mr=1 sca=0 scb=0 scc=0 mismod=1   
+.param
++dmcgr = 2.7e-007
++dmcir = 2.7e-007
++sdr = '2*dmcgr'
++adr = '(nf*dmcgr+dmcir)*(w/nf)'
++asr = '(nf*dmcgr+dmcir)*(w/nf)'
++pdr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++psr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++nrdr = 'dmcgr/nf/(w/nf)'
++nrsr = 'dmcgr/nf/(w/nf)'
+******mismatch******
++xlr = 1E-8                    
++xwr = 1E-8         
++lef = 'l+xlr'                
++wef = 'w/nf+xwr'             
++geo_fac = '1/sqrt(wef*lef*nf*mr)' 
+
++atoxe_p33 = 5E-19             
++axl_p33 = 6E-17               
++axw_p33 = 6E-17               
++avth0_p33 = 3.30E-9           
++au0_p33 = 3.65E-11            
++avoff_p33 = -2.6E-9           
++aeta0_p33 = 0                 
++avsat_p33 = -1.65E-3          
+
++dtoxe_p33_mis = 'dtoxe_p33+atoxe_p33*geo_fac*sigma_mis_a*mismod'
++dxl_p33_mis = 'dxl_p33+axl_p33*geo_fac*sigma_mis_b*mismod'
++dxw_p33_mis = 'dxw_p33+axw_p33*geo_fac*sigma_mis_c*mismod'
++dvth0_p33_mis = 'dvth0_p33+avth0_p33*geo_fac*sigma_mis_d*mismod'
++du0_p33_mis = 'du0_p33+au0_p33*geo_fac*sigma_mis_e*mismod'
++dvoff_p33_mis = '0+avoff_p33*geo_fac*sigma_mis_f*mismod'
++dvsat_p33_mis = 'dvsat_p33+avsat_p33*geo_fac*sigma_mis_g*mismod'
++deta0_p33_mis = '0+aeta0_p33*geo_fac*sigma_mis_h*mismod'
+
++dtoxe_p33_mismatch = '0+dtoxe_p33_mis'
++dxl_p33_mismatch ='0+dxl_p33_mis'
++dxw_p33_mismatch ='0+dxw_p33_mis'
++dvth0_p33_mismatch='0+dvth0_p33_mis'
++du0_p33_mismatch ='0+du0_p33_mis'
++dvoff_p33_mismatch ='0+dvoff_p33_mis'
++dvsat_p33_mismatch ='0+dvsat_p33_mis'
++deta0_p33_mismatch = '0+deta0_p33_mis'
+M1 d g s b p33_ckt w=w l=l sa=sa sb=sb sd=sd as=as ad=ad ps=ps pd=pd nrd=nrd nrs=nrs sca=sca scb=scb scc=scc nf=nf m=mr
+.inc 'ms018_enhanced_v1p11_mis.mdl'
+.ends p33_ckt
+
+*n33_dnw_ckt(TT corner)
+.subckt n33_dnw_ckt d g s b t b2 w=1e-6 l=1e-6 sa=5.33e-6 sb=5.33e-6 sd='sdr' as='asr' ad='adr' ps='psr' pd='pdr' nrd='nrdr' nrs='nrsr' nf=1 mr=1 sca=0 scb=0 scc=0 mismod=1   
+.param
++dmcgr = 2.7e-007
++dmcir = 2.7e-007
++sdr = '2*dmcgr'
++adr = '(nf*dmcgr+dmcir)*(w/nf)'
++asr = '(nf*dmcgr+dmcir)*(w/nf)'
++pdr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++psr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++nrdr = 'dmcgr/nf/(w/nf)'
++nrsr = 'dmcgr/nf/(w/nf)'
+******mismatch******
++xlr = 1E-8                    
++xwr = 1E-8         
++lef = 'l+xlr'                
++wef = 'w/nf+xwr'             
++geo_fac = '1/sqrt(wef*lef*nf*mr)' 
++atoxe_n33_dnw = 5E-19             
++axl_n33_dnw = 6E-17              
++axw_n33_dnw = 6E-17              
++avth0_n33_dnw = 8E-9            
++au0_n33_dnw = 1.55E-10          
++avoff_n33_dnw = 7e-9             
++avsat_n33_dnw = 0
+
++dtoxe_n33_dnw_mis = 'dtoxe_n33_dnw+atoxe_n33_dnw*geo_fac*sigma_mis_a*mismod'
++dxl_n33_dnw_mis = 'dxl_n33_dnw+axl_n33_dnw*geo_fac*sigma_mis_b*mismod'
++dxw_n33_dnw_mis = 'dxw_n33_dnw+axw_n33_dnw*geo_fac*sigma_mis_c*mismod'
++dvth0_n33_dnw_mis = 'dvth0_n33_dnw+avth0_n33_dnw*geo_fac*sigma_mis_d*mismod'
++du0_n33_dnw_mis = 'du0_n33_dnw+au0_n33_dnw*geo_fac*sigma_mis_e*mismod'
++dvoff_n33_dnw_mis = '0+avoff_n33_dnw*geo_fac*sigma_mis_f*mismod'
++dvsat_n33_dnw_mis = 'dvsat_n33_dnw+avsat_n33_dnw*geo_fac*sigma_mis_g*mismod'
+
++dtoxe_n33_dnw_mismatch = '0+dtoxe_n33_dnw_mis'
++dxl_n33_dnw_mismatch ='0+dxl_n33_dnw_mis'
++dxw_n33_dnw_mismatch ='0+dxw_n33_dnw_mis'
++dvth0_n33_dnw_mismatch='0+dvth0_n33_dnw_mis'
++du0_n33_dnw_mismatch ='0+du0_n33_dnw_mis'
++dvoff_n33_dnw_mismatch ='0+dvoff_n33_dnw_mis'
++dvsat_n33_dnw_mismatch ='0+dvsat_n33_dnw_mis'
+
+*n33_dnw_ckt(TT corner)
++dtoxe_n33_dnw= 0              dxl_n33_dnw = 0               dxw_n33_dnw = 0              
++dcjs_n33_dnw= 0               dcjsws_n33_dnw= 0             dcjswgs_n33_dnw= 0           
++dcgdo_n33_dnw= 0              dcgdl_n33_dnw= 0              dcgso_n33_dnw= 0             
++dcgsl_n33_dnw= 0              dcf_n33_dnw = 0               dvth0_n33_dnw= 0             
++dlvth0_n33_dnw= 0             dwvth0_n33_dnw= 0             dpvth0_n33_dnw= 0            
++du0_n33_dnw = 0               dlu0_n33_dnw= 0               dwu0_n33_dnw= 0              
++dpu0_n33_dnw= 0               dvsat_n33_dnw= 0              dlvsat_n33_dnw= 0            
++dwvsat_n33_dnw= 0             dpvsat_n33_dnw= 0             djtsswgs_n33_dnw= 0          
++djtsswgd_n33_dnw= 0           dlagidl_n33_dnw= 0            dpagidl_n33_dnw= 0           
+
+M1 d g s b n33_dnw_ckt w=w l=l sa=sa sb=sb sd=sd as=as ad=ad ps=ps pd=pd nrd=nrd nrs=nrs sca=sca scb=scb scc=scc nf=nf m=mr
+.inc 'ms018_enhanced_v1p11_mis.mdl'
+.ends n33_dnw_ckt
+
+*p33_dnw_ckt(TT corner)
+.subckt p33_dnw_ckt d g s b b2  w=1e-6 l=1e-6 sa=5.33e-6 sb=5.33e-6 sd='sdr' as='asr' ad='adr' ps='psr' pd='pdr' nrd='nrdr' nrs='nrsr' nf=1 mr=1 sca=0 scb=0 scc=0 mismod=1   
+.param
++dmcgr = 2.7e-007
++dmcir = 2.7e-007
++sdr = '2*dmcgr'
++adr = '(nf*dmcgr+dmcir)*(w/nf)'
++asr = '(nf*dmcgr+dmcir)*(w/nf)'
++pdr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++psr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++nrdr = 'dmcgr/nf/(w/nf)'
++nrsr = 'dmcgr/nf/(w/nf)'
+******mismatch******
++xlr = 1E-8                    
++xwr = 1E-8         
++lef = 'l+xlr'                
++wef = 'w/nf+xwr'             
++geo_fac = '1/sqrt(wef*lef*nf*mr)' 
+
++atoxe_p33_dnw = 5E-19             
++axl_p33_dnw = 6E-17               
++axw_p33_dnw = 6E-17               
++avth0_p33_dnw = 3.30E-9           
++au0_p33_dnw = 3.65E-11            
++avoff_p33_dnw = -2.6E-9           
++aeta0_p33_dnw = 0                 
++avsat_p33_dnw = -1.65E-3          
+
++dtoxe_p33_dnw_mis = 'dtoxe_p33_dnw+atoxe_p33_dnw*geo_fac*sigma_mis_a*mismod'
++dxl_p33_dnw_mis = 'dxl_p33_dnw+axl_p33_dnw*geo_fac*sigma_mis_b*mismod'
++dxw_p33_dnw_mis = 'dxw_p33_dnw+axw_p33_dnw*geo_fac*sigma_mis_c*mismod'
++dvth0_p33_dnw_mis = 'dvth0_p33_dnw+avth0_p33_dnw*geo_fac*sigma_mis_d*mismod'
++du0_p33_dnw_mis = 'du0_p33_dnw+au0_p33_dnw*geo_fac*sigma_mis_e*mismod'
++dvoff_p33_dnw_mis = '0+avoff_p33_dnw*geo_fac*sigma_mis_f*mismod'
++dvsat_p33_dnw_mis = 'dvsat_p33_dnw+avsat_p33_dnw*geo_fac*sigma_mis_g*mismod'
++deta0_p33_dnw_mis = '0+aeta0_p33_dnw*geo_fac*sigma_mis_h*mismod'
+
++dtoxe_p33_dnw_mismatch = '0+dtoxe_p33_dnw_mis'
++dxl_p33_dnw_mismatch ='0+dxl_p33_dnw_mis'
++dxw_p33_dnw_mismatch ='0+dxw_p33_dnw_mis'
++dvth0_p33_dnw_mismatch='0+dvth0_p33_dnw_mis'
++du0_p33_dnw_mismatch ='0+du0_p33_dnw_mis'
++dvoff_p33_dnw_mismatch ='0+dvoff_p33_dnw_mis'
++dvsat_p33_dnw_mismatch ='0+dvsat_p33_dnw_mis'
++deta0_p33_dnw_mismatch = '0+deta0_p33_dnw_mis'
+
+*p33_dnw_ckt(TT corner)
++dtoxe_p33_dnw= 0              dxl_p33_dnw = 0               dxw_p33_dnw = 0              
++dcjs_p33_dnw= 0               dcjsws_p33_dnw= 0             dcjswgs_p33_dnw= 0           
++dcgdo_p33_dnw= 0              dcgso_p33_dnw= 0              dcgdl_p33_dnw= 0             
++dcgsl_p33_dnw= 0              dcf_p33_dnw = 0               dvth0_p33_dnw= 0             
++dlvth0_p33_dnw= 0             dwvsat_p33_dnw= 0             dpvth0_p33_dnw= 0            
++du0_p33_dnw = 0               dlu0_p33_dnw= 0               dwu0_p33_dnw= 0              
++dpu0_p33_dnw= 0               dvsat_p33_dnw= 0              dlvsat_p33_dnw= 0            
++dpvsat_p33_dnw= 0             dwvth0_p33_dnw= 0             dagidl_p33_dnw= 0            
++dlagidl_p33_dnw= 0            dwagidl_p33_dnw= 0            dpagidl_p33_dnw= 0           
+
+M1 d g s b p33_dnw_ckt w=w l=l sa=sa sb=sb sd=sd as=as ad=ad ps=ps pd=pd nrd=nrd nrs=nrs sca=sca scb=scb scc=scc nf=nf m=mr
+.inc 'ms018_enhanced_v1p11_mis.mdl'
+.ends p33_dnw_ckt
+
+*n33_dnw_4t_ckt(TT corner)
+.subckt n33_dnw_4t_ckt d g s b w=1e-6 l=1e-6 sa=5.33e-6 sb=5.33e-6 sd='sdr' as='asr' ad='adr' ps='psr' pd='pdr' nrd='nrdr' nrs='nrsr' nf=1 mr=1 sca=0 scb=0 scc=0 mismod=1   
+.param
++dmcgr = 2.7e-007
++dmcir = 2.7e-007
++sdr = '2*dmcgr'
++adr = '(nf*dmcgr+dmcir)*(w/nf)'
++asr = '(nf*dmcgr+dmcir)*(w/nf)'
++pdr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++psr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++nrdr = 'dmcgr/nf/(w/nf)'
++nrsr = 'dmcgr/nf/(w/nf)'
+******mismatch******
++xlr = 1E-8                    
++xwr = 1E-8         
++lef = 'l+xlr'                
++wef = 'w/nf+xwr'             
++geo_fac = '1/sqrt(wef*lef*nf*mr)' 
++atoxe_n33_dnw = 5E-19             
++axl_n33_dnw = 6E-17              
++axw_n33_dnw = 6E-17              
++avth0_n33_dnw = 8E-9            
++au0_n33_dnw = 1.55E-10          
++avoff_n33_dnw = 7e-9             
++avsat_n33_dnw = 0
+
++dtoxe_n33_dnw_mis = 'dtoxe_n33_dnw+atoxe_n33_dnw*geo_fac*sigma_mis_a*mismod'
++dxl_n33_dnw_mis = 'dxl_n33_dnw+axl_n33_dnw*geo_fac*sigma_mis_b*mismod'
++dxw_n33_dnw_mis = 'dxw_n33_dnw+axw_n33_dnw*geo_fac*sigma_mis_c*mismod'
++dvth0_n33_dnw_mis = 'dvth0_n33_dnw+avth0_n33_dnw*geo_fac*sigma_mis_d*mismod'
++du0_n33_dnw_mis = 'du0_n33_dnw+au0_n33_dnw*geo_fac*sigma_mis_e*mismod'
++dvoff_n33_dnw_mis = '0+avoff_n33_dnw*geo_fac*sigma_mis_f*mismod'
++dvsat_n33_dnw_mis = 'dvsat_n33_dnw+avsat_n33_dnw*geo_fac*sigma_mis_g*mismod'
+
++dtoxe_n33_dnw_mismatch = '0+dtoxe_n33_dnw_mis'
++dxl_n33_dnw_mismatch ='0+dxl_n33_dnw_mis'
++dxw_n33_dnw_mismatch ='0+dxw_n33_dnw_mis'
++dvth0_n33_dnw_mismatch='0+dvth0_n33_dnw_mis'
++du0_n33_dnw_mismatch ='0+du0_n33_dnw_mis'
++dvoff_n33_dnw_mismatch ='0+dvoff_n33_dnw_mis'
++dvsat_n33_dnw_mismatch ='0+dvsat_n33_dnw_mis'
+
+*n33_dnw_4t_ckt(TT corner)
++dtoxe_n33_dnw= 0              dxl_n33_dnw = 0               dxw_n33_dnw = 0              
++dcjs_n33_dnw= 0               dcjsws_n33_dnw= 0             dcjswgs_n33_dnw= 0           
++dcgdo_n33_dnw= 0              dcgdl_n33_dnw= 0              dcgso_n33_dnw= 0             
++dcgsl_n33_dnw= 0              dcf_n33_dnw = 0               dvth0_n33_dnw= 0             
++dlvth0_n33_dnw= 0             dwvth0_n33_dnw= 0             dpvth0_n33_dnw= 0            
++du0_n33_dnw = 0               dlu0_n33_dnw= 0               dwu0_n33_dnw= 0              
++dpu0_n33_dnw= 0               dvsat_n33_dnw= 0              dlvsat_n33_dnw= 0            
++dwvsat_n33_dnw= 0             dpvsat_n33_dnw= 0             djtsswgs_n33_dnw= 0          
++djtsswgd_n33_dnw= 0           dlagidl_n33_dnw= 0            dpagidl_n33_dnw= 0           
+
+M1 d g s b n33_dnw_4t_ckt w=w l=l sa=sa sb=sb sd=sd as=as ad=ad ps=ps pd=pd nrd=nrd nrs=nrs sca=sca scb=scb scc=scc nf=nf m=mr
+.inc 'ms018_enhanced_v1p11_mis.mdl'
+.ends n33_dnw_4t_ckt
+
+*p33_dnw_4t_ckt(TT corner)
+.subckt p33_dnw_4t_ckt d g s b  w=1e-6 l=1e-6 sa=5.33e-6 sb=5.33e-6 sd='sdr' as='asr' ad='adr' ps='psr' pd='pdr' nrd='nrdr' nrs='nrsr' nf=1 mr=1 sca=0 scb=0 scc=0 mismod=1   
+.param
++dmcgr = 2.7e-007
++dmcir = 2.7e-007
++sdr = '2*dmcgr'
++adr = '(nf*dmcgr+dmcir)*(w/nf)'
++asr = '(nf*dmcgr+dmcir)*(w/nf)'
++pdr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++psr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++nrdr = 'dmcgr/nf/(w/nf)'
++nrsr = 'dmcgr/nf/(w/nf)'
+******mismatch******
++xlr = 1E-8                    
++xwr = 1E-8         
++lef = 'l+xlr'                
++wef = 'w/nf+xwr'             
++geo_fac = '1/sqrt(wef*lef*nf*mr)' 
+
++atoxe_p33_dnw = 5E-19             
++axl_p33_dnw = 6E-17               
++axw_p33_dnw = 6E-17               
++avth0_p33_dnw = 3.30E-9           
++au0_p33_dnw = 3.65E-11            
++avoff_p33_dnw = -2.6E-9           
++aeta0_p33_dnw = 0                 
++avsat_p33_dnw = -1.65E-3          
+
++dtoxe_p33_dnw_mis = 'dtoxe_p33_dnw+atoxe_p33_dnw*geo_fac*sigma_mis_a*mismod'
++dxl_p33_dnw_mis = 'dxl_p33_dnw+axl_p33_dnw*geo_fac*sigma_mis_b*mismod'
++dxw_p33_dnw_mis = 'dxw_p33_dnw+axw_p33_dnw*geo_fac*sigma_mis_c*mismod'
++dvth0_p33_dnw_mis = 'dvth0_p33_dnw+avth0_p33_dnw*geo_fac*sigma_mis_d*mismod'
++du0_p33_dnw_mis = 'du0_p33_dnw+au0_p33_dnw*geo_fac*sigma_mis_e*mismod'
++dvoff_p33_dnw_mis = '0+avoff_p33_dnw*geo_fac*sigma_mis_f*mismod'
++dvsat_p33_dnw_mis = 'dvsat_p33_dnw+avsat_p33_dnw*geo_fac*sigma_mis_g*mismod'
++deta0_p33_dnw_mis = '0+aeta0_p33_dnw*geo_fac*sigma_mis_h*mismod'
+
++dtoxe_p33_dnw_mismatch = '0+dtoxe_p33_dnw_mis'
++dxl_p33_dnw_mismatch ='0+dxl_p33_dnw_mis'
++dxw_p33_dnw_mismatch ='0+dxw_p33_dnw_mis'
++dvth0_p33_dnw_mismatch='0+dvth0_p33_dnw_mis'
++du0_p33_dnw_mismatch ='0+du0_p33_dnw_mis'
++dvoff_p33_dnw_mismatch ='0+dvoff_p33_dnw_mis'
++dvsat_p33_dnw_mismatch ='0+dvsat_p33_dnw_mis'
++deta0_p33_dnw_mismatch = '0+deta0_p33_dnw_mis'
+
+*p33_dnw_4t_ckt(TT corner)
++dtoxe_p33_dnw= 0              dxl_p33_dnw = 0               dxw_p33_dnw = 0              
++dcjs_p33_dnw= 0               dcjsws_p33_dnw= 0             dcjswgs_p33_dnw= 0           
++dcgdo_p33_dnw= 0              dcgso_p33_dnw= 0              dcgdl_p33_dnw= 0             
++dcgsl_p33_dnw= 0              dcf_p33_dnw = 0               dvth0_p33_dnw= 0             
++dlvth0_p33_dnw= 0             dwvsat_p33_dnw= 0             dpvth0_p33_dnw= 0            
++du0_p33_dnw = 0               dlu0_p33_dnw= 0               dwu0_p33_dnw= 0              
++dpu0_p33_dnw= 0               dvsat_p33_dnw= 0              dlvsat_p33_dnw= 0            
++dpvsat_p33_dnw= 0             dwvth0_p33_dnw= 0             dagidl_p33_dnw= 0            
++dlagidl_p33_dnw= 0            dwagidl_p33_dnw= 0            dpagidl_p33_dnw= 0           
+
+M1 d g s b p33_dnw_4t_ckt w=w l=l sa=sa sb=sb sd=sd as=as ad=ad ps=ps pd=pd nrd=nrd nrs=nrs sca=sca scb=scb scc=scc nf=nf m=mr
+.inc 'ms018_enhanced_v1p11_mis.mdl'
+.ends p33_dnw_4t_ckt
+
+*3.3v mvt nmos (tt corner)
+.subckt nmvt33_ckt d g s b w=1e-6 l=1e-6 sa=4.54e-006 sb=4.54e-006 sd='sdr' as='asr' ad='adr' ps='psr' pd='pdr' nrd='nrdr' nrs='nrsr' nf=1 mr=1 sca=0 scb=0 scc=0 mismod=1 
+.param 
++dmcgr = 3.7e-007
++dmcir = 3.7e-7
++sdr = '2*dmcgr'
++adr = '(nf*dmcgr+dmcir)*(w/nf)'
++asr = '(nf*dmcgr+dmcir)*(w/nf)'
++pdr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++psr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++nrdr = 'dmcgr/nf/(w/nf)'
++nrsr = 'dmcgr/nf/(w/nf)'
+
+
+******mismatch******
++dtoxe_nmvt33_mis = '0+atoxe_nmvt33*geo_fac*sigma_mis_a*mismod'
++dxl_nmvt33_mis = '0+axl_nmvt33*geo_fac*sigma_mis_b*mismod'
++dxw_nmvt33_mis = '0+axw_nmvt33*geo_fac*sigma_mis_c*mismod'
++dvth0_nmvt33_mis = '0+avth0_nmvt33*geo_fac*sigma_mis_d*mismod'
++du0_nmvt33_mis = '0+au0_nmvt33*geo_fac*sigma_mis_e*mismod'
++dvoff_nmvt33_mis = '0+avoff_nmvt33*geo_fac*sigma_mis_f*mismod'
++dvsat_nmvt33_mis = '0+avsat_nmvt33*geo_fac*sigma_mis_g*mismod'
+
++dtoxe_nmvt33_mismatch         = 'dtoxe_nmvt33+dtoxe_nmvt33_mis'
++dxl_nmvt33_mismatch         = 'dxl_nmvt33+dxl_nmvt33_mis'
++dxw_nmvt33_mismatch         = 'dxw_nmvt33+dtoxe_nmvt33_mis'               
++dvth0_nmvt33_mismatch         = 'dvth0_nmvt33+dvth0_nmvt33_mis'  
++du0_nmvt33_mismatch           = 'du0_nmvt33+du0_nmvt33_mis'
++dvoff_nmvt33_mismatch           = 'dvoff_nmvt33+dvoff_nmvt33_mis'               
++dvsat_nmvt33_mismatch         = 'dvsat_nmvt33+dvsat_nmvt33_mis'
+
+
++geo_fac='1/sqrt(wef*lef*nf*mr)'
++lef='l+xlr'
++wef='w/nf+xwr'
+
++xlr = 1E-8                    xwr = 1E-8                    atoxe_nmvt33 = 5E-19          
++axl_nmvt33 = 6E-17            axw_nmvt33 = 6E-17            avth0_nmvt33 = 4.5E-9         
++au0_nmvt33 = 2.55E-10        avoff_nmvt33 = 4.7E-9           avsat_nmvt33 = 7E-4 
+
+m1 d g s b nmvt33_ckt w=w l=l sa=sa sb=sb sd=sd as=as ad=ad ps=ps pd=pd nrd=nrd nrs=nrs sca=sca scb=scb scc=scc nf=nf m=mr
+
+.inc 'ms018_enhanced_v1p11_mis.mdl'
+.ends nmvt33_ckt
+
+*3.3v native nmos (tt corner)
+.subckt nnt33_ckt d g s b w=1e-6 l=1e-6 sa=4.54e-006 sb=4.54e-006 sd='sdr' as='asr' ad='adr' ps='psr' pd='pdr' nrd='nrdr' nrs='nrsr' nf=1 mr=1  mismod=1 
+.param 
++dmcgr = 3.7e-007
++dmcir = 3.7e-7
++sdr = '2*dmcgr'
++adr = '(nf*dmcgr+dmcir)*(w/nf)'
++asr = '(nf*dmcgr+dmcir)*(w/nf)'
++pdr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++psr = '2*(nf*dmcgr+dmcir)+(nf+1)*(w/nf)'
++nrdr = 'dmcgr/nf/(w/nf)'
++nrsr = 'dmcgr/nf/(w/nf)'
+
+
+******mismatch******
++dtoxe_nnt33_mis = '0+atoxe_nnt33*geo_fac*sigma_mis_a*mismod'
++dxl_nnt33_mis = '0+axl_nnt33*geo_fac*sigma_mis_b*mismod'
++dxw_nnt33_mis = '0+axw_nnt33*geo_fac*sigma_mis_c*mismod'
++dvth0_nnt33_mis = '0+avth0_nnt33*geo_fac*sigma_mis_d*mismod'
++du0_nnt33_mis = '0+au0_nnt33*geo_fac*sigma_mis_e*mismod'
++dvoff_nnt33_mis = '0+avoff_nnt33*geo_fac*sigma_mis_f*mismod'
++dvsat_nnt33_mis = '0+avsat_nnt33*geo_fac*sigma_mis_g*mismod'
+
++dtoxe_nnt33_mismatch         = 'dtoxe_nnt33+dtoxe_nnt33_mis'
++dxl_nnt33_mismatch         = 'dxl_nnt33+dxl_nnt33_mis'
++dxw_nnt33_mismatch         = 'dxw_nnt33+dxw_nnt33_mis'               
++dvth0_nnt33_mismatch         = 'dvth0_nnt33+dvth0_nnt33_mis'  
++du0_nnt33_mismatch           = 'du0_nnt33+du0_nnt33_mis'
++dvoff_nnt33_mismatch           = 'dvoff_nnt33+dvoff_nnt33_mis'               
++dvsat_nnt33_mismatch         = 'dvsat_nnt33+dvsat_nnt33_mis'
+
+
++geo_fac='1/sqrt(wef*lef*nf*mr)'
++lef='l+xlr'
++wef='w/nf+xwr'
+
++xlr = 1E-8                    xwr = 1E-8                    atoxe_nnt33 = 5E-19           
++axl_nnt33 = 6E-17             axw_nnt33 = 6E-17             avth0_nnt33 = 9E-10         
++au0_nnt33 = 2.5e-10          avoff_nnt33 = 5.5E-9          avsat_nnt33 = 2E-4  
+ 
+m1 d g s b nnt33_ckt w=w l=l sa=sa sb=sb sd=sd as=as ad=ad ps=ps pd=pd nrd=nrd nrs=nrs  nf=nf m=mr
+
+.inc 'ms018_enhanced_v1p11_mis.mdl'
+.ends nnt33_ckt
+
+.inc 'ms018_enhanced_v1p11.mdl'

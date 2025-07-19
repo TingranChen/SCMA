@@ -1,0 +1,41 @@
+#!/bin/csh -f
+
+echo "clean up old files"
+rm -rf csrc simv* *.fsdb
+
+echo "mkdir ./results_simutop_SCMU"
+mkdir ./results_simutop_SCMU
+
+# Compile
+echo "verilog compilation"
+vcs  \
+  -nc  \
+  -full64  \
+  -sverilog  \
+ 	./simu_top_SCMU.v \
+	./SM.v \
+  ./inputFIFO.v \
+  ./outputFIFO.v \
+  ./IO.v \
+  ./inputFIFO_unit.v\
+  ./CONTROLLER.v\
+  ./SHIFTER.v\
+  ./SIMDadd.v\
+  ./SIMDshifter.v\
+  ./FIFO_ASYN.v\
+  ./SRAMCIMfinal.v\
+  ./SCMU_wrapper.v \
+  ./quantize.v \
+  ./quantize_6to4.v \
+  ./quantize_add.v \
+  +lint=TFIPC-L  \
+  -debug_access+all  \
+  -l ./results_simutop_SCMU/vcs_simutop_SCMU.log  \
+  
+./simv  \
+  -nc  \
+  +COMPARE  \
+  -l ./results_simutop_SCMU/simu_simutop_SCMU.log
+  
+mv ./vcs_simutop.fsdb ./results_simutop_SCMU/
+    

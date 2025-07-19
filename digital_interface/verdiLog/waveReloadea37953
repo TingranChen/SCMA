@@ -1,0 +1,137 @@
+Magic 271485
+Revision Verdi_N-2017.12
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 0 28 1366 542 217 65
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / -i 0 "" "/home/chentingran/CIMU/digital_interface/results_simutop_CIMU/vcs_simutop_CIMU.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+; waveform viewport range
+zoom 364778.076833 615158.005694
+cursor 460000.000000
+marker 4000.000000
+
+; visible top row signal index
+top 44
+; marker line index
+markerPos 63
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+addGroup "G1"
+activeDirFile "" "/home/chentingran/CIMU/digital_interface/results_simutop_CIMU/vcs_simutop_CIMU.fsdb"
+addSignal -h 15 /simu_top/dut_CONTROLLER/RD_EN_inputfifo
+addSignal -h 15 -holdScope WR_EN_outputfifo
+addSignal -h 15 -UNSIGNED -HEX -holdScope a_reg[3:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope access_tmp_0[63:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope access_tmp_1[63:0]
+addSignal -h 15 -holdScope cal_b
+addSignal -h 15 -holdScope cal_done
+addSignal -h 15 -holdScope clk
+addSignal -h 15 -holdScope clk_b
+addSignal -h 15 -holdScope col_en
+addSignal -h 15 -UNSIGNED -HEX -holdScope d_reg[31:0]
+addSignal -h 15 -holdScope empty_inputfifo
+addSignal -h 15 -holdScope full_outputfifo
+addSignal -h 15 -UNSIGNED -HEX -holdScope qin[63:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope qout[63:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope reg_add_0[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope reg_add_1[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope reg_cal[63:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope reg_conf_0[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope reg_conf_1[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope reg_conf_2[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope reg_conf_3[31:0]
+addSignal -h 15 -holdScope reg_en
+addSignal -h 15 -UNSIGNED -HEX -holdScope reg_en_collum[31:0]
+addSignal -h 15 -holdScope rst
+addSignal -h 15 -holdScope rst_b
+addSignal -h 15 -holdScope stall_en
+addSignal -h 15 -UNSIGNED -HEX -holdScope state[2:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope state_tmp[2:0]
+addSignal -h 15 /simu_top/dut_outputFIFO/CLK
+addSignal -h 15 -holdScope CLK_RD
+addSignal -h 15 -holdScope CLK_WR
+addSignal -h 15 -UNSIGNED -HEX -holdScope RD_DATA[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope RD_EN[1:0]
+addSignal -h 15 -holdScope WR_EN
+addSignal -h 15 -holdScope empty
+addSignal -h 15 -holdScope empty_0
+addSignal -h 15 -holdScope empty_1
+addSignal -h 15 -holdScope full
+addSignal -h 15 -holdScope full_0
+addSignal -h 15 -holdScope full_1
+addSignal -h 15 -UNSIGNED -HEX -holdScope qin[63:0]
+addSignal -h 15 -holdScope rst_n
+addSignal -h 15 -UNSIGNED -HEX /simu_top/a_in[14:0]
+addSignal -h 15 -UNSIGNED -HEX /simu_top/dut_IO/outputfifo_addr[3:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope outputfifo_RD_EN[1:0]
+addSignal -h 15 -UNSIGNED -HEX /simu_top/RD_EN_outputfifo_IO_b[1:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope RD_EN_outputfifo_SM_b[1:0]
+addSignal -h 15 /simu_top/dut_outputFIFO/CLK
+addSignal -h 15 -holdScope CLK_RD
+addSignal -h 15 -holdScope CLK_WR
+addSignal -h 15 -UNSIGNED -HEX -holdScope RD_DATA[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope RD_EN[1:0]
+addSignal -h 15 -holdScope WR_EN
+addSignal -h 15 -holdScope clk_WR
+addSignal -h 15 -holdScope empty
+addSignal -h 15 -holdScope empty_0
+addSignal -h 15 -holdScope empty_1
+addSignal -h 15 -holdScope full
+addSignal -h 15 -holdScope full_0
+addSignal -h 15 -holdScope full_1
+addSignal -h 15 -UNSIGNED -HEX -holdScope qin[63:0]
+addSignal -h 15 -holdScope rst_n
+addGroup "G2"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+activeDirFile "" "/home/chentingran/CIMU/digital_interface/results_simutop_CIMU/vcs_simutop_CIMU.fsdb"
+
+GETSIGNALFORM_SCOPE_HIERARCHY_BEGIN
+getSignalForm close
+
+"/simu_top"
+"/simu_top/dut_CONTROLLER"
+"/simu_top/dut_IO"
+"/simu_top/dut_outputFIFO"
+
+SCOPE_LIST_BEGIN
+"/simu_top"
+"/simu_top/dut_CONTROLLER"
+"/simu_top/dut_outputFIFO"
+"/simu_top/dut_IO"
+"/simu_top/dut_SM"
+"/simu_top/dut_outputFIFO/FIFO_1"
+"/simu_top/dut_inputFIFO"
+SCOPE_LIST_END
+
+GETSIGNALFORM_SCOPE_HIERARCHY_END
+
+

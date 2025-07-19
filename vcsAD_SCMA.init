@@ -1,0 +1,3 @@
+bus_format <%d>;
+use_spice -cell SRAMCIMfinal;
+choose xa -n SCCM.spi -c xa_SCMA.cfg -o results_simutop_SCMA/xa/xa;

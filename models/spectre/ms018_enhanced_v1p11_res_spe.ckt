@@ -1,0 +1,469 @@
+// * Spectre Format by MOCA
+simulator lang=spectre  insensitive=yes
+
+// * 
+// *  no part of this file can be released without the consent of smic.
+// *
+// ******************************************************************************************
+// *         SMIC 0.18um Mixed Signal Enhanced 1.8V/3.3V SPICE Model  (for Spectre only)          *
+// ******************************************************************************************
+// *
+// *  Release version    : 1.11
+// *
+// *  release date       : 10/14/2016
+// *
+// *  simulation tool    : cadence spectre v10.1.1
+// * 
+// *  the valid temperature range is from -40c to 125c
+// *   resistor         :
+// *        *----------------------------------------------------------------------* 
+// *        |             resistor type                            | 1.8v/3.3v     |
+// *        |======================================================|===============|
+// *        |        silicide n+ diffusion                         |    rndif_ckt  |
+// *        |------------------------------------------------------|---------------| 
+// *        |        silicide p+ diffusion                         |    rpdif_ckt  |
+// *        |------------------------------------------------------|---------------| 
+// *        |           silicide n+ poly                           |     rnpo_ckt  |
+// *        |----------------------------------------------------  |---------------| 
+// *        |           silicide n+ poly(three terminal)           |  rnpo_3t_ckt  |
+// *        |------------------------------------------------------|---------------| 
+// *        |           silicide p+ poly                           |     rppo_ckt  |
+// *        |------------------------------------------------------|---------------| 
+// *        |           silicide p+ poly(three terminal)           |  rppo_3t_ckt  |
+// *        |------------------------------------------------------|---------------|
+// *        |        silicide nwell under aa                       |    rnwaa_ckt  |
+// *        |------------------------------------------------------|---------------|
+// *        |        silicide nwell under sti                      |   rnwsti_ckt  |
+// *        |------------------------------------------------------|---------------| 
+// *        |        non-silicide n+ diffusion                     | rndifsab_ckt  |
+// *        |------------------------------------------------------|---------------| 
+// *        |        non-silicide p+ diffusion                     | rpdifsab_ckt  |
+// *        |------------------------------------------------------|---------------|
+// *        |          non-silicide n+ poly                        |  rnposab_ckt  |
+// *        |------------------------------------------------------|---------------| 
+// *        |          non-silicide n+ poly(three terminal)        |rnposab_3t_ckt |
+// *        |------------------------------------------------------|---------------|
+// *        |          non-silicide p+ poly                        |  rpposab_ckt  |
+// *        |------------------------------------------------------|---------------| 
+// *        |          non-silicide p+ poly(three terminal)        |rpposab_3t_ckt |
+// *        |------------------------------------------------------|---------------|
+// *        |        high resistance poly                          |    rhrpo_ckt  |
+// *        |------------------------------------------------------|---------------| 
+// *        |        high resistance poly(three terminal)          | rhrpo_3t_ckt  |
+// *        *----------------------------------------------------------------------* 
+
+
+subckt rndif_ckt (n2 n1 sub)
+parameters l=10e-6 w=1e-6 mr=1
+parameters rsh = 5.919+drsh_rndif
+parameters dw = -2.6e-8+ddw_rndif
+parameters dl = 0
+parameters rvc0 = 10.592614e-12
+parameters rvc1 = 10.398924e-5
+parameters rvc2 = 0
+parameters tc1r = 3.12e-03
+parameters tc2r = 2.25e-07
+parameters ro = rsh*(l-2*dl)/(w-2*dw)
+parameters rvc = max(0,(rvc0+rvc1*w+rvc2*(l/w))/(l-2*dl)/(l-2*dl))
+parameters tcoef_temper = 1.0+(temp-25.0)*(tc1r+tc2r*(temp-25.0))
+parameters weff = w-2.0*dw
+d1 (sub n2) ndio18 area=weff*l/5*mr perim=(weff+2*l/5)*mr
+r1 (n2 na) bsource r=tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))
+d2 (sub na) ndio18 area=weff*l/5*mr perim=2*l/5*mr
+r2 (na nb) bsource r=tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))
+d3 (sub nb) ndio18 area=weff*l/5*mr perim=2*l/5*mr
+r3 (nb nc) bsource r=tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))
+d4 (sub nc) ndio18 area=weff*l/5*mr perim=2*l/5*mr
+r4 (nc n1) bsource r=tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))
+d5 (sub n1) ndio18 area=weff*l/5*mr perim=(weff+2*l/5)*mr
+ends rndif_ckt
+
+
+subckt rpdif_ckt (n2 n1 sub)
+parameters l=10e-6 w=1e-6 mr=1
+parameters rsh = 6.933+drsh_rpdif
+parameters dw = -3.7e-8+ddw_rpdif
+parameters dl = 0
+parameters rvc0 = 9.04e-12
+parameters rvc1 = 9.984672e-5
+parameters rvc2 = 0
+parameters tc1r = 3.18e-03
+parameters tc2r = 3.18e-07
+parameters ro = rsh*(l-2*dl)/(w-2*dw)
+parameters rvc = max(0,(rvc0+rvc1*w+rvc2*(l/w))/(l-2*dl)/(l-2*dl))
+parameters tcoef_temper = 1.0+(temp-25.0)*(tc1r+tc2r*(temp-25.0))
+parameters weff = w-2.0*dw
+d1 (n2 sub) pdio18 area=weff*l/5*mr perim=(weff+2*l/5)*mr
+r1 (n2 na) bsource r=tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))
+d2 (na sub) pdio18 area=weff*l/5*mr perim=2*l/5*mr
+r2 (na nb) bsource r=tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))
+d3 (nb sub) pdio18 area=weff*l/5*mr perim=2*l/5*mr
+r3 (nb nc) bsource r=tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))
+d4 (nc sub) pdio18 area=weff*l/5*mr perim=2*l/5*mr
+r4 (nc n1) bsource r=tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))
+d5 (n1 sub) pdio18 area=weff*l/5*mr perim=(weff+2*l/5)*mr
+ends rpdif_ckt
+
+
+subckt rnpo_ckt (n2 n1)
+parameters l=10e-6 w=1e-6 mr=1
+parameters rsh = 6.795+drsh_rnpo
+parameters dw = -1.3e-8+ddw_rnpo_3t
+parameters dl = 0
+parameters rvc0 = 8.089076e-11
+parameters rvc1 = 2.96441e-4
+parameters rvc2 = 0
+parameters tc1r = 3.00e-03
+parameters tc2r = 9.75e-08
+parameters ro = rsh*(l-2*dl)/(w-2*dw)
+parameters rvc = max(0,(rvc0+rvc1*w+rvc2*(l/w))/(l-2*dl)/(l-2*dl))
+parameters tcoef_temper = 1.0+(temp-25.0)*(tc1r+tc2r*(temp-25.0))
+parameters weff = w-2*dw
+parameters leff = l-2*dl
+r1 (n2 n1) bsource r=tcoef_temper*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))
+ends rnpo_ckt
+
+
+subckt rnpo_3t_ckt (n2 n1 sub)
+parameters l=10e-6 w=1e-6 flag_cc=0 mr=1
+parameters rsh = 6.795+drsh_rnpo_3t
+parameters dw = -1.3e-8+ddw_rnpo_3t
+parameters dl = 0
+parameters rvc0 = 8.089076e-11
+parameters rvc1 = 2.96441e-4
+parameters rvc2 = 0
+parameters tc1r = 3.00e-03
+parameters tc2r = 9.75e-08
+parameters ro = rsh*(l-2*dl)/(w-2*dw)
+parameters rvc = max(0,(rvc0+rvc1*w+rvc2*(l/w))/(l-2*dl)/(l-2*dl))
+parameters tcoef_temper = 1.0+(temp-25.0)*(tc1r+tc2r*(temp-25.0))
+parameters weff = w-2*dw
+parameters leff = l-2*dl
+parameters cj = 1.011e-04+dcj_rnpo
+parameters cfox = 1.680e-11+dcfox_rnpo
+parameters ccoup = 5.470e-11*flag_cc
+parameters capsw = cfox+ccoup
+c1 (n2 sub) capacitor c=(cj*weff*leff/2+capsw*weff+capsw*leff)*mr
+r1 (n2 n1) bsource r=tcoef_temper*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))
+c2 (n1 sub) capacitor c=(cj*weff*leff/2+capsw*weff+capsw*leff)*mr
+ends rnpo_3t_ckt
+
+
+subckt rppo_ckt (n2 n1)
+parameters l=10e-6 w=1e-6 mr=1
+parameters rsh = 7.398+drsh_rppo
+parameters dw = -2e-9+ddw_rppo_3t
+parameters dl = 0
+parameters rvc0 = -7.955986e-14
+parameters rvc1 = 6.035624e-4
+parameters rvc2 = 0
+parameters tc1r = 3.00e-03
+parameters tc2r = 2.76e-07
+parameters ro = rsh*(l-2*dl)/(w-2*dw)
+parameters rvc = max(0,(rvc0+rvc1*w+rvc2*(l/w))/(l-2*dl)/(l-2*dl))
+parameters tcoef_temper = 1.0+(temp-25.0)*(tc1r+tc2r*(temp-25.0))
+parameters weff = w-2*dw
+parameters leff = l-2*dl
+r1 (n2 n1) bsource r=tcoef_temper*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))
+ends rppo_ckt
+
+
+subckt rppo_3t_ckt (n2 n1 sub)
+parameters l=10e-6 w=1e-6 flag_cc=0 mr=1
+parameters rsh = 7.398+drsh_rppo_3t
+parameters dw = -2e-9+ddw_rppo_3t
+parameters dl = 0
+parameters rvc0 = -7.955986e-14
+parameters rvc1 = 6.035624e-4
+parameters rvc2 = 0
+parameters tc1r = 3.00e-03
+parameters tc2r = 2.76e-07
+parameters ro = rsh*(l-2*dl)/(w-2*dw)
+parameters rvc = max(0,(rvc0+rvc1*w+rvc2*(l/w))/(l-2*dl)/(l-2*dl))
+parameters tcoef_temper = 1.0+(temp-25.0)*(tc1r+tc2r*(temp-25.0))
+parameters weff = w-2*dw
+parameters leff = l-2*dl
+parameters cj = 1.011e-04+dcj_rppo
+parameters cfox = 1.680e-11+dcfox_rppo
+parameters ccoup = 5.470e-11*flag_cc
+parameters capsw = cfox+ccoup
+c1 (n2 sub) capacitor c=(cj*weff*leff/2+capsw*weff+capsw*leff)*mr
+r1 (n2 n1) bsource r=tcoef_temper*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))
+c2 (n1 sub) capacitor c=(cj*weff*leff/2+capsw*weff+capsw*leff)*mr
+ends rppo_3t_ckt
+
+
+subckt rnwaa_ckt (n2 n1 sub)
+parameters l=10e-6 w=1e-6 mr=1
+parameters rsh = 456.2+drsh_rnwaa
+parameters tc1r = 2.4940e-03
+parameters tc2r = 1.9090e-06
+parameters dw = 5.3775e-08+ddw_rnwaa
+parameters dl = -5.0292e-09
+parameters jc1a = 6.6321e-03
+parameters jc1b = 1.0853e-07
+parameters jc2a = 2.4046e-10
+parameters jc2b = 1.6149e-13
+parameters rvc1 = jc1a+jc1b/l
+parameters rvc2 = (jc2a+jc2b/l)/l
+parameters weff = w-2.0*dw
+parameters leff = l-2.0*dl
+parameters tcoef_temper = 1.0+(temp-25.0)*(tc1r+tc2r*(temp-25.0))
+d1 (sub n2) nwdio area=weff*leff/5*mr perim=(weff+2*leff/5)*mr
+r1 (n2 na) bsource r=rsh/mr*leff/4/weff*tcoef_temper*min(max(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),0.8),1.2)
+d2 (sub na) nwdio area=weff*leff/5*mr perim=2*leff/5*mr
+r2 (na nb) bsource r=rsh/mr*leff/4/weff*tcoef_temper*min(max(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),0.8),1.2)
+d3 (sub nb) nwdio area=weff*leff/5*mr perim=2*leff/5*mr
+r3 (nb nc) bsource r=rsh/mr*leff/4/weff*tcoef_temper*min(max(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),0.8),1.2)
+d4 (sub nc) nwdio area=weff*leff/5*mr perim=2*leff/5*mr
+r4 (nc n1) bsource r=rsh/mr*leff/4/weff*tcoef_temper*min(max(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),0.8),1.2)
+d5 (sub n1) nwdio area=weff*leff/5*mr perim=(weff+2*leff/5)*mr
+ends rnwaa_ckt
+
+
+subckt rnwsti_ckt (n2 n1 sub)
+parameters l=10e-6 w=1e-6 mr=1
+parameters rsh = 8.873e+02+drsh_rnwsti
+parameters tc1r = 2.152e-03
+parameters tc2r = 2.055e-06
+parameters dw = 1.019e-07+ddw_rnwsti
+parameters dl = 2.763e-11
+parameters jc1a = 2.404e-03
+parameters jc1b = 2.866e-07
+parameters jc2a = 0.000e+00
+parameters jc2b = 2.065e-13
+parameters rvc1 = jc1a+jc1b/l
+parameters rvc2 = (jc2a+jc2b/l)/l
+parameters weff = w-2.0*dw
+parameters leff = l-2.0*dl
+parameters tcoef_temper = 1.0+(temp-25.0)*(tc1r+tc2r*(temp-25.0))
+d1 (sub n2) nwdio area=weff*leff/5*mr perim=(weff+2*leff/5)*mr
+r1 (n2 na) bsource r=rsh/mr*leff/4/weff*tcoef_temper*min(max(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),0.887),1.2)
+d2 (sub na) nwdio area=weff*leff/5*mr perim=2*leff/5*mr
+r2 (na nb) bsource r=rsh/mr*leff/4/weff*tcoef_temper*min(max(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),0.887),1.2)
+d3 (sub nb) nwdio area=weff*leff/5*mr perim=2*leff/5*mr
+r3 (nb nc) bsource r=rsh/mr*leff/4/weff*tcoef_temper*min(max(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),0.887),1.2)
+d4 (sub nc) nwdio area=weff*leff/5*mr perim=2*leff/5*mr
+r4 (nc n1) bsource r=rsh/mr*leff/4/weff*tcoef_temper*min(max(1.0+rvc1*v(n2,n1)+rvc2*v(n2,n1)*v(n2,n1),0.887),1.2)
+d5 (sub n1) nwdio area=weff*leff/5*mr perim=(weff+2*leff/5)*mr
+ends rnwsti_ckt
+
+
+subckt rndifsab_ckt (n2 n1 sub)
+parameters l=10e-6 w=1e-6 mismod_res=1 mr=1
+parameters rshmis = arsh*geo_fac*sigma_mis_res*mismod_res
+parameters geo_fac = 1/sqrt(weff*leff*mr)
+
+parameters arsh = 1.27e-6
+parameters rsh = 56.903+drsh_rndifsab+rshmis
+parameters dw = -4.8e-8+ddw_rndifsab
+parameters dl = -5.4e-7
+parameters rvc0 = -2.900334e-12
+parameters rvc1 = 6.62473e-7
+parameters rvc2 = 3.997676e-13
+parameters tc1r = 1.37e-03
+parameters tc2r = 6.22e-07
+parameters ro = rsh*(l-2*dl)/(w-2*dw)
+parameters rvc = max(0,(rvc0+rvc1*w+rvc2*(l/w))/(l-2*dl)/(l-2*dl))
+parameters tcoef_temper = 1.0+(temp-25.0)*(tc1r+tc2r*(temp-25.0))
+parameters weff = w-2*dw
+parameters leff = l-2*dl
+d1 (sub n2) ndio18 area=weff*leff/5*mr perim=(weff+2*leff/5)*mr
+r1 (n2 nb) bsource r=tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))
+d2 (sub nb) ndio18 area=weff*leff/5*mr perim=2*leff/5*mr
+r2 (nb nc) bsource r=tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))
+d3 (sub nc) ndio18 area=weff*leff/5*mr perim=2*leff/5*mr
+r3 (nc nd) bsource r=tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))
+d4 (sub nd) ndio18 area=weff*leff/5*mr perim=2*leff/5*mr
+r4 (nd n1) bsource r=tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))
+d5 (sub n1) ndio18 area=weff*leff/5*mr perim=(weff+2*leff/5)*mr
+ends rndifsab_ckt
+
+
+subckt rpdifsab_ckt (n2 n1 sub)
+parameters l=10e-6 w=1e-6 mismod_res=1 mr=1
+parameters rshmis = arsh*geo_fac*sigma_mis_res*mismod_res
+parameters geo_fac = 1/sqrt(weff*leff*mr)
+
+parameters arsh = 1.0e-6
+parameters rsh = 127.895+drsh_rpdifsab+rshmis
+parameters dw = -3e-8+ddw_rpdifsab
+parameters dl = -3.7e-7
+parameters rvc0 = -13.6586e-13
+parameters rvc1 = 9.459124e-7
+parameters rvc2 = 12.828852e-14
+parameters tc1r = 1.28e-03
+parameters tc2r = 8.09e-07
+parameters ro = rsh*(l-2*dl)/(w-2*dw)
+parameters rvc = max(0,(rvc0+rvc1*w+rvc2*(l/w))/(l-2*dl)/(l-2*dl))
+parameters weff = w-2*dw
+parameters leff = l-2*dl
+parameters tcoef_temper = 1.0+(temp-25.0)*(tc1r+tc2r*(temp-25.0))
+d1 (n2 sub) pdio18 area=weff*leff/5*mr perim=(weff+2*leff/5)*mr
+r1 (n2 na) bsource r=tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))
+d2 (na sub) pdio18 area=weff*leff/5*mr perim=2*leff/5*mr
+r2 (na nb) bsource r=tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))
+d3 (nb sub) pdio18 area=weff*leff/5*mr perim=2*leff/5*mr
+r3 (nb nc) bsource r=tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))
+d4 (nc sub) pdio18 area=weff*leff/5*mr perim=2*leff/5*mr
+r4 (nc n1) bsource r=tcoef_temper/4*ro/mr*(1.5-1/(2+rvc*v(n2,n1)*v(n2,n1)))
+d5 (n1 sub) pdio18 area=weff*leff/5*mr perim=(weff+2*leff/5)*mr
+ends rpdifsab_ckt
+
+
+subckt rnposab_ckt (n2 n1)
+parameters l=10e-6 w=1e-6 mismod_res=1 mr=1
+parameters rshmis = arsh*geo_fac*sigma_mis_res*mismod_res
+parameters geo_fac = 1/sqrt(weff*leff*mr)
+
+parameters arsh = 9.23e-6
+parameters rsh = 275.916+drsh_rnposab+rshmis
+parameters dw = 2.6e-8+ddw_rnposab
+parameters dl = -3.4e-7
+parameters rvc0 = 13.690146e-13
+parameters rvc1 = 7.556902e-7
+parameters rvc2 = 2.438386e-14
+parameters tc1r = -1.35e-03
+parameters tc2r = 1.74e-06
+parameters ro = rsh*(l-2*dl)/(w-2*dw)
+parameters rvc = max(0,(rvc0+rvc1*w+rvc2*(l/w))/(l-2*dl)/(l-2*dl))
+parameters tcoef_temper = 1.0+(temp-25.0)*(tc1r+tc2r*(temp-25.0))
+parameters weff = w-2*dw
+parameters leff = l-2*dl
+r1 (n2 n1) bsource r=tcoef_temper*ro/mr*(0.5+1/(2+rvc*v(n2,n1)*v(n2,n1)))
+ends rnposab_ckt
+
+
+subckt rnposab_3t_ckt (n2 n1 sub)
+parameters l=10e-6 w=1e-6 mismod_res=1 flag_cc=0 mr=1
+parameters rshmis = arsh*geo_fac*sigma_mis_res*mismod_res
+parameters geo_fac = 1/sqrt(weff*leff*mr)
+
+parameters arsh = 9.23e-6
+parameters rsh = 275.916+drsh_rnposab_3t+rshmis
+parameters dw = 2.6e-8+ddw_rnposab_3t
+parameters dl = -3.4e-7
+parameters rvc0 = 13.690146e-13
+parameters rvc1 = 7.556902e-7
+parameters rvc2 = 2.438386e-14
+parameters tc1r = -1.35e-03
+parameters tc2r = 1.74e-06
+parameters ro = rsh*(l-2*dl)/(w-2*dw)
+parameters rvc = max(0,(rvc0+rvc1*w+rvc2*(l/w))/(l-2*dl)/(l-2*dl))
+parameters tcoef_temper = 1.0+(temp-25.0)*(tc1r+tc2r*(temp-25.0))
+parameters weff = w-2*dw
+parameters leff = l-2*dl
+parameters cj = 1.011e-04+dcj_rnposab
+parameters cfox = 1.680e-11+dcfox_rnposab
+parameters ccoup = 5.470e-11*flag_cc
+parameters capsw = cfox+ccoup
+c1 (n2 sub) capacitor c=(cj*weff*leff/2+capsw*weff+capsw*leff)*mr
+r1 (n2 n1) bsource r=tcoef_temper*ro/mr*(0.5+1/(2+rvc*v(n2,n1)*v(n2,n1)))
+c2 (n1 sub) capacitor c=(cj*weff*leff/2+capsw*weff+capsw*leff)*mr
+ends rnposab_3t_ckt
+
+
+subckt rpposab_ckt (n2 n1)
+parameters l=10e-6 w=1e-6 mismod_res=1 mr=1
+parameters rshmis = arsh*geo_fac*sigma_mis_res*mismod_res
+parameters geo_fac = 1/sqrt(weff*leff*mr)
+
+parameters arsh = 3.6e-6
+parameters rsh = 316.9+drsh_rpposab+rshmis
+parameters dw = 1.7e-8+ddw_rpposab
+parameters dl = -4.6e-7
+parameters rvc0 = 6.44166e-13
+parameters rvc1 = -3.699408e-9
+parameters rvc2 = -4.515544e-14
+parameters tc1r = -2.22e-04
+parameters tc2r = 5.86e-07
+parameters ro = rsh*(l-2*dl)/(w-2*dw)
+parameters rvc = max(0,(rvc0+rvc1*w+rvc2*(l/w))/(l-2*dl)/(l-2*dl))
+parameters tcoef_temper = 1.0+(temp-25.0)*(tc1r+tc2r*(temp-25.0))
+parameters weff = w-2*dw
+parameters leff = l-2*dl
+r1 (n2 n1) bsource r=tcoef_temper*ro/mr*(0.5+1/(2+rvc*v(n2,n1)*v(n2,n1)))
+ends rpposab_ckt
+
+
+subckt rpposab_3t_ckt (n2 n1 sub)
+parameters l=10e-6 w=1e-6 mismod_res=1 flag_cc=0 mr=1
+parameters rshmis = arsh*geo_fac*sigma_mis_res*mismod_res
+parameters geo_fac = 1/sqrt(weff*leff*mr)
+
+parameters arsh = 3.6e-6
+parameters rsh = 316.9+drsh_rpposab_3t+rshmis
+parameters dw = 1.7e-8+ddw_rpposab_3t
+parameters dl = -4.6e-7
+parameters rvc0 = 6.44166e-13
+parameters rvc1 = -3.699408e-9
+parameters rvc2 = -4.515544e-14
+parameters tc1r = -2.22e-04
+parameters tc2r = 5.86e-07
+parameters ro = rsh*(l-2*dl)/(w-2*dw)
+parameters rvc = max(0,(rvc0+rvc1*w+rvc2*(l/w))/(l-2*dl)/(l-2*dl))
+parameters tcoef_temper = 1.0+(temp-25.0)*(tc1r+tc2r*(temp-25.0))
+parameters weff = w-2*dw
+parameters leff = l-2*dl
+parameters cj = 1.011e-04+dcj_rpposab
+parameters cfox = 1.680e-11+dcfox_rpposab
+parameters ccoup = 5.470e-11*flag_cc
+parameters capsw = cfox+ccoup
+c1 (n2 sub) capacitor c=(cj*weff*leff/2+capsw*weff+capsw*leff)*mr
+r1 (n2 n1) bsource r=tcoef_temper*ro/mr*(0.5+1/(2+rvc*v(n2,n1)*v(n2,n1)))
+c2 (n1 sub) capacitor c=(cj*weff*leff/2+capsw*weff+capsw*leff)*mr
+ends rpposab_3t_ckt
+
+
+subckt rhrpo_ckt (n2 n1)
+parameters l=10e-6 w=1e-6 mismod_res=1 mr=1
+parameters rshmis = arsh*geo_fac*sigma_mis_res*mismod_res
+parameters geo_fac = 1/sqrt(weff*leff*mr)
+
+parameters arsh = 1.22e-5
+parameters rsh = 1050+drsh_rhrpo+rshmis
+parameters dw = 3.2e-9+ddw_rhrpo
+parameters dl = 2e-8
+parameters rvc0 = -2.95e-16
+parameters rvc1 = 1.295e-7
+parameters rvc2 = 2.826e-15
+parameters tc1r = -8.37e-04
+parameters tc2r = 1.72e-06
+parameters ro = rsh*(l-2*dl)/(w-2*dw)
+parameters rvc = max(0,(rvc0+rvc1*w+rvc2*(l/w))/(l-2*dl)/(l-2*dl))
+parameters tcoef_temper = 1.0+(temp-25.0)*(tc1r+tc2r*(temp-25.0))
+parameters weff = w-2*dw
+parameters leff = l-2*dl
+r1 (n2 n1) bsource r=tcoef_temper*ro/mr*(0.5+1/(2+rvc*v(n2,n1)*v(n2,n1)))
+ends rhrpo_ckt
+
+
+subckt rhrpo_3t_ckt (n2 n1 sub)
+parameters l=10e-6 w=1e-6 mismod_res=1 flag_cc=0 mr=1
+parameters rshmis = arsh*geo_fac*sigma_mis_res*mismod_res
+parameters geo_fac = 1/sqrt(weff*leff*mr)
+
+parameters arsh = 1.22e-5
+parameters rsh = 1050+drsh_rhrpo_3t+rshmis
+parameters dw = 3.2e-9+ddw_rhrpo_3t
+parameters dl = 2e-8
+parameters rvc0 = -2.95e-16
+parameters rvc1 = 1.295e-7
+parameters rvc2 = 2.826e-15
+parameters tc1r = -8.37e-04
+parameters tc2r = 1.72e-06
+parameters ro = rsh*(l-2*dl)/(w-2*dw)
+parameters rvc = max(0,(rvc0+rvc1*w+rvc2*(l/w))/(l-2*dl)/(l-2*dl))
+parameters tcoef_temper = 1.0+(temp-25.0)*(tc1r+tc2r*(temp-25.0))
+parameters weff = w-2*dw
+parameters leff = l-2*dl
+parameters cj = 1.011e-04+dcj_rhrpo
+parameters cfox = 1.680e-11+dcfox_rhrpo
+parameters ccoup = 5.470e-11*flag_cc
+parameters capsw = cfox+ccoup
+c1 (n2 sub) capacitor c=(cj*weff*leff/2+capsw*weff+capsw*leff)*mr
+r1 (n2 n1) bsource r=tcoef_temper*ro/mr*(0.5+1/(2+rvc*v(n2,n1)*v(n2,n1)))
+c2 (n1 sub) capacitor c=(cj*weff*leff/2+capsw*weff+capsw*leff)*mr
+ends rhrpo_3t_ckt
+
+
